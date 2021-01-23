@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+  
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script>
+
+    <title>Leaflet Map</title>
+    <style>#map {Position: absolute; width: 100% ; height: 500px}</style>
+    <style>#video {Position: absolute ; top: 550px; left: 10px; height: 450px; width: 490px}</style>
+</head>
+<body>
+    <h1>Leaflet Map</h1>
+    <div id="map" ></div><br>
+    <div id="video"><video width="700" height="100%" controls>
+        <source src="count.mp4" type="video/mp4">
+        </video>
+      Your browser does not support the video tag.
+      </video></div>
+</body>
+</html>
+<script src="./data/munster.js"></script>
+<script src="./main.js"></script>
