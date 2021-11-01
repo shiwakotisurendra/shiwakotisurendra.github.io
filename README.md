@@ -23,7 +23,7 @@ Syntax highlighted code block
 
 **Bold** and _Italic_ and `Code` text
 
-[https://shiwakotisurendra.github.io/CV/](My CV) and ![Image](src)
+['https://shiwakotisurendra.github.io/CV/'](My CV) and ![Image](src)
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
