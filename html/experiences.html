@@ -1,210 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Work Experience - Surendra Shiwakoti</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f7fa;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-      background: linear-gradient(120deg, #1a237e, #3949ab);
-      color: white;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-    }
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-    .experience-card {
-      background: white;
-      padding: 20px 25px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-      margin-bottom: 25px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .experience-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-    }
-    .exp-header {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .exp-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #1a237e;
-    }
-    .exp-date {
-      font-size: 0.9rem;
-      color: #777;
-    }
-    .exp-role {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #3949ab;
-      margin-bottom: 10px;
-    }
-    ul {
-      padding-left: 20px;
-      margin: 0;
-    }
-    li {
-      margin-bottom: 6px;
-      line-height: 1.4;
-    }
-    .section-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin: 40px 0 20px;
-      color: #1a237e;
-      border-left: 6px solid #3949ab;
-      padding-left: 10px;
-    }
-    footer {
-      background: #1a237e;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
-    footer a {
-      color: #90caf9;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience - Surendra Shiwakoti</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f9;
+            color: #333;
+        }
+
+        /* Fixed Home Button */
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+        .home-button:hover {
+            background: #0056b3;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 80px auto 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .experience {
+            margin-bottom: 25px;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .contact-info a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Work Experience</h1>
-    <p>Surendra Shiwakoti</p>
-  </header>
 
-  <div class="container">
+    <!-- Fixed Home Button -->
+    <a href="https://shiwakotisurendra.github.io/" class="home-button">Home</a>
 
-    <!-- Work Experience -->
-    <div class="section-title">Professional Experience</div>
+    <div class="container">
+        <h1>Work Experience</h1>
 
-    <div class="experience-card">
-      <div class="exp-header">
-        <div class="exp-title">Cologne University of Applied Sciences – Köln, Germany</div>
-        <div class="exp-date">01/01/2024 – Present</div>
-      </div>
-      <div class="exp-role">Research Associate (Geodata Management)</div>
-      <ul>
-        <li>Maintenance and administration of Windows/Linux Server</li>
-        <li>Geoprocessing and analysis using GIS Tools (Google Earth Engine, ArcGIS, QGIS)</li>
-        <li>Development of Geospatial CMS (Python, Django, PostgreSQL-PostGIS, GeoServer)</li>
-        <li>Creation and publication of interactive maps, dashboards, and geostories</li>
-        <li>Research and develop climate adaptation portal concept and UI design</li>
-        <li>Research datasets on land use, water resources, and climate change</li>
-        <li>Conduct trainings and workshops on geodata and SDI</li>
-        <li>Collaborate with municipalities for climate adaptation & resilience measures</li>
-        <li>Support citizen science initiatives using information systems</li>
-        <li>Maintain data quality standards using OGC services</li>
-      </ul>
+        <div class="experience">
+            <h2>Cologne University of Applied Sciences – Köln, Germany<br>
+            <small>Research Associate (Geodata Management) – 01/01/2024 – Current</small></h2>
+            <ul>
+                <li>Maintenance and administration of Windows/Linux Server</li>
+                <li>Geoprocessing and analysis using GIS Tools (Google Earth Engine, ArcGIS, QGIS etc.)</li>
+                <li>Development and operation of Geospatial Content Management System (Python, Django, PostgreSQL-PostGIS, GeoServer)</li>
+                <li>Creation and publication of Interactive Maps, Dashboards, and Geostories</li>
+                <li>Research and develop climate adaptation portal concept and UI design</li>
+                <li>Research and collect datasets related to land use, water resources, and climate change</li>
+                <li>Training and workshops related to geodata and spatial data infrastructure</li>
+                <li>Project collaboration with municipalities for climate adaptation measures</li>
+                <li>Support citizen science concepts using information systems</li>
+                <li>Maintain data quality standards using OGC Services</li>
+            </ul>
+        </div>
+
+        <div class="experience">
+            <h2>52°North Spatial Information Research GmbH – Münster, Germany<br>
+            <small>Research Software Engineer – 01/03/2023 – 31/12/2023</small></h2>
+            <ul>
+                <li>Open source data retrieval, filtering, and visualization (osmosis, Overpass API, Python)</li>
+                <li>Using Docker to set up GIS systems (GeoNode, PostGIS, GeoServer)</li>
+                <li>Test and perform spatial queries with geodatabases</li>
+                <li>Automated data uploading and access via GeoServer REST API</li>
+                <li>Environmental data loading scripts for ODC importer in MariGeoRoute project</li>
+                <li>Research on cloud services support for Open Data Cube (multidimensional data)</li>
+                <li>Develop and integrate Weather Routing Tool into WebGIS</li>
+                <li>Assist interns and student assistants in MariData project</li>
+                <li>Create Weather Routing API and integrate with GeoNode REST API</li>
+            </ul>
+        </div>
+
+        <div class="experience">
+            <h2>52°North Spatial Information Research GmbH – Münster, Germany<br>
+            <small>Student Assistant and Researcher – 01/12/2021 – 09/2022</small></h2>
+            <ul>
+                <li>Geospatial data management for MariData Navigation project</li>
+                <li>Research on geographic tools (OpenStreetMap, OpenSeaMap, GeoNode/GeoServer, PostGIS, Python)</li>
+            </ul>
+        </div>
+
+        <div class="experience">
+            <h2>German Aerospace Center (DLR) – Wessling/München, Germany<br>
+            <small>Student Internship – 15/03/2021 – 17/08/2021</small></h2>
+            <ul>
+                <li>Python-based software development</li>
+                <li>Creating Spatiotemporal Asset Catalogs (STAC) using PySTAC</li>
+                <li>Modifying and adding download methods for ukis-pysat package</li>
+                <li>Testing Python packages and APIs</li>
+                <li>Collaboration via GitHub and GitLab</li>
+                <li>AWS S3 storage manipulation using boto3</li>
+            </ul>
+        </div>
+
+        <div class="experience">
+            <h2>Department of Geomatics Engineering, Kathmandu University – Dhulikhel, Nepal<br>
+            <small>Teaching Assistant – 21/08/2018 – 17/09/2019</small></h2>
+            <ul>
+                <li>Field training and supervision</li>
+                <li>Lectures in Control Surveying, Cartography, Engineering Drawing</li>
+                <li>Project supervision and syllabus revision</li>
+                <li>Assisting Geomatics internal activities</li>
+            </ul>
+        </div>
+
+        <h2>Trainings</h2>
+        <ul>
+            <li>Open Street Mapper – Geomatics Engineering Association of Nepal (2013–2017)</li>
+            <li>Python for Data Science and Machine Learning – Udemy</li>
+            <li>Web Mapping and Web-GIS from Dev to Deployment – Udemy</li>
+            <li>ArcGIS Pro Essential Training – LinkedIn Learning</li>
+            <li>Geospatial Data Analytics Essential Training – LinkedIn Learning</li>
+            <li>Geospatial Raster Data Analytics in Python – LinkedIn Learning</li>
+        </ul>
+
+        <div class="contact-info">
+            <p><strong>Surendra Shiwakoti</strong><br>
+            Phone: (+49) 1782795863<br>
+            Email: <a href="mailto:shiwakotisurendra@gmail.com">shiwakotisurendra@gmail.com</a><br>
+            LinkedIn: <a href="https://www.linkedin.com/in/geosuren/" target="_blank">geosuren</a><br>
+            Address: Brabanter Str. 49, 50672, Köln, Germany</p>
+        </div>
     </div>
 
-    <div class="experience-card">
-      <div class="exp-header">
-        <div class="exp-title">52°North Spatial Information Research GmbH – Münster, Germany</div>
-        <div class="exp-date">01/03/2023 – 31/12/2023</div>
-      </div>
-      <div class="exp-role">Research Software Engineer</div>
-      <ul>
-        <li>Open source data retrieval, filtering & visualization (osmosis, overpass API, Python)</li>
-        <li>Docker setup for GIS (GeoNode, PostGIS, GeoServer)</li>
-        <li>Spatial queries & database testing</li>
-        <li>Automated data upload & access using GeoServer REST API</li>
-        <li>Environmental data loading scripts for ODC importer (Marigeoroute project)</li>
-        <li>Research on cloud services for multidimensional data in ODC</li>
-        <li>Route optimization research & methods for WeatherRoutingTool</li>
-        <li>Integrate Weather Routing Tool into WebGIS</li>
-        <li>Mentored interns and student assistants</li>
-        <li>Created Weather Routing API, integrated into GeoNode REST API</li>
-      </ul>
-    </div>
-
-    <div class="experience-card">
-      <div class="exp-header">
-        <div class="exp-title">52°North Spatial Information Research GmbH – Münster, Germany</div>
-        <div class="exp-date">01/12/2021 – 09/2022</div>
-      </div>
-      <div class="exp-role">Student Assistant & Researcher</div>
-      <ul>
-        <li>Geospatial data management for Maridata Navigation project</li>
-        <li>Research on geospatial tools (OSM, OpenSeaMap, GeoNode/GeoServer, PostGIS, Python)</li>
-      </ul>
-    </div>
-
-    <div class="experience-card">
-      <div class="exp-header">
-        <div class="exp-title">German Aerospace Center (DLR) – Wessling/München, Germany</div>
-        <div class="exp-date">15/03/2021 – 17/08/2021</div>
-      </div>
-      <div class="exp-role">Student Internship</div>
-      <ul>
-        <li>Python software development</li>
-        <li>Created STAC catalogs using pystac</li>
-        <li>Enhanced ukis-pysat package</li>
-        <li>Tested Python packages & APIs</li>
-        <li>Collaborated via GitHub & GitLab</li>
-        <li>Managed AWS S3 storage using boto3</li>
-      </ul>
-    </div>
-
-    <div class="experience-card">
-      <div class="exp-header">
-        <div class="exp-title">Department of Geomatics Engineering – Kathmandu University, Nepal</div>
-        <div class="exp-date">21/08/2018 – 17/09/2019</div>
-      </div>
-      <div class="exp-role">Teaching Assistant</div>
-      <ul>
-        <li>Field training & supervision</li>
-        <li>Lectures on surveying, cartography, and engineering drawing</li>
-        <li>Project supervision & syllabus revision</li>
-        <li>Assisted internal departmental activities</li>
-      </ul>
-    </div>
-
-    <!-- Trainings -->
-    <div class="section-title">Trainings</div>
-
-    <div class="experience-card">
-      <ul>
-        <li>Open Street Mapper – Geomatics Engineering Association of Nepal (Mapathon, Hackathon, Drone Surveys)</li>
-        <li>Python for Data Science & Machine Learning – Udemy</li>
-        <li>Web Mapping & Web-GIS from Dev to Deployment – Udemy</li>
-        <li>ArcGIS Pro Essential Training – LinkedIn Learning</li>
-        <li>Geospatial Data Analytics Essential Training – LinkedIn Learning</li>
-        <li>Geospatial Raster Data Analytics in Python – LinkedIn Learning</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <footer>
-    Contact: <a href="mailto:shiwakotisurendra@gmail.com">shiwakotisurendra@gmail.com</a> | 
-    <a href="https://www.linkedin.com/in/geosuren/" target="_blank">LinkedIn</a>
-  </footer>
 </body>
 </html>
