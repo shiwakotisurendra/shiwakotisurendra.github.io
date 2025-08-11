@@ -1,221 +1,198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="description" content="this is an awesome ">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Surendra Shiwakoti</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Surendra Shiwakoti | Web & Cloud Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      line-height: 1.6;
+    }
+    a {
+      color: #0077cc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #005fa3;
+    }
+    header {
+      background: #fff;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section.intro {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    section.intro h2 {
+      font-weight: 600;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    section.intro p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .skills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .skill-badge {
+      background: #0077cc;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
+      box-shadow: 0 3px 6px rgba(0,119,204,0.4);
+      transition: background 0.3s ease;
+    }
+    .skill-badge:hover {
+      background: #005fa3;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+    .project-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .project-content {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .project-title {
+      font-weight: 600;
+      margin: 0 0 0.5rem 0;
+    }
+    .project-desc {
+      flex-grow: 1;
+      color: #444;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .project-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+    .btn {
+      background: #0077cc;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #005fa3;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      section.intro h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Welcome to my Profile </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="html/fieldWorks.html">Field Works</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="html/programs.html">Programming</a>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="html/subjects.html">Books and Subjects</a></li>
-          <li class="nav-item"><a class="nav-link" href="html/projects.html">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://thesis-surendra.streamlit.app/">Master Thesis</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Apps
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+  <header>
+    <h1>Surendra Shiwakoti</h1>
+  </header>
+  <main>
+    <section class="intro">
+      <h2>Web & Cloud Developer</h2>
+      <p>Building modern, scalable applications with JavaScript, Python, and Cloud Technologies.</p>
+    </section>
 
-              <li><a class="dropdown-item" href="https://mapstream-geosuren.streamlit.app/">MapStream</a></li>
-              <li><a class="dropdown-item" href='https://shiwakotisurendra.github.io/leaflet-routing/'>Leaflet Routing</a></li>
-              <li><a class="dropdown-item" href='https://shiwakotisurendra.github.io/leaflet-geosuren/'>Leaflet Map</a></li>
-              <li><a class="dropdown-item" href='https://text-translator-alpha.vercel.app/'>Text Translator</a></li>
-              <li><a class="dropdown-item" href='https://text-translator-alpha.vercel.app/blog/'>Blog</a></li>
-              <li><hr class="dropdown-divider"> </li>
-              <li><a class="dropdown-item" href="templates/home.html">Map</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-    </div>
-  </nav>
-  <div style='margin:20px' class='intro'>
-    <table cellspacing='20'>
-      <tr>
-        <td><img class='geosurenimg' src="surendra.jpg" style='border-radius: 100px; margin-right: 20px;' alt="Surendra Picture"  width="180" height="200"></td>
-        <td><h2>Er. Surendra Shiwakoti</h2>
-          <p>
-    I am a <em>Geomatics Engineer</em> and MSc. Geoinformatics graduate with major interest on software development and geospatial analysis.
-  </p>
-    <p><a href="https://www.th-koeln.de/">Technische Hochschule Köln</a><br>surendra.shiwakoti@th-koeln.de</p>
-    <hr />
-    <p><big>Address: </big><a href="https://www.google.com/maps/place/Cologne/@50.9319037,6.9197237,12.25z/data=!4m6!3m5!1s0x47bf259169ab2fe5:0x42760fc4a2a77f0!8m2!3d50.937531!4d6.9602786!16zL20vMDF2OGM?entry=ttu"> <small><b><i> Köln Germany</i></b></small></p></a>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d67663.43401206723!2d6.919723670380598!3d50.93190374515557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bf259169ab2fe5%3A0x42760fc4a2a77f0!2sCologne!5e0!3m2!1sen!2sde!4v1720428147392!5m2!1sen!2sde" width="300" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </td></tr>
-  </table>
-  </div>
-    <hr>
-    <div style='margin:20px' class='qualification'>
-      <h3><strong>QUALIFICATIONS</strong></h3>
-  
-    <table class="table table-light" cellspacing='30'cellpadding='5px'>
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Date</th>
-          <th scope="col">Institution</th>
-          <th scope="col">Course</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>2019-2022 </td>
-          <td>University of Münster </td>
-          <td>Master of Science in Geoinformatics</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>2013-2017</td>
-          <td>Pashchimanchal Campus (IOE,TU)</td>
-          <td>Bachelors in Geomatics Engineering</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>2010-2013</td>
-          <td>Hetauda School of Management</td>
-          <td>+2 SCIENCE</td>
-        </tr>
-      </tbody>
-      <tfoot>
-  
-      </tfoot>
-  
-    </table>
-    </div><hr>
-    <div style='margin:20px' class='skills'>
-    <h3><strong>EXPERIENCE</strong> </h3>
-  <table class="table table-light" cellspacing='30px' cellpadding='5px'>
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Date</th>
-        <th scope="col">Institution</th>
-        <th scope="col">Designation</th>
-      </tr>
-    </thead>
-    <tr>
-      <th scope="row">1</th>
-      <td>2018-2019 </td>
-      <td>Kathmandu University </td>
-      <td>Teaching Assistant</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>2021</td>
-      <td>German Aerospace Center(DLR)</td>
-      <td>Student Intern<a href='https://github.com/dlr-eoc/ukis-pysat'>(STAC/ukis-pysat)</a> </td>
-  </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>2022</td>
-      <td>52°North GmbH </td>
-      <td>Student Assistant and Researcher<a href='https://github.com/orgs/52North/people?page=4'>(52north)</a> </td>
-  </tr>
-     <tr>
-      <th scope="row">4</th>
-      <td>2023</td>
-      <td>52°North GmbH </td>
-      <td>Research Software Engineer<a href='https://52north.org/about-us/profile/'>(52north)</a> </td>
-  </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>2024</td>
-      <td>Technische Hochschule Köln</td>
-      <td>Research Associate<a href='https://www.th-koeln.de/personen/surendra.shiwakoti/'>(TH-Köln)</a> </td>
-  </tr>
-  </table>
-   </div><hr>
-    <div style='margin:20px' class='skills'>
-      <h3><strong>Expertise</strong> </h3>
-        <p>Land Surveying, Photogrammetry, Remote Sensing | Digital Image Processing, Geographic Information Systems (GIS), Cartography, Geodesy, Satellite Positioning (GPS | DGPS), Spatiotemporal Analysis, Machine Learning in Street Map Context, Image Recognition using Citizen Science, Cadastre and land adjustment, Geosimulation Modeling</p>
-    </div>
-  </div><hr>
-    <div style='margin:20px' class='skills'>
-      <h3><strong>SKILLS</strong> </h3>
-    <table class="table table-light" cellspacing='30px' cellpadding='5px'>
-      <tr>
-        <td>Python (Developer | Analyst | Engineer)</td>
-        <td>⭐⭐⭐⭐⭐</td>
-      </tr>
-       <tr>
-        <td>DevOps</td>
-        <td>⭐⭐⭐⭐</td>
-      </tr>
-       <tr>
-        <td>SQL</td>
-        <td>⭐⭐⭐⭐⭐</td>
-      </tr>
-        <tr>
-        <td>React</td>
-        <td>⭐⭐⭐⭐</td>
-      </tr>
-      <tr>
-        <td>C++</td>
-        <td>⭐⭐⭐⭐
-        </td>
-      </tr>
-       <tr>
-        <td>GIS and Remote Sensing (ArcGIS,QGIS,Erdas,ENVI)</td>
-        <td>⭐⭐⭐⭐⭐</td>
-      </tr>
-       <tr>
-        <td>Surveying and Cartography</td>
-        <td>⭐⭐⭐⭐⭐</td>
-      </tr>
-       <tr>
-        <td>Data Analysis and Visualization</td>
-        <td>⭐⭐⭐⭐⭐</td>
-      </tr>
-      <tr>
-        <td>Javascript</td>
-        <td>⭐⭐⭐⭐</td>
-      </tr>
-      <tr>
-        <td>Machine Learning</td>
-        <td>⭐⭐⭐⭐</td>
-      </tr>
-      <tr>
-        <td>Web(GIS) Development (django,HTML,javascript,css,bootstrap,react,turf.js,node.js)</td>
-        <td>⭐⭐⭐⭐⭐</td>
-      </tr>
-      <tr>
-        <td>Google Earth Engine</td>
-        <td>⭐⭐⭐⭐⭐</td>
-      </tr>
-    </table>
-    </div>
-  
-    <hr>
-  <div style='margin:20px' > 
-    <button class='btn btn-info'><a href="html/contactme.html">Contact Details</a></div></button>
+    <section class="skills" aria-label="Skills">
+      <span class="skill-badge">JavaScript</span>
+      <span class="skill-badge">Python</span>
+      <span class="skill-badge">Vue.js</span>
+      <span class="skill-badge">React</span>
+      <span class="skill-badge">AWS</span>
+      <span class="skill-badge">Docker</span>
+      <span class="skill-badge">Google Earth Engine</span>
+    </section>
+
+    <section class="projects" aria-label="Projects">
+      <article class="project-card">
+        <img src="project1-screenshot.png" alt="Screenshot of Project 1" class="project-image" />
+        <div class="project-content">
+          <h3 class="project-title">Urban Heat Island Visualizer</h3>
+          <p class="project-desc">An interactive app using Google Earth Engine to visualize urban heat islands with dynamic legend and time series.</p>
+          <div class="project-links">
+            <a href="https://github.com/shiwakotisurendra/UrbanHeatIsland" class="btn" target="_blank" rel="noopener">Source</a>
+            <a href="https://shiwa-heatisland.web.app" class="btn" target="_blank" rel="noopener">Live Demo</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Repeat similar project cards for other projects -->
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Connect with me on <a href="https://linkedin.com/in/shiwakotisurendra" target="_blank" rel="noopener">LinkedIn</a> | <a href="https://github.com/shiwakotisurendra" target="_blank" rel="noopener">GitHub</a> | <a href="mailto:surendra@example.com">Email</a></p>
+  </footer>
 </body>
 </html>
