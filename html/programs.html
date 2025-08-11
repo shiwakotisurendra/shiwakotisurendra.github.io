@@ -1,16 +1,188 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h3> Programming language </h3>
-    <ol>
-      <li>Python</li>
-      <li>Java</li>
-      <li>Rstudio</li>
-      <li>Javascript</li>
-    </ol>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skills - Surendra Shiwakoti</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+    .skills-section {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      padding: 25px 30px;
+      transition: transform 0.3s ease;
+    }
+    .skills-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+    .skills-section h2 {
+      color: #2980b9;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #2980b9;
+      padding-bottom: 8px;
+      font-weight: 600;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin-top: 10px;
+    }
+    .skill-item {
+      background: #e1ecf9;
+      color: #236ab9;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      box-shadow: inset 0 0 5px #c3dafb;
+      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: default;
+    }
+    .skill-item:hover {
+      background-color: #2980b9;
+      color: white;
+      box-shadow: 0 2px 10px rgba(41, 128, 185, 0.6);
+    }
+    @media (max-width: 600px) {
+      .skills-list {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .skill-item {
+        width: fit-content;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Skills</h1>
+
+    <section class="skills-section">
+      <h2>Programming Languages</h2>
+      <div class="skills-list">
+        <span class="skill-item">Python</span>
+        <span class="skill-item">JavaScript</span>
+        <span class="skill-item">R</span>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <h2>Databases</h2>
+      <div class="skills-list">
+        <span class="skill-item">PostgreSQL</span>
+        <span class="skill-item">PostGIS</span>
+        <span class="skill-item">GeoServer</span>
+        <span class="skill-item">SQL</span>
+        <span class="skill-item">MongoDB</span>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <h2>Commercial and Open Source Tools</h2>
+      <div class="skills-list">
+        <span class="skill-item">ArcGIS Online</span>
+        <span class="skill-item">ArcGIS Pro</span>
+        <span class="skill-item">QGIS</span>
+        <span class="skill-item">Google Earth Engine</span>
+        <span class="skill-item">ENVI</span>
+        <span class="skill-item">Pix4D</span>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <h2>Mapping Platforms</h2>
+      <div class="skills-list">
+        <span class="skill-item">Leaflet</span>
+        <span class="skill-item">OpenLayers</span>
+        <span class="skill-item">Cesium ion</span>
+        <span class="skill-item">OpenStreetMap (OSM)</span>
+        <span class="skill-item">Mapbox</span>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <h2>Data Analysis & Visualization Tools</h2>
+      <div class="skills-list">
+        <span class="skill-item">NumPy</span>
+        <span class="skill-item">GeoPandas</span>
+        <span class="skill-item">Matplotlib</span>
+        <span class="skill-item">leafmap</span>
+        <span class="skill-item">Folium</span>
+        <span class="skill-item">Seaborn</span>
+        <span class="skill-item">fiona</span>
+        <span class="skill-item">Plotly</span>
+        <span class="skill-item">Rasterio</span>
+        <span class="skill-item">GDAL</span>
+        <span class="skill-item">xarray</span>
+        <span class="skill-item">shapely</span>
+        <span class="skill-item">geoai</span>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <h2>Web Development</h2>
+      <div class="skills-list">
+        <span class="skill-item">Django</span>
+        <span class="skill-item">JavaScript</span>
+        <span class="skill-item">HTML</span>
+        <span class="skill-item">CSS</span>
+        <span class="skill-item">Bootstrap</span>
+        <span class="skill-item">Express</span>
+        <span class="skill-item">React.js</span>
+        <span class="skill-item">turf.js</span>
+        <span class="skill-item">Node.js</span>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <h2>Collaboration & Communication Platforms</h2>
+      <div class="skills-list">
+        <span class="skill-item">GitHub</span>
+        <span class="skill-item">GitLab</span>
+        <span class="skill-item">Taiga.io</span>
+        <span class="skill-item">Slack</span>
+        <span class="skill-item">Mattermost</span>
+        <span class="skill-item">DevOps</span>
+        <span class="skill-item">Git</span>
+        <span class="skill-item">Linux</span>
+        <span class="skill-item">Docker</span>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <h2>Instruments Handling</h2>
+      <div class="skills-list">
+        <span class="skill-item">Survey equipment (GPS, Level, Theodolite & Total Station)</span>
+        <span class="skill-item">Drone survey</span>
+      </div>
+    </section>
+  </div>
+</body>
 </html>
