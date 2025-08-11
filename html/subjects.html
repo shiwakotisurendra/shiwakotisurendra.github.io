@@ -1,18 +1,133 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h3>Books and Subjects</h3>
-    <ul>
-      <li>Wayfinding and Navigation</li>
-      <li>
-        Geosimulation Modeling
-      </li>
-      <li>Analysis of Spatiotemporal Datasets</li>
-      <li>Introduction to Software Engineering</li>
-    </ul>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Surendra Shiwakoti - My Apps</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 40px 20px;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      color: #1a237e;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+    }
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .app-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+      padding: 20px 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+    }
+    .app-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    .app-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #303f9f;
+    }
+    .app-description {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #555;
+      flex-grow: 1;
+    }
+    .app-link {
+      margin-top: 20px;
+      font-weight: 600;
+      color: #1a237e;
+      text-align: right;
+      font-size: 0.9rem;
+      text-decoration: underline;
+    }
+    .app-link:hover {
+      color: #3949ab;
+    }
+    @media (max-width: 400px) {
+      body {
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My Apps</h1>
+    <div class="app-grid">
+      <a href="https://ee-shiwakotisurendra43.projects.earthengine.app/view/leverkusen" target="_blank" class="app-card" rel="noopener">
+        <div>
+          <div class="app-title">Leverkusen UHI Viewer</div>
+          <div class="app-description">
+            Interactive urban heat island visualization for Leverkusen using Earth Engine with dynamic legend and time series plots.
+          </div>
+        </div>
+        <div class="app-link">Open App →</div>
+      </a>
+
+      <a href="https://huggingface.co/spaces/shiwakotisurendra/mymaps" target="_blank" class="app-card" rel="noopener">
+        <div>
+          <div class="app-title">MyMaps</div>
+          <div class="app-description">
+            Custom map visualization platform on Hugging Face Spaces for geospatial exploration and analysis.
+          </div>
+        </div>
+        <div class="app-link">Open App →</div>
+      </a>
+
+      <a href="https://huggingface.co/spaces/shiwakotisurendra/time_series_viewer" target="_blank" class="app-card" rel="noopener">
+        <div>
+          <div class="app-title">Time Series Viewer</div>
+          <div class="app-description">
+            View and analyze geospatial time series data interactively using this dedicated visualization app.
+          </div>
+        </div>
+        <div class="app-link">Open App →</div>
+      </a>
+
+      <a href="https://shiwakotisurendra.github.io/dem-qgis/" target="_blank" class="app-card" rel="noopener">
+        <div>
+          <div class="app-title">DEM & QGIS Visualization</div>
+          <div class="app-description">
+            Explore digital elevation models and QGIS projects through this interactive web-based visualization.
+          </div>
+        </div>
+        <div class="app-link">Open App →</div>
+      </a>
+
+      <a href="https://text-translator-alpha.vercel.app/" target="_blank" class="app-card" rel="noopener">
+        <div>
+          <div class="app-title">Text Translator</div>
+          <div class="app-description">
+            Multi-language text translation web app built with modern frameworks for quick and easy translations.
+          </div>
+        </div>
+        <div class="app-link">Open App →</div>
+      </a>
+    </div>
+  </div>
+</body>
 </html>
