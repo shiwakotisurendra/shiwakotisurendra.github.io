@@ -135,73 +135,41 @@
   </style>
 </head>
 <body>
-  <div id="mc_embed_shell">
-  <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-  <style type="text/css">
-        #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width: 600px;}
-        /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-  </style>
+  <div class="container">
+    <h1>My Contact Details</h1>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:shiwakotisurendra@gmail.com">shiwakotisurendra@gmail.com</a></p>
+    </div>
 
-  <div id="mc_embed_signup">
-    <form action="https://gmail.us5.list-manage.com/subscribe/post?u=092fd0d5fc0738d765b6f0bfe&amp;id=4f2b06b34a&amp;f_id=000546edf0" 
-          method="post" id="mc-embedded-subscribe-form" 
-          name="mc-embedded-subscribe-form" 
-          class="validate" target="_blank">
+    <h3>Customer Support</h3>
+    <form action="mailto:shiwakotisurendra@gmail.com" method="post" enctype="text/plain">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="Name" placeholder="Enter your full name" required />
 
-      <div id="mc_embed_signup_scroll">
-        <h2>Subscribe</h2>
-        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="Email" placeholder="example@mail.com" required />
 
-        <div class="mc-field-group">
-          <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
-          <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="">
-        </div>
+      <label for="phone">Telephone:</label>
+      <input type="tel" id="phone" name="Telephone" placeholder="+49 152 ..." />
 
-        <div class="mc-field-group">
-          <label for="mce-FNAME">First Name </label>
-          <input type="text" name="FNAME" class=" text" id="mce-FNAME" value="">
-        </div>
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="Date of Birth" />
 
-        <div class="mc-field-group">
-          <label for="mce-LNAME">Last Name </label>
-          <input type="text" name="LNAME" class=" text" id="mce-LNAME" value="">
-        </div>
-
-        <!-- keep your other fields here (address, phone, birthday, etc.) -->
-
-        <div id="mce-responses" class="clear foot">
-          <div class="response" id="mce-error-response" style="display: none;"></div>
-          <div class="response" id="mce-success-response" style="display: none;"></div>
-        </div>
-
-        <div aria-hidden="true" style="position: absolute; left: -5000px;">
-          <input type="text" name="b_092fd0d5fc0738d765b6f0bfe_4f2b06b34a" tabindex="-1" value="">
-        </div>
-
-        <div class="optionalParent">
-          <div class="clear foot">
-            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
-          </div>
-        </div>
+      <label>Gender:</label>
+      <div class="gender-options">
+        <label for="male"><input type="radio" id="male" name="Gender" value="Male" /> Male</label>
+        <label for="female"><input type="radio" id="female" name="Gender" value="Female" /> Female</label>
+        <label for="other"><input type="radio" id="other" name="Gender" value="Other" /> Other</label>
       </div>
+
+      <label for="message">Your Message:</label>
+      <textarea id="message" name="Message" placeholder="Write your message here..." required></textarea>
+
+      <label for="file">Your File (optional):</label>
+      <input type="file" id="file" name="Attachment" />
+
+      <input type="submit" value="Send Message" />
     </form>
   </div>
-</div>
-
-<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-<script type="text/javascript">
-  (function($) {
-    window.fnames = new Array(); 
-    window.ftypes = new Array();
-    fnames[0]='EMAIL';ftypes[0]='email';
-    fnames[1]='FNAME';ftypes[1]='text';
-    fnames[2]='LNAME';ftypes[2]='text';
-    fnames[3]='ADDRESS';ftypes[3]='address';
-    fnames[4]='PHONE';ftypes[4]='phone';
-    fnames[5]='BIRTHDAY';ftypes[5]='birthday';
-  }(jQuery));
-  var $mcj = jQuery.noConflict(true);
-</script>
 </body>
 </html>
