@@ -3,44 +3,27 @@ hide:
   - toc
   - navigation
 ---
-<!--
-CHECKLIST FOR THIS PAGE:
-- [ ] Replace each [YOUR ...] placeholder with your actual information
-- [ ] Add or remove entries in each section as needed
-- [ ] Remove sections that are not applicable (e.g., Theses, Conference Presentations)
-- [ ] Add DOI or URL links where available
--->
 
 # Publications
 
-## Journal Articles
+## Journal Articles & Preprints
 
-1. [YOUR NAME], [CO-AUTHOR NAME], and [CO-AUTHOR NAME] ([YEAR]). "[Your paper title here]." *[Journal Name]*, [Volume] [Issue], [Page range]. [DOI link or URL]
-
-2. [YOUR NAME] and [CO-AUTHOR NAME] ([YEAR]). "[Your paper title here]." *[Journal Name]*, [Volume] [Issue], [Page range]. [DOI link or URL]
-
-3. [YOUR NAME] ([YEAR]). "[Your paper title here]." *[Journal Name]*, [Volume] [Issue], [Page range]. [DOI link or URL]
+1. Shiwakoti, S. & Ramirez Duval, J. L. (2026). "A Google Earth Engine–Based Framework for Dynamic Urban Heat Island Analysis Using Landsat 8/9 (2015–2025)." *Zenodo*. [https://doi.org/10.5281/zenodo.19921427](https://doi.org/10.5281/zenodo.19921427)
 
 ---
 
-## Conference Papers & Presentations
+## Book Chapters & Reports
 
-1. [YOUR NAME] and [CO-AUTHOR NAME] ([YEAR]). "[Your presentation title]." *[Conference Name]*, [City, Country].
-
-2. [YOUR NAME] ([YEAR]). "[Your presentation title]." *[Conference Name]*, [City, Country].
+1. Hoxha et al. (2025). "Data visualization and management." In *Toolkit: Water-Sensitive Infrastructure Development*. [https://doi.org/10.57683/EPUB-3047](https://doi.org/10.57683/EPUB-3047)
 
 ---
 
 ## Theses
 
-- [YOUR NAME] ([YEAR]). *[Your thesis title]*. [Degree type] thesis. [University Name].
+- Shiwakoti, S. (2022). *Identifying Urban Growth Patterns and Urban Heat Island Effects of Bharatpur Metropolitan City using Landsat Time Series Imagery*. Master's thesis. University of Münster, Germany. [https://doi.org/10.13140/RG.2.2.23684.90248](https://doi.org/10.13140/RG.2.2.23684.90248)
+
+- Shiwakoti, S. (2017). *Land Use Land Cover Classification and Urban Density Prediction Mapping of Dolakha District*. Bachelor's thesis. Tribhuvan University, Nepal.
 
 ---
 
-## Reports & Technical Documents
-
-- [YOUR NAME] et al. ([YEAR]). *[Report title]*. [Organization Name]. [URL or DOI if available]
-
----
-
-*For citation counts and a full list, see [Google Scholar](https://scholar.google.com) or [ResearchGate](https://www.researchgate.net).*
+*For a full list, see [Google Scholar](https://scholar.google.com) or [ResearchGate](https://www.researchgate.net).*

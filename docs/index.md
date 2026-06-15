@@ -130,4 +130,4 @@ Platforms & Tools: Google Earth Engine (GEE), QGIS, ArcGIS, ENVI, ERDAS, SDI
 ## Connect
 
 [GitHub](https://github.com/shiwakotisurendra){ .md-button }
-[LinkedIn](https://linkedin.com/in/[YOUR-LINKEDIN-USERNAME]){ .md-button }
+[LinkedIn](https://linkedin.com/in/geosuren){ .md-button }
