@@ -19,10 +19,10 @@ CHECKLIST FOR THIS PAGE:
 
 
 <div class="hero">
-  <img src="assets/images/profile.png" alt="[YOUR NAME]" class="profile-photo">
-  <h1>[YOUR NAME]</h1>
-  <p><strong>[YOUR JOB TITLE]</strong></p>
-  <p><em>[YOUR TAGLINE — e.g., Turning spatial data into insights | GIS | Remote Sensing | Python]</em></p>
+  <img src="assets/images/profile.png" alt="Surendra Shiwakoti" class="profile-photo">
+  <h1>Surendra Shiwakoti</h1>
+  <p><strong>Research Associate at TH-Köln (Geospatial)</strong></p>
+  <p><em>Turning spatial data into insights | GIS | Remote Sensing | Python</em></p>
 </div>
 
 ---
@@ -32,15 +32,26 @@ CHECKLIST FOR THIS PAGE:
 <div class="about-section" markdown>
 <div class="about-text" markdown>
 
-[Replace this paragraph with your own bio. Write 3–4 sentences covering: your background and
-what you specialize in, the kinds of problems you work on, the tools and methods you use,
-and what you are currently looking for. Example below:]
+The biggest challenges our planet faces today are climate change, rapid urbanization, and natural disasters occuring around us. I work on the geospatial tools and data pipelines needed to understand exactly where, why, and what we can do about it. 
+My expertise lies at the intersection of remote sensing, spatial data science, and software engineering. I translate complex, multi-source Earth observation data into actionable intelligence and interactive Web-GIS applications that drive sustainable decision-making.
+Currently, I support Co-Site Project at Cologne University of Applied Sciences to facilitate datasets to visualize climate risks, model urban growth effects, and support municipalities for data-driven decisions for global environmental challenges.
 
-I am a geospatial data scientist with a background in remote sensing and machine learning.
-I work on extracting actionable insights from satellite imagery and large spatial datasets
-using Python, Google Earth Engine, and open-source GIS tools. I am passionate about applying
-GeoAI techniques to real-world challenges in land use mapping, climate monitoring, and urban
-planning. I am currently seeking opportunities in [YOUR TARGET ROLE] in [YOUR TARGET LOCATION].
+My core research / support areas:
+<br>
+<br>
+🌍 Climate & Disaster Resilience: Designing spatial models and risk assessments to manage urban heat islands, monitor land-use change, and boost climate adaptation. 
+<br>
+<br>
+💻 Geospatial Automation: Building Python pipelines and leveraging Google Earth Engine to automate massive satellite imagery workflows and geodata processing. <br>
+<br>
+📊 Interactive Web-GIS: Developing custom, scalable web applications and dashboards that make complex spatial data intuitive and accessible for stakeholders. <br>
+<br>
+🚀 Advanced Spatial Modeling: Applying machine learning, geosimulation, and photogrammetry to predict urban growth and solve environmental challenges.
+
+Core Toolkit: <br>
+<br>
+Languages: Python, JavaScript, R, SQL, Java <br>
+Platforms & Tools: Google Earth Engine (GEE), QGIS, ArcGIS, ENVI, ERDAS, SDI
 
 </div>
 
@@ -118,5 +129,5 @@ planning. I am currently seeking opportunities in [YOUR TARGET ROLE] in [YOUR TA
 
 ## Connect
 
-[GitHub](https://github.com/[YOUR-GITHUB-USERNAME]){ .md-button }
+[GitHub](https://github.com/shiwakotisurendra){ .md-button }
 [LinkedIn](https://linkedin.com/in/[YOUR-LINKEDIN-USERNAME]){ .md-button }
