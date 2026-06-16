@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#model-fitting-estimation-and-pipeline-compilation" class="md-skip">
+        <a href="#enterprise-machine-learning-operations-via-scikit-learn" class="md-skip">
           Skip to content
         </a>
       
@@ -357,6 +357,8 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -418,13 +420,17 @@
     
       
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -644,6 +650,8 @@
         
         
       
+      
+        
       
     
     
@@ -1144,6 +1152,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1186,6 +1196,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1194,6 +1206,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1-core-end-to-end-predictive-pipeline-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core End-to-End Predictive Pipeline Matrix
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core End-to-End Predictive Pipeline Matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-preprocessing-and-feature-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Preprocessing and Feature Isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#model-fitting-estimation-and-pipeline-compilation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1201,6 +1236,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1361,7 +1401,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1369,6 +1411,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1378,6 +1422,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1-core-end-to-end-predictive-pipeline-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core End-to-End Predictive Pipeline Matrix
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core End-to-End Predictive Pipeline Matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-preprocessing-and-feature-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Preprocessing and Feature Isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#model-fitting-estimation-and-pipeline-compilation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1385,6 +1452,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1480,74 +1552,63 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
 
 
 
-  <h1>scikit-learn examples</h1>
 
-<div class="highlight"><pre><span></span><code>---
-hide:
-<span class="w">  </span><span class="k">-</span><span class="w"> </span>toc
-<span class="gu">  - navigation</span>
-<span class="gu">---</span>
+<h1 id="enterprise-machine-learning-operations-via-scikit-learn">Enterprise Machine Learning Operations via Scikit-Learn</h1>
+<p>This operational reference notebook delivers production-ready Python workflows utilizing the native structural abstractions from <code>sklearn</code>. It maps out foundational pipelines from preprocessing to model deployment and evaluations.</p>
+<hr />
+<h2 id="1-core-end-to-end-predictive-pipeline-matrix">1. Core End-to-End Predictive Pipeline Matrix</h2>
+<h3 id="data-preprocessing-and-feature-isolation">Data Preprocessing and Feature Isolation</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleImputer</span>
 
-<span class="gh"># Enterprise Machine Learning Operations via Scikit-Learn</span>
+<span class="c1"># Create a mock production dataset frame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">54</span><span class="p">],</span>
+    <span class="s1">&#39;income&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">120000</span><span class="p">,</span> <span class="mi">85000</span><span class="p">,</span> <span class="mi">95000</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">115000</span><span class="p">],</span>
+    <span class="s1">&#39;department&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tech&#39;</span><span class="p">,</span> <span class="s1">&#39;Exec&#39;</span><span class="p">,</span> <span class="s1">&#39;Tech&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">,</span> <span class="s1">&#39;Exec&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;promoted&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">})</span>
 
-This operational reference notebook delivers production-ready Python workflows utilizing the native structural abstractions from <span class="sb">`sklearn`</span>. It maps out foundational pipelines from preprocessing to model deployment and evaluations.
+<span class="c1"># Isolate target label array from feature frame matrix</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;promoted&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;promoted&#39;</span><span class="p">]</span>
 
----
+<span class="c1"># Differentiate structural pipelines by numeric and categorical attributes</span>
+<span class="n">numeric_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;income&#39;</span><span class="p">]</span>
+<span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;department&#39;</span><span class="p">]</span>
 
-<span class="gu">## 1. Core End-to-End Predictive Pipeline Matrix</span>
+<span class="c1"># Define structural pipeline for continuous numeric layers</span>
+<span class="n">numeric_transformer</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;imputer&#39;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">())</span>
+<span class="p">])</span>
 
-<span class="gu">### Data Preprocessing and Feature Isolation</span>
-```python
-import numpy as np
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from sklearn.impute import SimpleImputer
+<span class="c1"># Define structural pipeline for categorical feature frameworks</span>
+<span class="n">categorical_transformer</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;imputer&#39;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;most_frequent&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;onehot&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="p">])</span>
 
-<span class="gh"># Create a mock production dataset frame</span>
-data = pd.DataFrame({
-    &#39;age&#39;: [25, 47, 31, np.nan, 22, 54],
-    &#39;income&#39;: [50000, 120000, 85000, 95000, np.nan, 115000],
-    &#39;department&#39;: [&#39;Tech&#39;, &#39;Exec&#39;, &#39;Tech&#39;, &#39;HR&#39;, &#39;HR&#39;, &#39;Exec&#39;],
-    &#39;promoted&#39;: [1, 1, 0, 0, 0, 1]
-})
+<span class="c1"># Bind column-specific transformations into an immutable Transformer Matrix</span>
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+    <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">numeric_transformer</span><span class="p">,</span> <span class="n">numeric_features</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">categorical_transformer</span><span class="p">,</span> <span class="n">categorical_features</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
 
-<span class="gh"># Isolate target label array from feature frame matrix</span>
-X = data.drop(columns=[&#39;promoted&#39;])
-y = data[&#39;promoted&#39;]
-
-<span class="gh"># Differentiate structural pipelines by numeric and categorical attributes</span>
-numeric_features = [&#39;age&#39;, &#39;income&#39;]
-categorical_features = [&#39;department&#39;]
-
-<span class="gh"># Define structural pipeline for continuous numeric layers</span>
-numeric_transformer = Pipeline(steps=[
-    (&#39;imputer&#39;, SimpleImputer(strategy=&#39;median&#39;)),
-    (&#39;scaler&#39;, StandardScaler())
-])
-
-<span class="gh"># Define structural pipeline for categorical feature frameworks</span>
-categorical_transformer = Pipeline(steps=[
-    (&#39;imputer&#39;, SimpleImputer(strategy=&#39;most_frequent&#39;)),
-    (&#39;onehot&#39;, OneHotEncoder(handle_unknown=&#39;ignore&#39;, sparse_output=False))
-])
-
-<span class="gh"># Bind column-specific transformations into an immutable Transformer Matrix</span>
-preprocessor = ColumnTransformer(
-    transformers=[
-        (&#39;num&#39;, numeric_transformer, numeric_features),
-        (&#39;cat&#39;, categorical_transformer, categorical_features)
-    ]
-)
-
-<span class="gh"># Perform synchronous data split into training and evaluation frameworks</span>
-X<span class="ge">_train, X_</span>test, y<span class="ge">_train, y_</span>test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-print(f&quot;Training Subset Dimensions: {X_train.shape} | Evaluation Subset Dimensions: {X_test.shape}&quot;)
+<span class="c1"># Perform synchronous data split into training and evaluation frameworks</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training Subset Dimensions: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> | Evaluation Subset Dimensions: </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="model-fitting-estimation-and-pipeline-compilation">Model Fitting, Estimation, and Pipeline Compilation</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -1738,11 +1799,6 @@ print(f&quot;Training Subset Dimensions: {X_train.shape} | Evaluation Subset Dim
 <td style="text-align: left;"><code>score()</code></td>
 <td style="text-align: left;">Returns basic evaluation baseline benchmarks optimized by target implementation definitions.</td>
 </tr>
-<tr>
-<td style="text-align: left;">```</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
 </tbody>
 </table>
 
@@ -1752,8 +1808,13 @@ print(f&quot;Training Subset Dimensions: {X_train.shape} | Evaluation Subset Dim
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -1839,7 +1900,7 @@ print(f&quot;Training Subset Dimensions: {X_train.shape} | Evaluation Subset Dim
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
