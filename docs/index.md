@@ -36,27 +36,39 @@ The biggest challenges our planet faces today are climate change, rapid urbaniza
 My expertise lies at the intersection of remote sensing, spatial data science, and software engineering. I translate complex, multi-source Earth observation data into actionable intelligence and interactive Web-GIS applications that drive sustainable decision-making.
 Currently, I support Co-Site Project at Cologne University of Applied Sciences to facilitate datasets to visualize climate risks, model urban growth effects, and support municipalities for data-driven decisions for global environmental challenges.
 
-My core research / support areas:
-<br>
-<br>
-🌍 Climate & Disaster Resilience: Designing spatial models and risk assessments to manage urban heat islands, monitor land-use change, and boost climate adaptation. 
-<br>
-<br>
-💻 Geospatial Automation: Building Python pipelines and leveraging Google Earth Engine to automate massive satellite imagery workflows and geodata processing. <br>
-<br>
-📊 Interactive Web-GIS: Developing custom, scalable web applications and dashboards that make complex spatial data intuitive and accessible for stakeholders. <br>
-<br>
-🚀 Advanced Spatial Modeling: Applying machine learning, geosimulation, and photogrammetry to predict urban growth and solve environmental challenges.
+### My core research / support areas
 
-Core Toolkit: <br>
-<br>
-Languages: Python, JavaScript, R, SQL, Java <br>
-Platforms & Tools: Google Earth Engine (GEE), QGIS, ArcGIS, ENVI, ERDAS, SDI
+🌍 **Climate & Disaster Resilience**
+
+    - Urban heat islands
+    - Land-use change
+    - Climate change adaptation
+
+💻 **Geospatial Automation**
+
+    - Python pipelines
+    - Google Earth Engine workflows
+
+📊 **Interactive Web-GIS**
+
+    - Dashboards
+    - Web applications
+
+🚀 **Advanced Spatial Modeling**
+
+    - Machine learning
+    - Geosimulation
+    - Photogrammetry
+
+**Core Toolkit:**
+
+    - Languages: Python, JavaScript, R, SQL, Java
+    - Platforms & Tools: Google Earth Engine (GEE), QGIS, ArcGIS, ENVI, ERDAS, SDI
 
 </div>
 
 <div class="about-image">
-  <img src="assets/images/about.png" alt="About">
+  <img src="assets/images/about.jpg" alt="About">
 </div>
 
 </div>

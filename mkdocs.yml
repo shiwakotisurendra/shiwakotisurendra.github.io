@@ -90,4 +90,24 @@ nav:
     # 4. Add a project card on docs/projects/index.md
   - Publications: publications.md
   - Experience: experience.md
+  - Resources: resources.md
+  - Tutorials:
+    - "InfoTool": Tutorials/infoTool_reference.md
+    - "python": Tutorials/python.md 
+    - "Raster Analysis": Tutorials/Tutorials.md
+    - "Vector Analysis": Tutorials/vector_analysis.md
+    - "Automate QGIS": Tutorials/automate_qgis.md
+    - "Automate ArcGIS": Tutorials/automate_arcgis.md
+    - "gdal": Tutorials/gdal.md
+    - "Matplotlib methods": Tutorials/matplotlib_methods.md
+    - "plotly": Tutorials/plotly.md
+    - "Pandas": Tutorials/pandas.md
+    - "Numpy": Tutorials/numpy.md
+    - "Xarray and Rioxarray": Tutorials/xarray_and_rioxarray.md
+    - "folium": Tutorials/folium.md
+    - "geemap": Tutorials/geemap.md
+    - "opencv": Tutorials/opencv.md
+    - "scikit-learn": Tutorials/scikit-learn.md
+    - "scikit-learn examples": Tutorials/scikit-learn_examples.md
+    - "earthpy": Tutorials/earthpy.md
   - Contact: contact.md
