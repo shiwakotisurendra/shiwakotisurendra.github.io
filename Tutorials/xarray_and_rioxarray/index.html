@@ -1,0 +1,3256 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfolio of Surendra Shiwakoti — GIS, Remote Sensing, and Spatial Data Science">
+      
+      
+        <meta name="author" content="Surendra Shiwakoti">
+      
+      
+        <link rel="canonical" href="https://shiwakotisurendra.github.io/Tutorials/xarray_and_rioxarray/">
+      
+      
+        <link rel="prev" href="../numpy/">
+      
+      
+        <link rel="next" href="../folium/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Xarray and Rioxarray - Surendra Shiwakoti - Geospatial Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#complete-xarray-and-rioxarray-methods-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-header__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Surendra Shiwakoti - Geospatial Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Xarray and Rioxarray
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Publications
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../experience/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Experience
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../infoTool_reference/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contact
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-nav__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    Surendra Shiwakoti - Geospatial Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Notebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infoTool_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InfoTool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raster Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_qgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate QGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_arcgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate ArcGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gdal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plotly
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xarray and Rioxarray
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xarray and Rioxarray
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-basic-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Basic example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-creating-xarray-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Creating xarray objects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Creating xarray objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-constructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common constructors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-loading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Loading data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Loading data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-xarray-open-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 xarray open methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-rioxarray-open-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 rioxarray open methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-inspecting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Inspecting data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Inspecting data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-methods-and-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common methods and attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-indexing-and-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Indexing and selection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Indexing and selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-mathematical-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Mathematical operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Mathematical operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-missing-data-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Missing data handling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Missing data handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-reshaping-and-combining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Reshaping and combining
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Reshaping and combining">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-grouping-and-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Grouping and time series
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Grouping and time series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-plotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Plotting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Plotting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-datasets-and-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Datasets and variables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Datasets and variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-geo-specific-rioxarray-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Geo-specific rioxarray methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Geo-specific rioxarray methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-crs-and-spatial-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 CRS and spatial metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-spatial-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Spatial operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-writing-raster-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Writing raster output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-raster-sampling-and-coordinate-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Raster sampling and coordinate queries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Raster sampling and coordinate queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-advanced-data-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Advanced data operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Advanced data operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-writing-and-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Writing and export
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Writing and export">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-useful-workflow-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Useful workflow examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Useful workflow examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-open-and-plot-raster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Open and plot raster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-reproject-and-clip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Reproject and clip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-time-series-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 Time series analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164-raster-value-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 Raster value extraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../folium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    folium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geemap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    geemap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    opencv
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn_examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earthpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    earthpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-basic-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Basic example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-creating-xarray-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Creating xarray objects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Creating xarray objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-constructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common constructors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-loading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Loading data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Loading data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-xarray-open-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 xarray open methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-rioxarray-open-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 rioxarray open methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-inspecting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Inspecting data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Inspecting data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-methods-and-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common methods and attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-indexing-and-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Indexing and selection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Indexing and selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-mathematical-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Mathematical operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Mathematical operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-missing-data-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Missing data handling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Missing data handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-reshaping-and-combining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Reshaping and combining
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Reshaping and combining">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-grouping-and-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Grouping and time series
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Grouping and time series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-plotting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Plotting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Plotting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-datasets-and-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Datasets and variables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Datasets and variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-geo-specific-rioxarray-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Geo-specific rioxarray methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Geo-specific rioxarray methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-crs-and-spatial-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 CRS and spatial metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-spatial-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Spatial operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-writing-raster-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Writing raster output
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-raster-sampling-and-coordinate-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Raster sampling and coordinate queries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Raster sampling and coordinate queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-advanced-data-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Advanced data operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Advanced data operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-writing-and-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Writing and export
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Writing and export">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-useful-workflow-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Useful workflow examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Useful workflow examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-open-and-plot-raster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Open and plot raster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-reproject-and-clip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Reproject and clip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-time-series-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 Time series analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164-raster-value-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 Raster value extraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="complete-xarray-and-rioxarray-methods-reference">Complete xarray and rioxarray Methods Reference</h1>
+<h2 id="1-core-concepts">1. Core concepts</h2>
+<p>xarray is designed for labeled, N-dimensional data, while rioxarray extends xarray with geospatial raster I/O and CRS-aware spatial operations. Together, they are especially useful for working with raster datasets such as GeoTIFF and netCDF.</p>
+<h3 id="11-main-objects">1.1 Main objects</h3>
+<ul>
+<li><strong><code>DataArray</code></strong>: labeled N-dimensional array, often one raster band or variable.</li>
+<li><strong><code>Dataset</code></strong>: collection of one or more <code>DataArray</code> objects.</li>
+<li><strong><code>rio accessor</code></strong>: geospatial extension available after importing rioxarray.</li>
+<li><strong><code>coords</code></strong>: coordinate labels such as <code>x</code>, <code>y</code>, <code>time</code>, or <code>band</code>.</li>
+<li><strong><code>dims</code></strong>: named dimensions.</li>
+</ul>
+<h3 id="12-common-imports">1.2 Common imports</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</code></pre></div>
+<h3 id="13-basic-example">1.3 Basic example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;data.nc&quot;</span><span class="p">,</span> <span class="n">decode_coords</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="2-creating-xarray-objects">2. Creating xarray objects</h2>
+<p>xarray objects can be created from NumPy arrays, pandas objects, or dictionaries of arrays.</p>
+<h3 id="21-common-constructors">2.1 Common constructors</h3>
+<ul>
+<li><strong><code>xr.DataArray()</code></strong> - Create a labeled array.</li>
+<li><strong><code>xr.Dataset()</code></strong> - Create a labeled dataset.</li>
+<li><strong><code>xr.Variable()</code></strong> - Create a core xarray variable.</li>
+<li><strong><code>xr.DataTree()</code></strong> - Hierarchical structure in newer xarray workflows.</li>
+</ul>
+<h3 id="22-example">2.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">),</span>
+    <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">:,</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">},[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;temperature&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="3-loading-data">3. Loading data</h2>
+<p>xarray supports multiple data sources, and rioxarray adds raster-aware reading.</p>
+<h3 id="31-xarray-open-methods">3.1 xarray open methods</h3>
+<ul>
+<li><strong><code>xr.open_dataset()</code></strong> - Open netCDF, GRIB, and other datasets.</li>
+<li><strong><code>xr.open_mfdataset()</code></strong> - Open multiple files as one dataset.</li>
+<li><strong><code>xr.open_dataarray()</code></strong> - Open a single DataArray.</li>
+<li><strong><code>xr.load_dataset()</code></strong> - Load dataset fully into memory.</li>
+<li><strong><code>xr.load_dataarray()</code></strong> - Load DataArray fully into memory.</li>
+</ul>
+<h3 id="32-rioxarray-open-methods">3.2 rioxarray open methods</h3>
+<ul>
+<li><strong><code>rioxarray.open_rasterio()</code></strong> - Open raster files such as GeoTIFF.</li>
+<li><strong><code>xr.open_dataset(..., engine="rasterio")</code></strong> - Open raster with xarray engine support.</li>
+<li><strong><code>xr.open_mfdataset(..., engine="rasterio")</code></strong> - Open multiple raster files when supported.</li>
+</ul>
+<h3 id="33-example">3.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;data.nc&quot;</span><span class="p">,</span> <span class="n">decode_coords</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="n">raster</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="s2">&quot;image.tif&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="4-inspecting-data">4. Inspecting data</h2>
+<p>Inspection methods help understand dimensions, coordinates, metadata, and variable structure.</p>
+<h3 id="41-common-methods-and-attributes">4.1 Common methods and attributes</h3>
+<ul>
+<li><strong><code>obj.dims</code></strong> - Dimension names and lengths.</li>
+<li><strong><code>obj.shape</code></strong> - Shape of the array.</li>
+<li><strong><code>obj.coords</code></strong> - Coordinate values.</li>
+<li><strong><code>obj.data_vars</code></strong> - Variables in a Dataset.</li>
+<li><strong><code>obj.variables</code></strong> - All variables.</li>
+<li><strong><code>obj.attrs</code></strong> - Metadata attributes.</li>
+<li><strong><code>obj.name</code></strong> - Name of a DataArray.</li>
+<li><strong><code>obj.dtype</code></strong> - Data type.</li>
+<li><strong><code>obj.sizes</code></strong> - Mapping of dimension sizes.</li>
+<li><strong><code>obj.nbytes</code></strong> - Memory use.</li>
+<li><strong><code>obj.rio.crs</code></strong> - Coordinate reference system.</li>
+<li><strong><code>obj.rio.bounds()</code></strong> - Bounding box.</li>
+<li><strong><code>obj.rio.transform()</code></strong> - Affine transform.</li>
+</ul>
+<h3 id="42-example">4.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">raster</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raster</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raster</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raster</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">bounds</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="5-indexing-and-selection">5. Indexing and selection</h2>
+<p>xarray uses label-based and position-based selection with named dimensions.</p>
+<h3 id="51-common-methods">5.1 Common methods</h3>
+<ul>
+<li><strong><code>sel()</code></strong> - Select by coordinate labels.</li>
+<li><strong><code>isel()</code></strong> - Select by integer position.</li>
+<li><strong><code>loc</code></strong> - Label-based indexing for datasets and data arrays.</li>
+<li><strong><code>where()</code></strong> - Mask based on a condition.</li>
+<li><strong><code>reindex()</code></strong> - Reindex along one or more dimensions.</li>
+<li><strong><code>reindex_like()</code></strong> - Reindex to match another object.</li>
+</ul>
+<h3 id="52-example">5.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">subset</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">)</span>
+<span class="n">pixel</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">500000</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">5700000</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="6-mathematical-operations">6. Mathematical operations</h2>
+<p>xarray supports arithmetic that preserves labels and coordinates.</p>
+<h3 id="61-common-methods">6.1 Common methods</h3>
+<ul>
+<li><strong><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></strong> - Element-wise operations.</li>
+<li><strong><code>sum()</code></strong> - Sum along dimensions.</li>
+<li><strong><code>mean()</code></strong> - Mean along dimensions.</li>
+<li><strong><code>median()</code></strong> - Median along dimensions.</li>
+<li><strong><code>min()</code></strong> - Minimum.</li>
+<li><strong><code>max()</code></strong> - Maximum.</li>
+<li><strong><code>std()</code></strong> - Standard deviation.</li>
+<li><strong><code>var()</code></strong> - Variance.</li>
+<li><strong><code>cumsum()</code></strong> - Cumulative sum.</li>
+<li><strong><code>diff()</code></strong> - Difference along a dimension.</li>
+<li><strong><code>clip()</code></strong> - Clip values.</li>
+</ul>
+<h3 id="62-example">6.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="7-missing-data-handling">7. Missing data handling</h2>
+<p>Missing values are commonly handled with masking and filling methods.</p>
+<h3 id="71-common-methods">7.1 Common methods</h3>
+<ul>
+<li><strong><code>isnull()</code></strong> - Detect missing values.</li>
+<li><strong><code>notnull()</code></strong> - Detect non-missing values.</li>
+<li><strong><code>fillna()</code></strong> - Fill missing values.</li>
+<li><strong><code>dropna()</code></strong> - Drop missing values.</li>
+<li><strong><code>interpolate_na()</code></strong> - Interpolate missing values.</li>
+<li><strong><code>ffill()</code></strong> - Forward fill.</li>
+<li><strong><code>bfill()</code></strong> - Backward fill.</li>
+</ul>
+<h3 id="72-example">7.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dims</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="n">filled</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="8-reshaping-and-combining">8. Reshaping and combining</h2>
+<p>xarray provides several ways to reshape labeled data and combine objects.</p>
+<h3 id="81-common-methods">8.1 Common methods</h3>
+<ul>
+<li><strong><code>transpose()</code></strong> - Reorder dimensions.</li>
+<li><strong><code>stack()</code></strong> - Stack dimensions into one.</li>
+<li><strong><code>unstack()</code></strong> - Reverse stacking.</li>
+<li><strong><code>expand_dims()</code></strong> - Add dimensions.</li>
+<li><strong><code>squeeze()</code></strong> - Remove length-1 dimensions.</li>
+<li><strong><code>broadcast_like()</code></strong> - Broadcast to another object.</li>
+<li><strong><code>combine_first()</code></strong> - Combine with missing values filled.</li>
+<li><strong><code>concat()</code></strong> - Concatenate objects.</li>
+<li><strong><code>merge()</code></strong> - Merge datasets.</li>
+<li><strong><code>assign()</code></strong> - Add variables.</li>
+<li><strong><code>assign_coords()</code></strong> - Add coordinates.</li>
+<li><strong><code>rename()</code></strong> - Rename dims, coords, or variables.</li>
+<li><strong><code>swap_dims()</code></strong> - Replace dimensions with coordinates.</li>
+<li><strong><code>drop_vars()</code></strong> - Drop variables.</li>
+<li><strong><code>drop_sel()</code></strong> - Drop selected labels.</li>
+</ul>
+<h3 id="82-example">8.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">da2</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="s2">&quot;band&quot;</span><span class="p">)</span>
+<span class="n">da3</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="9-grouping-and-time-series">9. Grouping and time series</h2>
+<p>xarray supports grouped operations, rolling windows, and resampling.</p>
+<h3 id="91-common-methods">9.1 Common methods</h3>
+<ul>
+<li><strong><code>groupby()</code></strong> - Group by coordinate.</li>
+<li><strong><code>groupby_bins()</code></strong> - Group into bins.</li>
+<li><strong><code>resample()</code></strong> - Resample time-indexed data.</li>
+<li><strong><code>rolling()</code></strong> - Rolling window.</li>
+<li><strong><code>coarsen()</code></strong> - Aggregate by blocks.</li>
+<li><strong><code>expanding()</code></strong> - Expanding window.</li>
+</ul>
+<h3 id="92-example">9.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">monthly</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;1M&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">rolling_mean</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="10-plotting">10. Plotting</h2>
+<p>xarray integrates with Matplotlib for quick visual exploration.</p>
+<h3 id="101-common-methods">10.1 Common methods</h3>
+<ul>
+<li><strong><code>plot()</code></strong> - General plotting interface.</li>
+<li><strong><code>plot.line()</code></strong> - Line plot.</li>
+<li><strong><code>plot.imshow()</code></strong> - Image plot.</li>
+<li><strong><code>plot.pcolormesh()</code></strong> - Pseudocolor plot.</li>
+<li><strong><code>plot.hist()</code></strong> - Histogram.</li>
+<li><strong><code>plot.scatter()</code></strong> - Scatter plot.</li>
+<li><strong><code>plot.contour()</code></strong> - Contour plot.</li>
+</ul>
+<h3 id="102-example">10.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">))</span>
+<span class="n">da</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="11-datasets-and-variables">11. Datasets and variables</h2>
+<p>Datasets contain multiple named variables and coordinate systems.</p>
+<h3 id="111-common-methods">11.1 Common methods</h3>
+<ul>
+<li><strong><code>Dataset.variables</code></strong> - All variables.</li>
+<li><strong><code>Dataset.data_vars</code></strong> - Data variables.</li>
+<li><strong><code>Dataset.coords</code></strong> - Coordinates.</li>
+<li><strong><code>Dataset.to_array()</code></strong> - Convert variables to a DataArray.</li>
+<li><strong><code>Dataset.to_dataframe()</code></strong> - Convert to pandas DataFrame.</li>
+<li><strong><code>Dataset.to_netcdf()</code></strong> - Write to netCDF.</li>
+<li><strong><code>Dataset.to_zarr()</code></strong> - Write to Zarr.</li>
+<li><strong><code>Dataset.assign()</code></strong> - Add new variables.</li>
+<li><strong><code>Dataset.drop_vars()</code></strong> - Remove variables.</li>
+</ul>
+<h3 id="112-example">11.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">arr</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="12-geo-specific-rioxarray-methods">12. Geo-specific rioxarray methods</h2>
+<p>The <code>rio</code> accessor adds raster geospatial functionality to xarray objects.</p>
+<h3 id="121-crs-and-spatial-metadata">12.1 CRS and spatial metadata</h3>
+<ul>
+<li><strong><code>rio.write_crs()</code></strong> - Write CRS metadata.</li>
+<li><strong><code>rio.set_crs()</code></strong> - Set CRS metadata.</li>
+<li><strong><code>rio.crs</code></strong> - Return current CRS.</li>
+<li><strong><code>rio.transform()</code></strong> - Return affine transform.</li>
+<li><strong><code>rio.bounds()</code></strong> - Return spatial bounds.</li>
+<li><strong><code>rio.resolution()</code></strong> - Return pixel resolution.</li>
+<li><strong><code>rio.nodata()</code></strong> - Return nodata value.</li>
+<li><strong><code>rio.write_transform()</code></strong> - Write transform metadata.</li>
+<li><strong><code>rio.write_nodata()</code></strong> - Write nodata metadata.</li>
+<li><strong><code>rio.update_attrs()</code></strong> - Update attributes.</li>
+<li><strong><code>rio.update_encoding()</code></strong> - Update encoding.</li>
+</ul>
+<h3 id="122-spatial-operations">12.2 Spatial operations</h3>
+<ul>
+<li><strong><code>rio.clip()</code></strong> - Clip raster by geometry.</li>
+<li><strong><code>rio.clip_box()</code></strong> - Clip by bounding box.</li>
+<li><strong><code>rio.reproject()</code></strong> - Reproject raster to another CRS.</li>
+<li><strong><code>rio.reproject_match()</code></strong> - Reproject to match another raster.</li>
+<li><strong><code>rio.pad_box()</code></strong> - Pad raster to a bounding box.</li>
+<li><strong><code>rio.pad_xy()</code></strong> - Pad raster by x/y values.</li>
+<li><strong><code>rio.slice_xy()</code></strong> - Slice by spatial coordinates.</li>
+<li><strong><code>rio.interpolate_na()</code></strong> - Interpolate nodata values.</li>
+</ul>
+<h3 id="123-writing-raster-output">12.3 Writing raster output</h3>
+<ul>
+<li><strong><code>rio.to_raster()</code></strong> - Write to a raster file.</li>
+<li><strong><code>rio.write_coordinate_system()</code></strong> - Write coordinate system metadata.</li>
+<li><strong><code>rio.write_gcps()</code></strong> - Write ground control points when needed.</li>
+</ul>
+<h3 id="124-example">12.4 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+
+<span class="n">raster</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="s2">&quot;image.tif&quot;</span><span class="p">)</span>
+<span class="n">clipped</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">geometries</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="n">reprojected</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+<span class="n">raster</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="s2">&quot;output.tif&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="13-raster-sampling-and-coordinate-queries">13. Raster sampling and coordinate queries</h2>
+<p>xarray and rioxarray support selecting raster values by coordinate or nearest point.</p>
+<h3 id="131-common-methods">13.1 Common methods</h3>
+<ul>
+<li><strong><code>sel(method="nearest")</code></strong> - Query nearest value by coordinates.</li>
+<li><strong><code>isel()</code></strong> - Query by pixel index.</li>
+<li><strong><code>rio.clip()</code></strong> - Extract by polygon.</li>
+<li><strong><code>rio.clip_box()</code></strong> - Extract by extent.</li>
+</ul>
+<h3 id="132-example">13.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">500000</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">5700000</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+</code></pre></div>
+<hr />
+<h2 id="14-advanced-data-operations">14. Advanced data operations</h2>
+<p>These methods are useful for analysis workflows and geospatial preprocessing.</p>
+<h3 id="141-common-methods">14.1 Common methods</h3>
+<ul>
+<li><strong><code>differentiate()</code></strong> - Numerical derivative.</li>
+<li><strong><code>integrate()</code></strong> - Numerical integral.</li>
+<li><strong><code>polyfit()</code></strong> - Polynomial fitting along a dimension.</li>
+<li><strong><code>interp()</code></strong> - Interpolation.</li>
+<li><strong><code>interp_like()</code></strong> - Interpolate like another object.</li>
+<li><strong><code>pad()</code></strong> - Pad values.</li>
+<li><strong><code>roll()</code></strong> - Circular shift.</li>
+<li><strong><code>shift()</code></strong> - Shift values with missing fill.</li>
+<li><strong><code>expand_dims()</code></strong> - Add axes for broadcasting or stacking.</li>
+<li><strong><code>astype()</code></strong> - Convert data type.</li>
+</ul>
+<h3 id="142-example">14.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">trend</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">interp_da</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="15-writing-and-export">15. Writing and export</h2>
+<p>xarray and rioxarray support efficient export to scientific and raster file formats.</p>
+<h3 id="151-common-methods">15.1 Common methods</h3>
+<ul>
+<li><strong><code>to_netcdf()</code></strong> - Save to netCDF.</li>
+<li><strong><code>to_zarr()</code></strong> - Save to Zarr.</li>
+<li><strong><code>to_dataframe()</code></strong> - Convert to DataFrame.</li>
+<li><strong><code>rio.to_raster()</code></strong> - Save to GeoTIFF or other raster format.</li>
+</ul>
+<h3 id="152-example">15.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s2">&quot;output.nc&quot;</span><span class="p">)</span>
+<span class="n">raster</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="s2">&quot;output.tif&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="16-useful-workflow-examples">16. Useful workflow examples</h2>
+<h3 id="161-open-and-plot-raster">16.1 Open and plot raster</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+
+<span class="n">raster</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="s2">&quot;image.tif&quot;</span><span class="p">)</span>
+<span class="n">raster</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="162-reproject-and-clip">16.2 Reproject and clip</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+
+<span class="n">raster</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="s2">&quot;image.tif&quot;</span><span class="p">)</span>
+<span class="n">reproj</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+<span class="n">clipped</span> <span class="o">=</span> <span class="n">reproj</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">geometries</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="163-time-series-analysis">16.3 Time series analysis</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;data.nc&quot;</span><span class="p">,</span> <span class="n">decode_coords</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="n">monthly_mean</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;1M&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="164-raster-value-extraction">16.4 Raster value extraction</h3>
+<div class="highlight"><pre><span></span><code><span class="n">value</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">500000</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">5700000</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+</code></pre></div>
+<hr />
+<h2 id="17-quick-reference-table">17. Quick reference table</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Key methods</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Creation</td>
+<td><code>DataArray()</code>, <code>Dataset()</code></td>
+<td>Build labeled arrays and datasets.</td>
+</tr>
+<tr>
+<td>Loading</td>
+<td><code>open_dataset()</code>, <code>open_rasterio()</code></td>
+<td>Read scientific and raster data.</td>
+</tr>
+<tr>
+<td>Selection</td>
+<td><code>sel()</code>, <code>isel()</code></td>
+<td>Select by label or position.</td>
+</tr>
+<tr>
+<td>Math</td>
+<td><code>mean()</code>, <code>sum()</code>, <code>clip()</code></td>
+<td>Compute statistics and transforms.</td>
+</tr>
+<tr>
+<td>Missing data</td>
+<td><code>fillna()</code>, <code>dropna()</code></td>
+<td>Handle gaps.</td>
+</tr>
+<tr>
+<td>Reshaping</td>
+<td><code>transpose()</code>, <code>stack()</code>, <code>unstack()</code></td>
+<td>Reorganize dimensions.</td>
+</tr>
+<tr>
+<td>Grouping</td>
+<td><code>groupby()</code>, <code>resample()</code>, <code>rolling()</code></td>
+<td>Summarize by groups or time.</td>
+</tr>
+<tr>
+<td>Geo operations</td>
+<td><code>rio.clip()</code>, <code>rio.reproject()</code></td>
+<td>Spatial raster processing.</td>
+</tr>
+<tr>
+<td>Export</td>
+<td><code>to_netcdf()</code>, <code>rio.to_raster()</code></td>
+<td>Save outputs.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="18-example-full-workflow">18. Example full workflow</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;data.nc&quot;</span><span class="p">,</span> <span class="n">decode_coords</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">)]</span>
+
+<span class="n">monthly</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;1M&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">reprojected</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+<span class="n">reprojected</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="s2">&quot;reprojected.tif&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; [YOUR NAME]
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shiwakotisurendra" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/geosuren" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:shiwakotisurendra@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

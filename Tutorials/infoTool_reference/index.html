@@ -1,0 +1,3409 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfolio of Surendra Shiwakoti — GIS, Remote Sensing, and Spatial Data Science">
+      
+      
+        <meta name="author" content="Surendra Shiwakoti">
+      
+      
+        <link rel="canonical" href="https://shiwakotisurendra.github.io/Tutorials/infoTool_reference/">
+      
+      
+        <link rel="prev" href="../../resources/">
+      
+      
+        <link rel="next" href="../python/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>InfoTool - Surendra Shiwakoti - Geospatial Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#complete-infotool-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-header__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Surendra Shiwakoti - Geospatial Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              InfoTool
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Publications
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../experience/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Experience
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contact
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-nav__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    Surendra Shiwakoti - Geospatial Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Notebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InfoTool
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InfoTool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main ideas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-core-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Core users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Description
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Platform architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Platform architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-main-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Main components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-user-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. User groups
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. User groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-common-user-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Common user groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-content-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Content categories
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Content categories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-data-analysis-and-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Data analysis and visualization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Data analysis and visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-environmental-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Environmental data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-primary-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Primary data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-secondary-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Secondary data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-publications-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Publications and methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-data-collection-and-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Data collection and management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Data collection and management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-methodology-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Methodology flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Methodology flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-main-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Main steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-key-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Key benefits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Key benefits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Benefits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-climate-adaptation-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Climate adaptation applications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Climate adaptation applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-application-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common application areas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-technologies-and-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Technologies and standards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Technologies and standards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common technologies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-who-can-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Who can use it
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Who can use it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-main-audiences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Main audiences
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-data-upload-and-publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Data upload and publishing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Data upload and publishing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-typical-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Typical steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-co-design-and-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Co-design and collaboration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Co-design and collaboration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common activities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-open-knowledge-and-dissemination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Open knowledge and dissemination
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Open knowledge and dissemination">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-common-dissemination-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Common dissemination formats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-system-design-and-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. System design and content
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. System design and content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-common-content-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Common content elements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raster Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_qgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate QGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_arcgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate ArcGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gdal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plotly
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xarray_and_rioxarray/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xarray and Rioxarray
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../folium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    folium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geemap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    geemap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    opencv
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn_examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earthpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    earthpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main ideas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-core-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Core users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Description
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-platform-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Platform architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Platform architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-main-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Main components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-user-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. User groups
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. User groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-common-user-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Common user groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-content-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Content categories
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Content categories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-data-analysis-and-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Data analysis and visualization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Data analysis and visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-environmental-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Environmental data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-primary-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Primary data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-secondary-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Secondary data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-publications-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Publications and methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-data-collection-and-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Data collection and management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Data collection and management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-methodology-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Methodology flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Methodology flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-main-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Main steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-key-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Key benefits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Key benefits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Benefits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-climate-adaptation-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Climate adaptation applications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Climate adaptation applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-application-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common application areas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-technologies-and-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Technologies and standards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Technologies and standards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common technologies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-who-can-use-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Who can use it
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Who can use it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-main-audiences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Main audiences
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-data-upload-and-publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Data upload and publishing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Data upload and publishing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-typical-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Typical steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-co-design-and-collaboration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Co-design and collaboration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Co-design and collaboration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common activities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-open-knowledge-and-dissemination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Open knowledge and dissemination
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Open knowledge and dissemination">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-common-dissemination-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Common dissemination formats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-system-design-and-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. System design and content
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. System design and content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-common-content-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Common content elements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="complete-infotool-reference">Complete InfoTool Reference</h1>
+<h2 id="1-core-concepts">1. Core concepts</h2>
+<p>InfoTool is an integrated web platform for climate, environmental, and socio-economic information, designed to support evidence-based planning and climate-resilient decision-making at local and regional scales.</p>
+<h3 id="11-main-ideas">1.1 Main ideas</h3>
+<ul>
+<li><strong>Open and accessible</strong>: data, tools, and knowledge resources are available through a web platform.</li>
+<li><strong>Reliable data sources</strong>: combines local, regional, and third-party datasets.</li>
+<li><strong>Decision support</strong>: helps users move from data to planning and action.</li>
+<li><strong>Collaborative</strong>: supports municipalities, researchers, planners, and citizens.</li>
+<li><strong>GeoNode-based</strong>: built on a spatial data infrastructure for geodata sharing and visualization.</li>
+</ul>
+<h3 id="12-core-users">1.2 Core users</h3>
+<ul>
+<li>Municipal planners.</li>
+<li>Researchers.</li>
+<li>Citizens.</li>
+<li>Students and educators.</li>
+<li>Administrative staff and project partners.</li>
+</ul>
+<h3 id="13-description">1.3 Description</h3>
+<p>InfoTool is a climate information and decision-support platform that brings together datasets, analysis tools, publications, and collaboration features in one web-based environment.
+</p>
+
+<hr />
+<h2 id="2-platform-architecture">2. Platform architecture</h2>
+<p>InfoTool combines content management, data analysis, data collection, and dissemination in one integrated architecture.</p>
+
+<h3 id="21-main-components">2.1 Main components</h3>
+<ul>
+<li><strong>User groups</strong>: planners, researchers, and citizens.</li>
+<li><strong>Content categories</strong>: datasets, research, education, news, library, planning and design.</li>
+<li><strong>Data analysis and visualization</strong>: environmental data, primary data, secondary data, publications, and adaptation methods.</li>
+<li><strong>Data collection and management</strong>: APIs, importers, OGC services, external sources, documents, and visualization.</li>
+<li><strong>GeoNode infrastructure</strong>: spatial data storage, access, and publishing.</li>
+</ul>
+<h3 id="22-use-case">2.2 Use case</h3>
+<ul>
+<li>Organize climate data in one place.</li>
+<li>Connect public knowledge with internal planning data.</li>
+<li>Support decisions with maps, dashboards, and reports.</li>
+</ul>
+<h3 id="23-example">2.3 Example</h3>
+<p>Architecture flow:
+data sources -&gt; management -&gt; analysis -&gt; dissemination -&gt; decisions and action</p>
+<hr />
+<h2 id="3-user-groups">3. User groups</h2>
+<p>InfoTool is designed for multiple stakeholder groups with different needs and permissions.</p>
+<h3 id="31-common-user-groups">3.1 Common user groups</h3>
+<ul>
+<li><strong>Planners</strong> - use climate and land-use information for municipal decisions.</li>
+<li><strong>Researchers</strong> - analyze datasets and publish scientific outputs.</li>
+<li><strong>Citizens</strong> - explore climate knowledge and contribute to community resilience.</li>
+<li><strong>Students and educators</strong> - learn, train, and use the platform for capacity building.</li>
+<li><strong>Administrators</strong> - manage data access, users, and content.</li>
+</ul>
+<h3 id="32-use-case">3.2 Use case</h3>
+<ul>
+<li>Municipal staff can assess flood risk or heat stress.</li>
+<li>Researchers can access datasets and publications.</li>
+<li>Citizens can explore learning materials and current information.</li>
+</ul>
+<h3 id="33-example">3.3 Example</h3>
+<p>A planner opens the platform, checks climate indicators, reviews municipal boundaries, and prepares adaptation options for a district.</p>
+<hr />
+<h2 id="4-content-categories">4. Content categories</h2>
+<p>The platform organizes content into thematic categories to support discovery and reuse.</p>
+<h3 id="41-common-categories">4.1 Common categories</h3>
+<ul>
+<li><strong>Datasets</strong> - spatial and tabular data resources.</li>
+<li><strong>Research</strong> - studies, case work, and analysis.</li>
+<li><strong>Education</strong> - tutorials, learning modules, and training.</li>
+<li><strong>News and blog</strong> - updates and announcements.</li>
+<li><strong>Library</strong> - manuals, documents, and reference material.</li>
+<li><strong>Planning and design</strong> - adaptation concepts and planning resources.</li>
+</ul>
+<h3 id="42-use-case">4.2 Use case</h3>
+<ul>
+<li>Help users find the right content quickly.</li>
+<li>Separate scientific resources from operational planning material.</li>
+<li>Support both expert and public audiences.</li>
+</ul>
+<h3 id="43-example">4.3 Example</h3>
+<p>A user searches the library for adaptation guidelines, then opens related datasets and case studies.</p>
+<hr />
+<h2 id="5-data-analysis-and-visualization">5. Data analysis and visualization</h2>
+<p>InfoTool supports climate-related analysis through environmental data, primary municipal data, secondary datasets, and publication outputs.</p>
+<h3 id="51-environmental-data">5.1 Environmental data</h3>
+<ul>
+<li>Forest and land cover.</li>
+<li>Water quality.</li>
+<li>Precipitation.</li>
+<li>Surface temperature.</li>
+<li>Monitoring dashboard outputs.</li>
+</ul>
+<h3 id="52-primary-data">5.2 Primary data</h3>
+<ul>
+<li>Land use data.</li>
+<li>Administrative boundaries.</li>
+<li>Citizen science data.</li>
+<li>Climate risks and hazards.</li>
+<li>Hydrology.</li>
+</ul>
+<h3 id="53-secondary-data">5.3 Secondary data</h3>
+<ul>
+<li>Geoportals and third-party datasets.</li>
+<li>Climate atlas sources.</li>
+<li>Socio-economic and demographic data.</li>
+<li>Weather service data.</li>
+<li>Hydrometeorology.</li>
+<li>Landsat and Sentinel imagery.</li>
+</ul>
+<h3 id="54-publications-and-methods">5.4 Publications and methods</h3>
+<ul>
+<li>Scientific work.</li>
+<li>Specifications.</li>
+<li>Reports.</li>
+<li>Catalogues.</li>
+<li>Case studies.</li>
+<li>Guidelines.</li>
+<li>Portfolios.</li>
+<li>Intervention options.</li>
+</ul>
+<h3 id="55-use-case">5.5 Use case</h3>
+<ul>
+<li>Compare heat and flood indicators across neighborhoods.</li>
+<li>Combine municipal datasets with external geospatial sources.</li>
+<li>Produce plots, dashboards, and planning outputs.</li>
+</ul>
+<h3 id="56-example">5.6 Example</h3>
+<p>Environmental indicators + municipal boundaries + dashboard views = localized climate risk assessment.</p>
+<hr />
+<h2 id="6-data-collection-and-management">6. Data collection and management</h2>
+<p>The platform integrates multiple data ingestion and access methods to support sustainable data workflows.</p>
+<h3 id="61-common-methods">6.1 Common methods</h3>
+<ul>
+<li><strong>SensorThings API</strong> - sensor and observation data access.</li>
+<li><strong>REST API</strong> - programmatic access with permissions.</li>
+<li><strong>Data importer</strong> - upload and publish datasets.</li>
+<li><strong>OGC web services</strong> - standards-based GIS interoperability.</li>
+<li><strong>External sources</strong> - connect third-party datasets.</li>
+<li><strong>Transformer / web news / geostories</strong> - distribute content and stories.</li>
+<li><strong>Documents</strong> - manuals, reports, and supporting files.</li>
+</ul>
+<h3 id="62-use-case">6.2 Use case</h3>
+<ul>
+<li>Import a new dataset and make it available to the public or internal users.</li>
+<li>Connect real-time sensor data.</li>
+<li>Publish geospatial resources through standard services.</li>
+</ul>
+<h3 id="63-example">6.3 Example</h3>
+<p>A municipal team uploads a GeoTIFF, adds metadata, reviews the dataset, and publishes it through the web portal.</p>
+<hr />
+<h2 id="7-methodology-flow">7. Methodology flow</h2>
+<p>InfoTool follows a workflow from collecting data to making decisions and acting on insights.</p>
+<h3 id="71-main-steps">7.1 Main steps</h3>
+<ol>
+<li><strong>Collect</strong> - gather data from sensors, authorities, geoplatforms, and documents.</li>
+<li><strong>Manage</strong> - store, integrate, secure, and standardize data.</li>
+<li><strong>Analyze</strong> - process data and generate insights.</li>
+<li><strong>Disseminate</strong> - share datasets, maps, reports, blogs, and training content.</li>
+<li><strong>Decide and act</strong> - support adaptation, monitoring, and planning.</li>
+</ol>
+<h3 id="72-use-case">7.2 Use case</h3>
+<ul>
+<li>This flow supports evidence-based planning.</li>
+<li>It enables continuous feedback and monitoring.</li>
+<li>It helps turn analysis into interventions.</li>
+</ul>
+<h3 id="73-example">7.3 Example</h3>
+<p>Collect -&gt; Manage -&gt; Analyze -&gt; Disseminate -&gt; Decide &amp; Act</p>
+<hr />
+<h2 id="8-key-benefits">8. Key benefits</h2>
+<p>InfoTool is built to support climate resilience, knowledge sharing, and accessible decision support.</p>
+<h3 id="81-benefits">8.1 Benefits</h3>
+<ul>
+<li>One-stop platform for climate and environmental information.</li>
+<li>Reliable, up-to-date, spatially enabled data.</li>
+<li>Collaboration between institutions and communities.</li>
+<li>Evidence-based planning and adaptation support.</li>
+<li>Open, interoperable, future-ready infrastructure.</li>
+</ul>
+<h3 id="82-use-case">8.2 Use case</h3>
+<ul>
+<li>Reduce fragmented data access.</li>
+<li>Improve transparency in planning.</li>
+<li>Strengthen community participation and institutional coordination.</li>
+</ul>
+<h3 id="83-example">8.3 Example</h3>
+<p>A municipality uses one platform for data, maps, reports, and adaptation planning instead of many disconnected tools.</p>
+<hr />
+<h2 id="9-climate-adaptation-applications">9. Climate adaptation applications</h2>
+<p>InfoTool supports practical climate adaptation planning with thematic applications.</p>
+<h3 id="91-common-application-areas">9.1 Common application areas</h3>
+<ul>
+<li><strong>Urban heat and heat islands</strong> - map heat stress and cooling options.</li>
+<li><strong>Flood and heavy rainfall risk</strong> - identify vulnerable areas and support early warning.</li>
+<li><strong>Green-blue infrastructure</strong> - plan nature-based solutions.</li>
+<li><strong>Municipal climate profiles</strong> - build local evidence for reporting and planning.</li>
+<li><strong>E-learning and knowledge exchange</strong> - support learning and capacity building.</li>
+</ul>
+<h3 id="92-use-case">9.2 Use case</h3>
+<ul>
+<li>Support municipal climate action plans.</li>
+<li>Prioritize investments in nature-based solutions.</li>
+<li>Communicate adaptation options to stakeholders.</li>
+</ul>
+<h3 id="93-example">9.3 Example</h3>
+<p>A planner combines heat maps, population exposure, and green infrastructure layers to identify priority neighborhoods for cooling measures.</p>
+<hr />
+<h2 id="10-technologies-and-standards">10. Technologies and standards</h2>
+<p>The platform uses open standards and common web technologies to ensure interoperability and scalability.</p>
+<h3 id="101-common-technologies">10.1 Common technologies</h3>
+<ul>
+<li><strong>GeoNode</strong> - spatial data infrastructure and publishing platform.</li>
+<li><strong>SensorThings API</strong> - IoT and sensor data standard.</li>
+<li><strong>OGC standards</strong> - interoperable geospatial web services.</li>
+<li><strong>REST API</strong> - modern application integration.</li>
+<li><strong>PostgreSQL</strong> - relational database.</li>
+<li><strong>Python</strong> - scripting and data processing.</li>
+<li><strong>Docker</strong> - containerization.</li>
+<li><strong>NGINX</strong> - web server and reverse proxy.</li>
+</ul>
+<h3 id="102-use-case">10.2 Use case</h3>
+<ul>
+<li>Build a scalable geodata hub.</li>
+<li>Support service-based data exchange.</li>
+<li>Maintain a secure and modular platform.</li>
+</ul>
+<h3 id="103-example">10.3 Example</h3>
+<p>GeoNode + PostgreSQL + REST API + OGC services = a web-based spatial data infrastructure.</p>
+<hr />
+<h2 id="11-who-can-use-it">11. Who can use it</h2>
+<p>InfoTool is designed for a wide user community.</p>
+<h3 id="111-main-audiences">11.1 Main audiences</h3>
+<ul>
+<li><strong>Municipal planners</strong> - make land-use and adaptation decisions.</li>
+<li><strong>Researchers</strong> - analyze data and publish findings.</li>
+<li><strong>Students and educators</strong> - learn and build capacity.</li>
+<li><strong>Citizens</strong> - stay informed and contribute to resilience.</li>
+<li><strong>Administrators</strong> - manage data, services, and users.</li>
+</ul>
+<h3 id="112-use-case">11.2 Use case</h3>
+<ul>
+<li>A researcher accesses datasets and publications.</li>
+<li>A citizen explores climate information for their neighborhood.</li>
+<li>A planner uses maps and indicators to guide action.</li>
+</ul>
+<h3 id="113-example">11.3 Example</h3>
+<p>Users explore the same platform, but each group sees content and tools relevant to its role.</p>
+<hr />
+<h2 id="12-data-upload-and-publishing">12. Data upload and publishing</h2>
+<p>The platform supports manual upload and publication of geodata through a simple workflow.</p>
+<h3 id="121-typical-steps">12.1 Typical steps</h3>
+<ol>
+<li>Upload a document or dataset.</li>
+<li>Apply or edit dataset styling.</li>
+<li>Add metadata.</li>
+<li>Review the result.</li>
+<li>Publish the dataset.</li>
+</ol>
+<h3 id="122-use-case">12.2 Use case</h3>
+<ul>
+<li>Share new geospatial datasets quickly.</li>
+<li>Improve discoverability with metadata.</li>
+<li>Ensure datasets are usable for others.</li>
+</ul>
+<h3 id="123-example">12.3 Example</h3>
+<p>Upload a GeoPackage -&gt; style it -&gt; add metadata -&gt; review -&gt; publish.</p>
+<hr />
+<h2 id="13-co-design-and-collaboration">13. Co-design and collaboration</h2>
+<p>InfoTool is built through collaboration with municipalities and other partners.</p>
+<h3 id="131-common-activities">13.1 Common activities</h3>
+<ul>
+<li>Workshops.</li>
+<li>Online surveys.</li>
+<li>User story development.</li>
+<li>Partner discussions.</li>
+<li>Feedback cycles.</li>
+</ul>
+<h3 id="132-use-case">13.2 Use case</h3>
+<ul>
+<li>Collect requirements from local authorities.</li>
+<li>Test interfaces with intended users.</li>
+<li>Improve content and structure through iterative design.</li>
+</ul>
+<h3 id="133-example">13.3 Example</h3>
+<p>Workshop feedback is used to refine the climate indicators, learning resources, and map interfaces.</p>
+<hr />
+<h2 id="14-open-knowledge-and-dissemination">14. Open knowledge and dissemination</h2>
+<p>InfoTool is not only a data platform; it also supports communication and education.</p>
+<h3 id="141-common-dissemination-formats">14.1 Common dissemination formats</h3>
+<ul>
+<li>Datasets and maps.</li>
+<li>Reports and publications.</li>
+<li>News and geostories.</li>
+<li>Educational resources.</li>
+<li>Catalogues and case studies.</li>
+</ul>
+<h3 id="142-use-case">14.2 Use case</h3>
+<ul>
+<li>Share climate knowledge with both technical and non-technical users.</li>
+<li>Provide materials for learning and awareness.</li>
+<li>Support transparent decision-making.</li>
+</ul>
+<h3 id="143-example">14.3 Example</h3>
+<p>A published report links to the underlying map layers, related indicators, and background documents.</p>
+<hr />
+<h2 id="15-system-design-and-content">15. System design and content</h2>
+<p>The platform combines structured data, stories, tools, and profiles into one information ecosystem.</p>
+<h3 id="151-common-content-elements">15.1 Common content elements</h3>
+<ul>
+<li>Datasets and indicators.</li>
+<li>Reports and documents.</li>
+<li>Learning modules and tutorials.</li>
+<li>Case studies and research.</li>
+<li>Community and municipal profiles.</li>
+<li>Tools, dashboards, and APIs.</li>
+</ul>
+<h3 id="152-use-case">15.2 Use case</h3>
+<ul>
+<li>Build a city or district profile.</li>
+<li>Connect narrative explanations with map layers.</li>
+<li>Support both exploration and operational use.</li>
+</ul>
+<h3 id="153-example">15.3 Example</h3>
+<p>A municipal profile page links climate indicators, documents, tools, and datasets for one geographic area.</p>
+<hr />
+<h2 id="16-quick-reference-table">16. Quick reference table</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Key elements</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Users</td>
+<td>Planners, researchers, citizens</td>
+<td>Serve different stakeholder groups.</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Datasets, research, education, news</td>
+<td>Organize knowledge resources.</td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td>Environmental data, dashboards, indicators</td>
+<td>Support climate assessment.</td>
+</tr>
+<tr>
+<td>Collection</td>
+<td>APIs, importers, OGC services</td>
+<td>Bring data into the platform.</td>
+</tr>
+<tr>
+<td>Dissemination</td>
+<td>Reports, maps, geostories</td>
+<td>Share results and knowledge.</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>Adaptation options, planning support</td>
+<td>Convert data into decisions.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="17-example-full-workflow">17. Example full workflow</h2>
+<div class="highlight"><pre><span></span><code>Municipal staff upload local datasets, enrich them with metadata, analyze heat and flood risks, publish results, and use the outputs to support adaptation planning.
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; [YOUR NAME]
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shiwakotisurendra" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/geosuren" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:shiwakotisurendra@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

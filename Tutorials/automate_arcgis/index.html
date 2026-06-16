@@ -1,0 +1,3409 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfolio of Surendra Shiwakoti — GIS, Remote Sensing, and Spatial Data Science">
+      
+      
+        <meta name="author" content="Surendra Shiwakoti">
+      
+      
+        <link rel="canonical" href="https://shiwakotisurendra.github.io/Tutorials/automate_arcgis/">
+      
+      
+        <link rel="prev" href="../automate_qgis/">
+      
+      
+        <link rel="next" href="../gdal/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Automate ArcGIS - Surendra Shiwakoti - Geospatial Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#complete-arcpy-methods-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-header__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Surendra Shiwakoti - Geospatial Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Automate ArcGIS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Publications
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../experience/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Experience
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../infoTool_reference/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contact
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-nav__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    Surendra Shiwakoti - Geospatial Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Notebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infoTool_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InfoTool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raster Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_qgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate QGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate ArcGIS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate ArcGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main ideas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-basic-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Basic example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-arcpy-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ArcPy environment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. ArcPy environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-geoprocessing-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Geoprocessing tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Geoprocessing tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-common-management-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Common management tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-common-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Common analysis tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-data-access-and-cursors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Data access and cursors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Data access and cursors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-cursor-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common cursor types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-common-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Common tokens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-editing-and-updating-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Editing and updating data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Editing and updating data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-geometry-and-spatial-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Geometry and spatial reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Geometry and spatial reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-common-methods-and-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Common methods and properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-mapping-and-layout-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Mapping and layout automation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Mapping and layout automation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-raster-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Raster analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Raster analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-tools-and-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common tools and functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-table-and-field-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Table and field operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Table and field operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-environment-and-messaging-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Environment and messaging utilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Environment and messaging utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-common-gis-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Common GIS workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Common GIS workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-buffer-and-clip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Buffer and clip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-select-and-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Select and export
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-join-and-summarize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Join and summarize
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-machine-learning-with-arcpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Machine learning with ArcPy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Machine learning with ArcPy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-typical-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Typical workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-example-with-scikit-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Example with scikit-learn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-spatial-ml-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Spatial ML pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125-common-ml-methods-used-with-arcpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 Common ML methods used with ArcPy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-script-tools-and-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Script tools and parameters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Script tools and parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-good-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Good practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gdal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plotly
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xarray_and_rioxarray/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xarray and Rioxarray
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../folium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    folium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geemap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    geemap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    opencv
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn_examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earthpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    earthpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main ideas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-basic-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Basic example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-arcpy-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ArcPy environment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. ArcPy environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-geoprocessing-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Geoprocessing tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Geoprocessing tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-common-management-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Common management tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-common-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Common analysis tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-data-access-and-cursors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Data access and cursors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Data access and cursors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-cursor-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common cursor types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-common-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Common tokens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-editing-and-updating-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Editing and updating data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Editing and updating data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-geometry-and-spatial-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Geometry and spatial reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Geometry and spatial reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-common-methods-and-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Common methods and properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-mapping-and-layout-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Mapping and layout automation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Mapping and layout automation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-raster-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Raster analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Raster analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-tools-and-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common tools and functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-table-and-field-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Table and field operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Table and field operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-environment-and-messaging-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Environment and messaging utilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Environment and messaging utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-common-gis-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Common GIS workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Common GIS workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-buffer-and-clip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Buffer and clip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-select-and-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Select and export
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-join-and-summarize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Join and summarize
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-machine-learning-with-arcpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Machine learning with ArcPy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Machine learning with ArcPy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-typical-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Typical workflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-example-with-scikit-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Example with scikit-learn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-spatial-ml-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Spatial ML pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125-common-ml-methods-used-with-arcpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 Common ML methods used with ArcPy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-script-tools-and-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Script tools and parameters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Script tools and parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-good-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Good practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="complete-arcpy-methods-reference">Complete ArcPy Methods Reference</h1>
+<h2 id="1-core-concepts">1. Core concepts</h2>
+<p>ArcPy is the Python site package for ArcGIS Pro and ArcGIS workflows. It is used for geoprocessing, data management, map automation, cartography, raster analysis, and script tools.</p>
+<h3 id="11-main-ideas">1.1 Main ideas</h3>
+<ul>
+<li><strong>Geoprocessing tools</strong>: ArcGIS functions exposed through Python.</li>
+<li><strong>Environment settings</strong>: control workspace, output coordinate system, overwrite behavior, and more.</li>
+<li><strong>Data access</strong>: fast row and cursor-based reading and editing.</li>
+<li><strong>Map automation</strong>: manage maps, layers, layouts, and exports.</li>
+<li><strong>Modules</strong>: specialized parts of ArcPy such as <code>arcpy.da</code>, <code>arcpy.mp</code>, and <code>arcpy.sa</code>.</li>
+</ul>
+<h3 id="12-common-imports">1.2 Common imports</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">arcpy.sa</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+<h3 id="13-basic-example">1.3 Basic example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\data\gis.gdb&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arcpy</span><span class="o">.</span><span class="n">GetCount_management</span><span class="p">(</span><span class="s2">&quot;roads&quot;</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="2-arcpy-environment">2. ArcPy environment</h2>
+<p>Environment settings control where tools read and write data and how outputs are created.</p>
+<h3 id="21-common-settings">2.1 Common settings</h3>
+<ul>
+<li><strong><code>arcpy.env.workspace</code></strong> - Set current workspace.</li>
+<li><strong><code>arcpy.env.scratchWorkspace</code></strong> - Set scratch workspace.</li>
+<li><strong><code>arcpy.env.overwriteOutput</code></strong> - Allow overwrite of outputs.</li>
+<li><strong><code>arcpy.env.outputCoordinateSystem</code></strong> - Set output CRS.</li>
+<li><strong><code>arcpy.env.extent</code></strong> - Set processing extent.</li>
+<li><strong><code>arcpy.env.cellSize</code></strong> - Set raster cell size.</li>
+<li><strong><code>arcpy.env.snapRaster</code></strong> - Snap outputs to raster grid.</li>
+</ul>
+<h3 id="22-use-case">2.2 Use case</h3>
+<ul>
+<li>Control where results are stored.</li>
+<li>Make processing repeatable.</li>
+<li>Match coordinate system and raster settings across tools.</li>
+</ul>
+<h3 id="23-example">2.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\data\project.gdb&quot;</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+<hr />
+<h2 id="3-geoprocessing-tools">3. Geoprocessing tools</h2>
+<p>ArcPy exposes ArcGIS geoprocessing tools as Python functions.</p>
+<h3 id="31-common-management-tools">3.1 Common management tools</h3>
+<ul>
+<li><strong><code>CopyFeatures_management()</code></strong> - Copy features.</li>
+<li><strong><code>Delete_management()</code></strong> - Delete datasets.</li>
+<li><strong><code>Rename_management()</code></strong> - Rename datasets.</li>
+<li><strong><code>CreateFileGDB_management()</code></strong> - Create file geodatabase.</li>
+<li><strong><code>CreateFeatureclass_management()</code></strong> - Create feature class.</li>
+<li><strong><code>AddField_management()</code></strong> - Add a field.</li>
+<li><strong><code>CalculateField_management()</code></strong> - Calculate field values.</li>
+<li><strong><code>DeleteField_management()</code></strong> - Delete fields.</li>
+<li><strong><code>MakeFeatureLayer_management()</code></strong> - Create a feature layer.</li>
+<li><strong><code>SelectLayerByAttribute_management()</code></strong> - Select by attribute.</li>
+<li><strong><code>SelectLayerByLocation_management()</code></strong> - Select by spatial relation.</li>
+</ul>
+<h3 id="32-common-analysis-tools">3.2 Common analysis tools</h3>
+<ul>
+<li><strong><code>Buffer_analysis()</code></strong> - Create buffer zones.</li>
+<li><strong><code>Clip_analysis()</code></strong> - Clip one dataset with another.</li>
+<li><strong><code>Intersect_analysis()</code></strong> - Intersect datasets.</li>
+<li><strong><code>Union_analysis()</code></strong> - Combine features from layers.</li>
+<li><strong><code>Dissolve_management()</code></strong> - Dissolve boundaries.</li>
+<li><strong><code>Merge_management()</code></strong> - Merge datasets.</li>
+<li><strong><code>SpatialJoin_analysis()</code></strong> - Join attributes spatially.</li>
+<li><strong><code>Near_analysis()</code></strong> - Compute nearest features.</li>
+<li><strong><code>Erase_analysis()</code></strong> - Remove overlapping areas.</li>
+</ul>
+<h3 id="33-use-case">3.3 Use case</h3>
+<ul>
+<li>Build repeatable GIS workflows.</li>
+<li>Replace manual analysis in the GUI.</li>
+<li>Prepare outputs for cartography or modeling.</li>
+</ul>
+<h3 id="34-example">3.4 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="s2">&quot;roads&quot;</span><span class="p">,</span> <span class="s2">&quot;roads_buffer&quot;</span><span class="p">,</span> <span class="s2">&quot;100 Meters&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="4-data-access-and-cursors">4. Data access and cursors</h2>
+<p>Cursors are one of the most important parts of ArcPy for reading and writing rows efficiently.</p>
+<h3 id="41-common-cursor-types">4.1 Common cursor types</h3>
+<ul>
+<li><strong><code>arcpy.da.SearchCursor()</code></strong> - Read rows.</li>
+<li><strong><code>arcpy.da.UpdateCursor()</code></strong> - Update rows.</li>
+<li><strong><code>arcpy.da.InsertCursor()</code></strong> - Insert rows.</li>
+</ul>
+<h3 id="42-common-tokens">4.2 Common tokens</h3>
+<ul>
+<li><strong><code>OID@</code></strong> - ObjectID.</li>
+<li><strong><code>SHAPE@</code></strong> - Geometry object.</li>
+<li><strong><code>SHAPE@X</code></strong> - X coordinate.</li>
+<li><strong><code>SHAPE@Y</code></strong> - Y coordinate.</li>
+<li><strong><code>SHAPE@XY</code></strong> - X/Y tuple.</li>
+<li><strong><code>SHAPE@AREA</code></strong> - Feature area.</li>
+<li><strong><code>SHAPE@LENGTH</code></strong> - Feature length.</li>
+<li><strong><code>SHAPE@WKT</code></strong> - WKT geometry.</li>
+</ul>
+<h3 id="43-use-case">4.3 Use case</h3>
+<ul>
+<li>Read attribute tables.</li>
+<li>Update values in bulk.</li>
+<li>Insert new survey points or features.</li>
+</ul>
+<h3 id="44-example">4.4 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">fc</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\data\project.gdb\roads&quot;</span>
+<span class="k">with</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">da</span><span class="o">.</span><span class="n">SearchCursor</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;OID@&quot;</span><span class="p">,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">])</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="5-editing-and-updating-data">5. Editing and updating data</h2>
+<p>ArcPy can modify field values and geometries through update cursors or field calculation tools.</p>
+<h3 id="51-common-methods">5.1 Common methods</h3>
+<ul>
+<li><strong><code>startEditing()</code></strong> - Start edit session in GUI contexts.</li>
+<li><strong><code>UpdateCursor()</code></strong> - Modify rows.</li>
+<li><strong><code>CalculateField_management()</code></strong> - Calculate field values.</li>
+<li><strong><code>AddField_management()</code></strong> - Add new fields.</li>
+<li><strong><code>DeleteField_management()</code></strong> - Remove fields.</li>
+</ul>
+<h3 id="52-use-case">5.2 Use case</h3>
+<ul>
+<li>Standardize field values.</li>
+<li>Apply formulas to attributes.</li>
+<li>Update geometry-dependent fields.</li>
+</ul>
+<h3 id="53-example">5.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">fc</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\data\project.gdb\parcels&quot;</span>
+<span class="k">with</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">da</span><span class="o">.</span><span class="n">UpdateCursor</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;AREA_SQKM&quot;</span><span class="p">])</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">row</span> <span class="o">/</span> <span class="mi">1_000_000</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">updateRow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="6-geometry-and-spatial-reference">6. Geometry and spatial reference</h2>
+<p>ArcPy includes geometry objects and spatial reference tools for accurate spatial analysis.</p>
+<h3 id="61-common-classes">6.1 Common classes</h3>
+<ul>
+<li><strong><code>arcpy.Point()</code></strong> - Point object.</li>
+<li><strong><code>arcpy.Array()</code></strong> - Sequence of points.</li>
+<li><strong><code>arcpy.Polygon()</code></strong> - Polygon geometry.</li>
+<li><strong><code>arcpy.Polyline()</code></strong> - Line geometry.</li>
+<li><strong><code>arcpy.PointGeometry()</code></strong> - Point geometry.</li>
+<li><strong><code>arcpy.SpatialReference()</code></strong> - Spatial reference object.</li>
+</ul>
+<h3 id="62-common-methods-and-properties">6.2 Common methods and properties</h3>
+<ul>
+<li><strong><code>area</code></strong> - Geometry area.</li>
+<li><strong><code>length</code></strong> - Geometry length.</li>
+<li><strong><code>centroid</code></strong> - Geometry centroid.</li>
+<li><strong><code>buffer()</code></strong> - Buffer geometry.</li>
+<li><strong><code>projectAs()</code></strong> - Reproject geometry.</li>
+<li><strong><code>distanceTo()</code></strong> - Distance to another geometry.</li>
+<li><strong><code>contains()</code></strong> - Spatial containment.</li>
+<li><strong><code>intersects()</code></strong> - Spatial intersection test.</li>
+</ul>
+<h3 id="63-use-case">6.3 Use case</h3>
+<ul>
+<li>Create synthetic geometries.</li>
+<li>Measure area or distance.</li>
+<li>Reproject geometries for analysis.</li>
+</ul>
+<h3 id="64-example">6.4 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">pt</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="mf">14.4</span><span class="p">,</span> <span class="mf">50.1</span><span class="p">)</span>
+<span class="n">geom</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">PointGeometry</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">SpatialReference</span><span class="p">(</span><span class="mi">4326</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">centroid</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="7-mapping-and-layout-automation">7. Mapping and layout automation</h2>
+<p>ArcPy can automate ArcGIS Pro maps, layers, legends, and layouts through <code>arcpy.mp</code>.</p>
+<h3 id="71-common-classes">7.1 Common classes</h3>
+<ul>
+<li><strong><code>ArcGISProject()</code></strong> - Open a project.</li>
+<li><strong><code>Map()</code></strong> - Map object.</li>
+<li><strong><code>Layout()</code></strong> - Layout object.</li>
+<li><strong><code>Layer()</code></strong> - Layer object.</li>
+<li><strong><code>MapFrame()</code></strong> - Map frame in a layout.</li>
+<li><strong><code>TextElement()</code></strong> - Text element.</li>
+<li><strong><code>LegendElement()</code></strong> - Legend element.</li>
+</ul>
+<h3 id="72-common-methods">7.2 Common methods</h3>
+<ul>
+<li><strong><code>listMaps()</code></strong> - List maps.</li>
+<li><strong><code>listLayouts()</code></strong> - List layouts.</li>
+<li><strong><code>listLayers()</code></strong> - List layers.</li>
+<li><strong><code>listElements()</code></strong> - List map or layout elements.</li>
+<li><strong><code>exportToPDF()</code></strong> - Export to PDF.</li>
+<li><strong><code>exportToPNG()</code></strong> - Export to PNG.</li>
+<li><strong><code>saveACopy()</code></strong> - Save project copy.</li>
+</ul>
+<h3 id="73-use-case">7.3 Use case</h3>
+<ul>
+<li>Automate map exports.</li>
+<li>Batch update map layers.</li>
+<li>Generate layout products for reporting.</li>
+</ul>
+<h3 id="74-example">7.4 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">aprx</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">ArcGISProject</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\projects\demo.aprx&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aprx</span><span class="o">.</span><span class="n">listMaps</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="8-raster-analysis">8. Raster analysis</h2>
+<p>ArcPy includes extensive raster tools through Spatial Analyst and Image Analyst extensions.</p>
+<h3 id="81-common-tools-and-functions">8.1 Common tools and functions</h3>
+<ul>
+<li><strong><code>Raster()</code></strong> - Raster object.</li>
+<li><strong><code>Slope()</code></strong> - Compute slope.</li>
+<li><strong><code>Aspect()</code></strong> - Compute aspect.</li>
+<li><strong><code>Hillshade()</code></strong> - Create hillshade.</li>
+<li><strong><code>Reclassify()</code></strong> - Reclassify values.</li>
+<li><strong><code>Con()</code></strong> - Conditional raster operation.</li>
+<li><strong><code>ExtractByMask()</code></strong> - Extract raster by mask.</li>
+<li><strong><code>ZonalStatistics()</code></strong> - Zonal raster statistics.</li>
+<li><strong><code>CellStatistics()</code></strong> - Cell-based statistics.</li>
+<li><strong><code>Times()</code></strong> - Multiply raster values.</li>
+</ul>
+<h3 id="82-use-case">8.2 Use case</h3>
+<ul>
+<li>Terrain analysis.</li>
+<li>Suitability modeling.</li>
+<li>Land cover reclassification.</li>
+<li>Raster masking and summarization.</li>
+</ul>
+<h3 id="83-example">8.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">arcpy.sa</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">)</span>
+<span class="n">slope</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\data\project.gdb\slope&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="9-table-and-field-operations">9. Table and field operations</h2>
+<p>ArcPy supports table handling and schema management.</p>
+<h3 id="91-common-methods">9.1 Common methods</h3>
+<ul>
+<li><strong><code>ListFields()</code></strong> - List fields in a table.</li>
+<li><strong><code>AddField_management()</code></strong> - Add a field.</li>
+<li><strong><code>DeleteField_management()</code></strong> - Delete a field.</li>
+<li><strong><code>JoinField_management()</code></strong> - Join fields from a table.</li>
+<li><strong><code>TableToTable_conversion()</code></strong> - Convert tables.</li>
+<li><strong><code>Statistics_analysis()</code></strong> - Summarize attributes.</li>
+</ul>
+<h3 id="92-use-case">9.2 Use case</h3>
+<ul>
+<li>Prepare data for analysis.</li>
+<li>Join lookup tables.</li>
+<li>Build summary tables.</li>
+</ul>
+<h3 id="93-example">9.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">fields</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">ListFields</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\data\project.gdb\parcels&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">])</span>
+</code></pre></div>
+<hr />
+<h2 id="10-environment-and-messaging-utilities">10. Environment and messaging utilities</h2>
+<p>ArcPy includes helper methods for checking results, reporting messages, and reading metadata.</p>
+<h3 id="101-common-functions">10.1 Common functions</h3>
+<ul>
+<li><strong><code>GetCount_management()</code></strong> - Count rows or features.</li>
+<li><strong><code>Exists()</code></strong> - Check whether a dataset exists.</li>
+<li><strong><code>Describe()</code></strong> - Get dataset properties.</li>
+<li><strong><code>ListFeatureClasses()</code></strong> - List feature classes.</li>
+<li><strong><code>ListRasters()</code></strong> - List rasters.</li>
+<li><strong><code>ListTables()</code></strong> - List tables.</li>
+<li><strong><code>AddMessage()</code></strong> - Send a message.</li>
+<li><strong><code>AddWarning()</code></strong> - Send a warning.</li>
+<li><strong><code>AddError()</code></strong> - Send an error.</li>
+</ul>
+<h3 id="102-use-case">10.2 Use case</h3>
+<ul>
+<li>Validate inputs.</li>
+<li>Inspect dataset metadata.</li>
+<li>Provide feedback in script tools.</li>
+</ul>
+<h3 id="103-example">10.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="k">if</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Exists</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\data\project.gdb\roads&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arcpy</span><span class="o">.</span><span class="n">GetCount_management</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\data\project.gdb\roads&quot;</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="11-common-gis-workflows">11. Common GIS workflows</h2>
+<h3 id="111-buffer-and-clip">11.1 Buffer and clip</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="s2">&quot;roads&quot;</span><span class="p">,</span> <span class="s2">&quot;roads_buffer&quot;</span><span class="p">,</span> <span class="s2">&quot;500 Meters&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Clip</span><span class="p">(</span><span class="s2">&quot;parcels&quot;</span><span class="p">,</span> <span class="s2">&quot;study_area&quot;</span><span class="p">,</span> <span class="s2">&quot;parcels_clip&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="112-select-and-export">11.2 Select and export</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">lyr</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">MakeFeatureLayer_management</span><span class="p">(</span><span class="s2">&quot;parcels&quot;</span><span class="p">,</span> <span class="s2">&quot;parcels_lyr&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">SelectLayerByAttribute_management</span><span class="p">(</span><span class="n">lyr</span><span class="p">,</span> <span class="s2">&quot;NEW_SELECTION&quot;</span><span class="p">,</span> <span class="s1">&#39;&quot;zone&quot; = </span><span class="se">\&#39;</span><span class="s1">A</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CopyFeatures_management</span><span class="p">(</span><span class="n">lyr</span><span class="p">,</span> <span class="s2">&quot;selected_parcels&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="113-join-and-summarize">11.3 Join and summarize</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">JoinField_management</span><span class="p">(</span><span class="s2">&quot;parcels&quot;</span><span class="p">,</span> <span class="s2">&quot;parcel_id&quot;</span><span class="p">,</span> <span class="s2">&quot;owners&quot;</span><span class="p">,</span> <span class="s2">&quot;parcel_id&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">Statistics_analysis</span><span class="p">(</span><span class="s2">&quot;parcels&quot;</span><span class="p">,</span> <span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="p">[[</span><span class="s2">&quot;AREA&quot;</span><span class="p">,</span> <span class="s2">&quot;SUM&quot;</span><span class="p">]],</span> <span class="s2">&quot;zone&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="12-machine-learning-with-arcpy">12. Machine learning with ArcPy</h2>
+<p>ArcPy is often used to prepare training data for machine learning. The actual model training is usually done with scikit-learn, but ArcPy is excellent for feature extraction, spatial joins, raster sampling, and writing predictions back to GIS layers.</p>
+<h3 id="121-use-cases">12.1 Use cases</h3>
+<ul>
+<li>Land cover classification.</li>
+<li>Urban growth prediction.</li>
+<li>Suitability analysis.</li>
+<li>Raster-based supervised classification.</li>
+<li>Spatial clustering of features.</li>
+<li>Sampling points for training data.</li>
+</ul>
+<h3 id="122-typical-workflow">12.2 Typical workflow</h3>
+<ol>
+<li>Extract labeled training samples from GIS layers.</li>
+<li>Convert attributes or raster values to a tabular dataset.</li>
+<li>Train a model with scikit-learn.</li>
+<li>Predict classes or numeric values.</li>
+<li>Save predictions back into ArcGIS layers or rasters.</li>
+</ol>
+<h3 id="123-example-with-scikit-learn">12.3 Example with scikit-learn</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([,,,,,</span> <span class="p">])[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">][</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([,</span> <span class="p">])[</span><span class="mi">5</span><span class="p">][</span><span class="mi">7</span><span class="p">][</span><span class="mi">8</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="124-spatial-ml-pattern">12.4 Spatial ML pattern</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Use ArcPy to read features or sample raster values.</span>
+<span class="c1"># 2. Create X and y arrays.</span>
+<span class="c1"># 3. Train a model with scikit-learn.</span>
+<span class="c1"># 4. Predict on new points or pixels.</span>
+<span class="c1"># 5. Write results to a feature class or raster.</span>
+</code></pre></div>
+<h3 id="125-common-ml-methods-used-with-arcpy">12.5 Common ML methods used with ArcPy</h3>
+<ul>
+<li><strong><code>RandomForestClassifier()</code></strong> - Strong default for spatial classification.</li>
+<li><strong><code>RandomForestRegressor()</code></strong> - Predict continuous spatial targets.</li>
+<li><strong><code>SVC()</code></strong> - Kernel-based classification.</li>
+<li><strong><code>KNeighborsClassifier()</code></strong> - Local similarity classification.</li>
+<li><strong><code>LogisticRegression()</code></strong> - Simple baseline classification.</li>
+<li><strong><code>KMeans()</code></strong> - Unsupervised clustering.</li>
+<li><strong><code>PCA()</code></strong> - Reduce dimensionality.</li>
+</ul>
+<hr />
+<h2 id="13-script-tools-and-parameters">13. Script tools and parameters</h2>
+<p>ArcPy can power custom script tools in ArcGIS Pro.</p>
+<h3 id="131-common-functions">13.1 Common functions</h3>
+<ul>
+<li><strong><code>GetParameterAsText()</code></strong> - Read input parameter.</li>
+<li><strong><code>SetParameterAsText()</code></strong> - Write output parameter.</li>
+<li><strong><code>AddMessage()</code></strong> - Display tool message.</li>
+<li><strong><code>AddWarning()</code></strong> - Display warning.</li>
+<li><strong><code>AddError()</code></strong> - Display error.</li>
+</ul>
+<h3 id="132-use-case">13.2 Use case</h3>
+<ul>
+<li>Build reusable GIS tools.</li>
+<li>Package workflows for non-programmers.</li>
+<li>Create validated geoprocessing utilities.</li>
+</ul>
+<h3 id="133-example">13.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+
+<span class="n">in_fc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">GetParameterAsText</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">out_fc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">GetParameterAsText</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="n">in_fc</span><span class="p">,</span> <span class="n">out_fc</span><span class="p">,</span> <span class="s2">&quot;100 Meters&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="14-good-practices">14. Good practices</h2>
+<ul>
+<li>Check dataset existence with <strong><code>Exists()</code></strong> before processing.</li>
+<li>Use <strong><code>arcpy.env.overwriteOutput = True</code></strong> when needed.</li>
+<li>Use <code>da</code> cursors for performance.</li>
+<li>Check out Spatial Analyst before raster tools.</li>
+<li>Reproject data before distance and area analysis.</li>
+<li>Use in-memory outputs for temporary results.</li>
+<li>Wrap long workflows with clear messages for script tools.</li>
+</ul>
+<hr />
+<h2 id="15-quick-reference-table">15. Quick reference table</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Key methods</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Environment</td>
+<td><code>arcpy.env.workspace</code>, <code>overwriteOutput</code></td>
+<td>Control execution settings.</td>
+</tr>
+<tr>
+<td>Geoprocessing</td>
+<td><code>Buffer_analysis()</code>, <code>Clip_analysis()</code></td>
+<td>Run GIS tools.</td>
+</tr>
+<tr>
+<td>Data access</td>
+<td><code>SearchCursor()</code>, <code>UpdateCursor()</code>, <code>InsertCursor()</code></td>
+<td>Read and edit records.</td>
+</tr>
+<tr>
+<td>Geometry</td>
+<td><code>PointGeometry()</code>, <code>Polygon()</code>, <code>buffer()</code></td>
+<td>Work with shapes.</td>
+</tr>
+<tr>
+<td>CRS</td>
+<td><code>SpatialReference()</code>, <code>projectAs()</code></td>
+<td>Handle coordinates safely.</td>
+</tr>
+<tr>
+<td>Raster</td>
+<td><code>Slope()</code>, <code>Reclassify()</code>, <code>ExtractByMask()</code></td>
+<td>Analyze raster data.</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td><code>Describe()</code>, <code>ListFields()</code></td>
+<td>Inspect datasets.</td>
+</tr>
+<tr>
+<td>Mapping</td>
+<td><code>arcpy.mp</code> methods</td>
+<td>Automate maps and exports.</td>
+</tr>
+<tr>
+<td>Script tools</td>
+<td><code>GetParameterAsText()</code>, <code>SetParameterAsText()</code></td>
+<td>Build custom tools.</td>
+</tr>
+<tr>
+<td>ML prep</td>
+<td>sampling, joins, exports</td>
+<td>Prepare spatial training data.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="16-example-full-workflow">16. Example full workflow</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">arcpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">arcpy.sa</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;C:\data\project.gdb&quot;</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">CheckOutExtension</span><span class="p">(</span><span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+
+<span class="n">roads</span> <span class="o">=</span> <span class="s2">&quot;roads&quot;</span>
+<span class="n">study_area</span> <span class="o">=</span> <span class="s2">&quot;study_area&quot;</span>
+
+<span class="n">arcpy</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="s2">&quot;roads_buffer&quot;</span><span class="p">,</span> <span class="s2">&quot;500 Meters&quot;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Clip</span><span class="p">(</span><span class="s2">&quot;roads_buffer&quot;</span><span class="p">,</span> <span class="n">study_area</span><span class="p">,</span> <span class="s2">&quot;roads_buffer_clip&quot;</span><span class="p">)</span>
+
+<span class="n">slope</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\data\dem.tif&quot;</span><span class="p">)</span>
+<span class="n">slope</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;slope_raster&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; [YOUR NAME]
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shiwakotisurendra" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/geosuren" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:shiwakotisurendra@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

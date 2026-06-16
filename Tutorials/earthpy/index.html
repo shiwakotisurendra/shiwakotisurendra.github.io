@@ -1,0 +1,2793 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfolio of Surendra Shiwakoti — GIS, Remote Sensing, and Spatial Data Science">
+      
+      
+        <meta name="author" content="Surendra Shiwakoti">
+      
+      
+        <link rel="canonical" href="https://shiwakotisurendra.github.io/Tutorials/earthpy/">
+      
+      
+        <link rel="prev" href="../scikit-learn_examples/">
+      
+      
+        <link rel="next" href="../../contact/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>earthpy - Surendra Shiwakoti - Geospatial Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#complete-earthpy-methods-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-header__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Surendra Shiwakoti - Geospatial Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              earthpy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Publications
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../experience/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Experience
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../infoTool_reference/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contact
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-nav__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    Surendra Shiwakoti - Geospatial Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Notebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infoTool_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InfoTool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raster Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_qgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate QGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_arcgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate ArcGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gdal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plotly
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xarray_and_rioxarray/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xarray and Rioxarray
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../folium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    folium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geemap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    geemap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    opencv
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn_examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    earthpy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    earthpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main modules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-basic-workflow-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Basic workflow example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Data access
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Data access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-raster-stacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Raster stacking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Raster stacking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-raster-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Raster masking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Raster masking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-raster-clipping-and-cropping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Raster clipping and cropping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Raster clipping and cropping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-spectral-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Spectral analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Spectral analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-ndvi-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 NDVI example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-plotting-raster-bands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Plotting raster bands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Plotting raster bands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-example-plot-all-bands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Example: plot all bands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example-rgb-composite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example: RGB composite
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-histograms-and-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Histograms and distributions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Histograms and distributions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-legends-and-colorbars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Legends and colorbars
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Legends and colorbars">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-raster-and-vector-overlays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Raster and vector overlays
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Raster and vector overlays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-utility-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Utility functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Utility functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-common-workflow-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Common workflow examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Common workflow examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-stack-and-plot-bands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Stack and plot bands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-create-ndvi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Create NDVI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-create-hillshade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Create hillshade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main modules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-basic-workflow-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Basic workflow example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Data access
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Data access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-raster-stacking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Raster stacking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Raster stacking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-raster-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Raster masking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Raster masking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-raster-clipping-and-cropping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Raster clipping and cropping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Raster clipping and cropping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-spectral-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Spectral analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Spectral analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-ndvi-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 NDVI example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-plotting-raster-bands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Plotting raster bands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Plotting raster bands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-example-plot-all-bands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Example: plot all bands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example-rgb-composite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example: RGB composite
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-histograms-and-distributions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Histograms and distributions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Histograms and distributions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-legends-and-colorbars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Legends and colorbars
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Legends and colorbars">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-raster-and-vector-overlays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Raster and vector overlays
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Raster and vector overlays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-utility-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Utility functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Utility functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-common-workflow-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Common workflow examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Common workflow examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-stack-and-plot-bands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Stack and plot bands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-create-ndvi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Create NDVI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-create-hillshade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Create hillshade
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="complete-earthpy-methods-reference">Complete EarthPy Methods Reference</h1>
+<h2 id="1-core-concepts">1. Core concepts</h2>
+<p>EarthPy is a Python package for working with spatial raster and vector data, especially for remote sensing workflows. It builds on NumPy, Rasterio, GeoPandas, and Matplotlib to make common geospatial tasks easier.</p>
+<h3 id="11-main-modules">1.1 Main modules</h3>
+<ul>
+<li><strong><code>earthpy.spatial</code></strong> - Raster stacking, clipping, masking, hillshade, and normalized difference.</li>
+<li><strong><code>earthpy.plot</code></strong> - Plotting helpers for raster bands, RGB composites, histograms, and legends.</li>
+<li><strong><code>earthpy.io</code></strong> - Data access and download utilities.</li>
+<li><strong><code>earthpy.mask</code></strong> - Masking helpers for raster data.</li>
+<li><strong><code>earthpy.clip</code></strong> - Clipping and cropping helpers.</li>
+<li><strong><code>earthpy.data</code></strong> - Download example datasets.</li>
+</ul>
+<h3 id="12-common-imports">1.2 Common imports</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">earthpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">et</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.spatial</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">es</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.plot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</code></pre></div>
+<h3 id="13-basic-workflow-example">1.3 Basic workflow example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">earthpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">et</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.spatial</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">es</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.plot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">ep</span><span class="o">.</span><span class="n">plot_rgb</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">rgb</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="2-data-access">2. Data access</h2>
+<p>EarthPy includes helper functions for downloading example datasets and managing local data paths.</p>
+<h3 id="21-common-methods">2.1 Common methods</h3>
+<ul>
+<li><strong><code>et.data.get_data()</code></strong> - Download a sample dataset.</li>
+<li><strong><code>et.io.HOME</code></strong> - Base directory used for EarthPy data storage.</li>
+<li><strong><code>et.io.data_path</code></strong> - Data directory helper when available in your setup.</li>
+</ul>
+<h3 id="22-example">2.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">earthpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">et</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">&quot;cold-springs-fire&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="3-raster-stacking">3. Raster stacking</h2>
+<p>Stacking combines multiple single-band rasters into one multi-band array. This is one of the most useful EarthPy workflows for remote sensing.</p>
+<h3 id="31-common-methods">3.1 Common methods</h3>
+<ul>
+<li><strong><code>es.stack()</code></strong> - Stack raster files into a multiband array.</li>
+<li><strong><code>es.stack_raster_tifs()</code></strong> - Stack multiple raster TIFs into a single array.</li>
+<li><strong><code>es.stack_raster()</code></strong> - Stack raster inputs when available in your version.</li>
+<li><strong><code>es.copy_to()</code></strong> - Utility for copying files in some workflows.</li>
+</ul>
+<h3 id="32-example">3.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">et</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.spatial</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">es</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">&quot;cold-springs-fire&quot;</span><span class="p">)</span>
+<span class="n">band_paths</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;landsat7_band1.tif&quot;</span><span class="p">),</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;landsat7_band2.tif&quot;</span><span class="p">),</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;landsat7_band3.tif&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">stacked</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">band_paths</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="4-raster-masking">4. Raster masking</h2>
+<p>Masking is used to set unwanted pixels to no data values, such as clouds, shadows, or background pixels.</p>
+<h3 id="41-common-methods">4.1 Common methods</h3>
+<ul>
+<li><strong><code>es.mask_pixels()</code></strong> - Mask pixels based on a condition.</li>
+<li><strong><code>es.create_binary_mask()</code></strong> - Create a binary mask.</li>
+<li><strong><code>es.mask_image()</code></strong> - Apply a mask to an image.</li>
+<li><strong><code>es.clip_array()</code></strong> - Clip array values in some workflows.</li>
+</ul>
+<h3 id="42-example">4.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.spatial</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">es</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">arr</span> <span class="o">&lt;</span> <span class="mi">50</span>
+<span class="n">masked</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">mask_pixels</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="5-raster-clipping-and-cropping">5. Raster clipping and cropping</h2>
+<p>EarthPy provides helpers to crop raster data to a polygon or other spatial extent.</p>
+<h3 id="51-common-methods">5.1 Common methods</h3>
+<ul>
+<li><strong><code>es.crop_image()</code></strong> - Crop raster data to a polygon.</li>
+<li><strong><code>es.crop()</code></strong> - Crop raster or array inputs when available.</li>
+<li><strong><code>es.clip()</code></strong> - Clip raster data in some versions and workflows.</li>
+</ul>
+<h3 id="52-example">5.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Example conceptual pattern</span>
+<span class="n">cropped</span><span class="p">,</span> <span class="n">cropped_meta</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">crop_image</span><span class="p">(</span><span class="n">raster_array</span><span class="p">,</span> <span class="n">crop_extent</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="6-spectral-analysis">6. Spectral analysis</h2>
+<p>EarthPy includes functions that are useful for remote sensing band math and vegetation analysis.</p>
+<h3 id="61-common-methods">6.1 Common methods</h3>
+<ul>
+<li><strong><code>es.normalized_diff()</code></strong> - Compute a normalized difference index such as NDVI.</li>
+<li><strong><code>es.hillshade()</code></strong> - Create hillshade from elevation data.</li>
+<li><strong><code>es.bytescale()</code></strong> - Scale values to byte range for display.</li>
+</ul>
+<h3 id="62-example">6.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.spatial</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">es</span>
+
+<span class="n">ndvi</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">normalized_diff</span><span class="p">(</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">red_band</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="63-ndvi-example">6.3 NDVI example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.spatial</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">es</span>
+
+<span class="n">red</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">nir</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">normalized_diff</span><span class="p">(</span><span class="n">nir</span><span class="p">,</span> <span class="n">red</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="7-plotting-raster-bands">7. Plotting raster bands</h2>
+<p>EarthPy’s plotting module is designed to make raster visualization quick and readable.</p>
+<h3 id="71-common-methods">7.1 Common methods</h3>
+<ul>
+<li><strong><code>ep.plot_bands()</code></strong> - Plot each band of a raster in a grid.</li>
+<li><strong><code>ep.plot_rgb()</code></strong> - Plot RGB or false-color composites.</li>
+<li><strong><code>ep.hist()</code></strong> - Plot histograms of raster values.</li>
+<li><strong><code>ep.colorbar()</code></strong> - Add a correctly sized colorbar.</li>
+<li><strong><code>ep.create_legend()</code></strong> - Create a discrete legend for classes.</li>
+<li><strong><code>ep.clip()</code></strong> - Plot clipping helper in some workflows.</li>
+<li><strong><code>ep.imshow()</code></strong> - Display array-style images where available.</li>
+</ul>
+<h3 id="72-example-plot-all-bands">7.2 Example: plot all bands</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.plot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">ep</span><span class="o">.</span><span class="n">plot_bands</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">titles</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Band 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Band 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Band 3&quot;</span><span class="p">,</span> <span class="s2">&quot;Band 4&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="73-example-rgb-composite">7.3 Example: RGB composite</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.plot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">ep</span><span class="o">.</span><span class="n">plot_rgb</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">rgb</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="8-histograms-and-distributions">8. Histograms and distributions</h2>
+<p>Histograms help inspect band values, identify outliers, and compare distributions across bands.</p>
+<h3 id="81-common-methods">8.1 Common methods</h3>
+<ul>
+<li><strong><code>ep.hist()</code></strong> - Plot histogram for one or more bands.</li>
+<li><strong><code>plt.hist()</code></strong> - Standard Matplotlib histogram when needed.</li>
+</ul>
+<h3 id="82-example">8.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.plot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">ep</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="9-legends-and-colorbars">9. Legends and colorbars</h2>
+<p>EarthPy simplifies legends and colorbars for raster and categorical plots.</p>
+<h3 id="91-common-methods">9.1 Common methods</h3>
+<ul>
+<li><strong><code>ep.create_legend()</code></strong> - Create a discrete legend.</li>
+<li><strong><code>ep.colorbar()</code></strong> - Create a colorbar sized for plot layouts.</li>
+</ul>
+<h3 id="92-example">9.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.plot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+
+<span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([,</span> <span class="p">])[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">])</span>
+</code></pre></div>
+<hr />
+<h2 id="10-raster-and-vector-overlays">10. Raster and vector overlays</h2>
+<p>EarthPy is often used with GeoPandas and Matplotlib to overlay vector boundaries on raster maps.</p>
+<h3 id="101-common-pattern">10.1 Common pattern</h3>
+<ul>
+<li>Plot raster with <code>ep.plot_bands()</code> or <code>ep.plot_rgb()</code>.</li>
+<li>Add vector boundary using GeoPandas <code>.plot()</code> on the same axes.</li>
+<li>Use Matplotlib for titles, labels, and legends.</li>
+</ul>
+<h3 id="102-example">10.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.plot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+
+<span class="n">ep</span><span class="o">.</span><span class="n">plot_bands</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="11-utility-functions">11. Utility functions</h2>
+<p>EarthPy includes a few general helpers that support spatial workflows.</p>
+<h3 id="111-common-methods">11.1 Common methods</h3>
+<ul>
+<li><strong><code>et.utils.url_to_path()</code></strong> - Convert URLs to local paths when available.</li>
+<li><strong><code>et.utils.download()</code></strong> - Download remote files when available.</li>
+<li><strong><code>et.utils.copy()</code></strong> - Copy files in supported workflows.</li>
+</ul>
+<hr />
+<h2 id="12-common-workflow-examples">12. Common workflow examples</h2>
+<h3 id="121-stack-and-plot-bands">12.1 Stack and plot bands</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">et</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.spatial</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">es</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.plot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">&quot;cold-springs-fire&quot;</span><span class="p">)</span>
+<span class="n">band_paths</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;landsat7_band1.tif&quot;</span><span class="p">),</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;landsat7_band2.tif&quot;</span><span class="p">),</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;landsat7_band3.tif&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">stacked</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">band_paths</span><span class="p">)</span>
+<span class="n">ep</span><span class="o">.</span><span class="n">plot_bands</span><span class="p">(</span><span class="n">stacked</span><span class="p">,</span> <span class="n">titles</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Band 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Band 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Band 3&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="122-create-ndvi">12.2 Create NDVI</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.spatial</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">es</span>
+
+<span class="n">ndvi</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">normalized_diff</span><span class="p">(</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">red_band</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="123-create-hillshade">12.3 Create hillshade</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.spatial</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">es</span>
+
+<span class="n">shade</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">hillshade</span><span class="p">(</span><span class="n">dem_array</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">225</span><span class="p">,</span> <span class="n">altitude</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="13-quick-reference-table">13. Quick reference table</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Key methods</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data access</td>
+<td><code>et.data.get_data()</code></td>
+<td>Download sample datasets.</td>
+</tr>
+<tr>
+<td>Stacking</td>
+<td><code>es.stack()</code>, <code>es.stack_raster_tifs()</code></td>
+<td>Combine single-band rasters.</td>
+</tr>
+<tr>
+<td>Masking</td>
+<td><code>es.mask_pixels()</code></td>
+<td>Mask unwanted pixels.</td>
+</tr>
+<tr>
+<td>Cropping</td>
+<td><code>es.crop_image()</code></td>
+<td>Clip rasters to an extent.</td>
+</tr>
+<tr>
+<td>Band math</td>
+<td><code>es.normalized_diff()</code></td>
+<td>Compute indices like NDVI.</td>
+</tr>
+<tr>
+<td>Terrain</td>
+<td><code>es.hillshade()</code></td>
+<td>Create shaded relief.</td>
+</tr>
+<tr>
+<td>Plotting</td>
+<td><code>ep.plot_bands()</code>, <code>ep.plot_rgb()</code></td>
+<td>Visualize raster data.</td>
+</tr>
+<tr>
+<td>Histograms</td>
+<td><code>ep.hist()</code></td>
+<td>Inspect pixel distributions.</td>
+</tr>
+<tr>
+<td>Legends</td>
+<td><code>ep.create_legend()</code></td>
+<td>Create categorical legends.</td>
+</tr>
+<tr>
+<td>Colorbars</td>
+<td><code>ep.colorbar()</code></td>
+<td>Add properly sized colorbars.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-example-full-workflow">14. Example full workflow</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.spatial</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">es</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">earthpy.plot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">red</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">nir</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="n">es</span><span class="o">.</span><span class="n">normalized_diff</span><span class="p">(</span><span class="n">nir</span><span class="p">,</span> <span class="n">red</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ndvi</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlGn&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;NDVI&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; [YOUR NAME]
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shiwakotisurendra" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/geosuren" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:shiwakotisurendra@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

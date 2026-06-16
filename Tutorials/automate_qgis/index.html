@@ -1,0 +1,3743 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfolio of Surendra Shiwakoti — GIS, Remote Sensing, and Spatial Data Science">
+      
+      
+        <meta name="author" content="Surendra Shiwakoti">
+      
+      
+        <link rel="canonical" href="https://shiwakotisurendra.github.io/Tutorials/automate_qgis/">
+      
+      
+        <link rel="prev" href="../vector_analysis/">
+      
+      
+        <link rel="next" href="../automate_arcgis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Automate QGIS - Surendra Shiwakoti - Geospatial Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#complete-pyqgis-methods-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-header__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Surendra Shiwakoti - Geospatial Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Automate QGIS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Publications
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../experience/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Experience
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../infoTool_reference/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contact
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-nav__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    Surendra Shiwakoti - Geospatial Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Notebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infoTool_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InfoTool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raster Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate QGIS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate QGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main ideas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-typical-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Typical environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-project-and-layer-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Project and layer management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Project and layer management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-loading-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Loading layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Loading layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-common-data-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Common data providers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-inspecting-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Inspecting layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Inspecting layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-methods-and-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common methods and attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-vector-features-and-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Vector features and attributes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Vector features and attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-editing-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Editing layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Editing layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-geometries-and-spatial-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Geometries and spatial operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Geometries and spatial operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-common-classes-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Common classes and methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-coordinate-reference-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Coordinate reference systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Coordinate reference systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-selecting-and-querying-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Selecting and querying data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Selecting and querying data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-processing-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Processing tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Processing tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-common-algorithm-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Common algorithm groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-common-geoprocessing-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Common geoprocessing use cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Common geoprocessing use cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Buffer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-clip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Clip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-intersect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Intersect
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-dissolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Dissolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-raster-calculations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 Raster calculations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-layer-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Layer styling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Layer styling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-common-classes-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Common classes and methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-labels-and-map-canvas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Labels and map canvas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Labels and map canvas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-layouts-and-map-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Layouts and map export
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Layouts and map export">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-common-classes-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Common classes and methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-machine-learning-in-pyqgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Machine learning in PyQGIS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Machine learning in PyQGIS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-common-workflow-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Common workflow steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-example-with-scikit-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Example with scikit-learn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#154-example-spatial-classification-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4 Example spatial classification pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#155-typical-ml-methods-used-with-pyqgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5 Typical ML methods used with PyQGIS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-common-automation-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Common automation workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Common automation workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-load-and-inspect-a-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Load and inspect a layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-select-features-and-buffer-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Select features and buffer them
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-transform-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 Transform coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164-create-a-point-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 Create a point geometry
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-good-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Good practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_arcgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate ArcGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gdal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plotly
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xarray_and_rioxarray/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xarray and Rioxarray
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../folium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    folium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geemap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    geemap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    opencv
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn_examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earthpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    earthpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main ideas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-typical-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Typical environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-project-and-layer-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Project and layer management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Project and layer management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-loading-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Loading layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Loading layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-common-data-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Common data providers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-inspecting-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Inspecting layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Inspecting layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-methods-and-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common methods and attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-vector-features-and-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Vector features and attributes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Vector features and attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-editing-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Editing layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Editing layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-geometries-and-spatial-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Geometries and spatial operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Geometries and spatial operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-common-classes-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Common classes and methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-coordinate-reference-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Coordinate reference systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Coordinate reference systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-selecting-and-querying-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Selecting and querying data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Selecting and querying data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-processing-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Processing tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Processing tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-common-algorithm-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Common algorithm groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-common-geoprocessing-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Common geoprocessing use cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Common geoprocessing use cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Buffer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-clip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Clip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-intersect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Intersect
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-dissolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Dissolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-raster-calculations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 Raster calculations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-layer-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Layer styling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Layer styling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-common-classes-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Common classes and methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-labels-and-map-canvas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Labels and map canvas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Labels and map canvas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-layouts-and-map-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Layouts and map export
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Layouts and map export">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-common-classes-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Common classes and methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-machine-learning-in-pyqgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Machine learning in PyQGIS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Machine learning in PyQGIS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-common-workflow-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Common workflow steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-example-with-scikit-learn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Example with scikit-learn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#154-example-spatial-classification-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4 Example spatial classification pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#155-typical-ml-methods-used-with-pyqgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5 Typical ML methods used with PyQGIS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-common-automation-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Common automation workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Common automation workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-load-and-inspect-a-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Load and inspect a layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-select-features-and-buffer-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Select features and buffer them
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-transform-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 Transform coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#164-create-a-point-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4 Create a point geometry
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-good-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Good practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="complete-pyqgis-methods-reference">Complete PyQGIS Methods Reference</h1>
+<h2 id="1-core-concepts">1. Core concepts</h2>
+<p>PyQGIS is the Python API for QGIS. It lets you automate GIS workflows, build plugins, manage layers, edit vector data, run geoprocessing operations, and integrate machine learning into spatial analysis.</p>
+<h3 id="11-main-ideas">1.1 Main ideas</h3>
+<ul>
+<li><strong>QGIS project</strong>: the current workspace, layers, and map canvas.</li>
+<li><strong>Vector layer</strong>: points, lines, and polygons.</li>
+<li><strong>Raster layer</strong>: gridded data such as GeoTIFF.</li>
+<li><strong>Feature</strong>: one record in a vector layer.</li>
+<li><strong>Geometry</strong>: shape of a feature.</li>
+<li><strong>Processing framework</strong>: geoprocessing and analysis tools.</li>
+<li><strong>Plugins</strong>: extend QGIS with custom tools.</li>
+</ul>
+<h3 id="12-common-imports">1.2 Common imports</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.gui</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+<h3 id="13-typical-environment">1.3 Typical environment</h3>
+<p>PyQGIS code usually runs inside the QGIS Python console, a QGIS plugin, or a standalone script configured with QGIS paths.</p>
+<hr />
+<h2 id="2-project-and-layer-management">2. Project and layer management</h2>
+<p>The project object manages loaded layers and map settings.</p>
+<h3 id="21-common-methods">2.1 Common methods</h3>
+<ul>
+<li><strong><code>QgsProject.instance()</code></strong> - Access the current project.</li>
+<li><strong><code>addMapLayer()</code></strong> - Add a single layer.</li>
+<li><strong><code>addMapLayers()</code></strong> - Add multiple layers.</li>
+<li><strong><code>mapLayers()</code></strong> - Return all layers.</li>
+<li><strong><code>mapLayersByName()</code></strong> - Find layers by name.</li>
+<li><strong><code>removeMapLayer()</code></strong> - Remove a layer.</li>
+<li><strong><code>clear()</code></strong> - Clear the project.</li>
+<li><strong><code>read()</code></strong> - Load a project file.</li>
+<li><strong><code>write()</code></strong> - Save a project file.</li>
+<li><strong><code>layerTreeRoot()</code></strong> - Access the legend/layer tree.</li>
+</ul>
+<h3 id="22-use-case">2.2 Use case</h3>
+<ul>
+<li>Load and organize GIS layers.</li>
+<li>Manage map themes and project state.</li>
+<li>Build custom QGIS automation scripts.</li>
+</ul>
+<h3 id="23-example">2.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s2">&quot;countries&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="3-loading-layers">3. Loading layers</h2>
+<p>PyQGIS supports loading vector, raster, and delimited text layers from many sources.</p>
+<h3 id="31-common-classes">3.1 Common classes</h3>
+<ul>
+<li><strong><code>QgsVectorLayer()</code></strong> - Load vector data.</li>
+<li><strong><code>QgsRasterLayer()</code></strong> - Load raster data.</li>
+<li><strong><code>QgsPointXY</code></strong> - Point coordinate object.</li>
+<li><strong><code>QgsCoordinateReferenceSystem()</code></strong> - CRS object.</li>
+</ul>
+<h3 id="32-common-data-providers">3.2 Common data providers</h3>
+<ul>
+<li><strong><code>ogr</code></strong> - Shapefile, GeoPackage, and many vector formats.</li>
+<li><strong><code>delimitedtext</code></strong> - CSV or text files.</li>
+<li><strong><code>gdal</code></strong> - Raster layers.</li>
+</ul>
+<h3 id="33-use-case">3.3 Use case</h3>
+<ul>
+<li>Load data from disk.</li>
+<li>Connect a CSV to coordinates.</li>
+<li>Access file-based GIS formats.</li>
+</ul>
+<h3 id="34-example">3.4 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;/path/to/data.gpkg|layername=roads&quot;</span><span class="p">,</span> <span class="s2">&quot;roads&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="4-inspecting-layers">4. Inspecting layers</h2>
+<p>PyQGIS provides rich metadata access for layers, fields, geometries, and CRS.</p>
+<h3 id="41-common-methods-and-attributes">4.1 Common methods and attributes</h3>
+<ul>
+<li><strong><code>isValid()</code></strong> - Check if layer loaded correctly.</li>
+<li><strong><code>name()</code></strong> - Get layer name.</li>
+<li><strong><code>id()</code></strong> - Get layer ID.</li>
+<li><strong><code>crs()</code></strong> - Get layer CRS.</li>
+<li><strong><code>fields()</code></strong> - Get fields.</li>
+<li><strong><code>featureCount()</code></strong> - Count features.</li>
+<li><strong><code>getFeatures()</code></strong> - Iterate over features.</li>
+<li><strong><code>geometryType()</code></strong> - Get geometry type.</li>
+<li><strong><code>wkbType()</code></strong> - Get geometry storage type.</li>
+<li><strong><code>extent()</code></strong> - Get layer bounds.</li>
+</ul>
+<h3 id="42-use-case">4.2 Use case</h3>
+<ul>
+<li>Explore schema and geometry type.</li>
+<li>Verify layer integrity.</li>
+<li>Prepare data for analysis.</li>
+</ul>
+<h3 id="43-example">4.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">featureCount</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">names</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="5-vector-features-and-attributes">5. Vector features and attributes</h2>
+<p>Features store geometry and attribute values. You can read, edit, add, and delete them.</p>
+<h3 id="51-common-methods">5.1 Common methods</h3>
+<ul>
+<li><strong><code>getFeatures()</code></strong> - Iterate over features.</li>
+<li><strong><code>QgsFeature()</code></strong> - Create a feature.</li>
+<li><strong><code>setGeometry()</code></strong> - Assign geometry.</li>
+<li><strong><code>setAttributes()</code></strong> - Assign all attributes.</li>
+<li><strong><code>setAttribute()</code></strong> - Set a single attribute.</li>
+<li><strong><code>attribute()</code></strong> - Read one attribute.</li>
+<li><strong><code>attributes()</code></strong> - Read all attributes.</li>
+<li><strong><code>addFeature()</code></strong> - Add one feature.</li>
+<li><strong><code>addFeatures()</code></strong> - Add multiple features.</li>
+<li><strong><code>deleteFeature()</code></strong> - Delete a feature.</li>
+<li><strong><code>updateFeature()</code></strong> - Update a feature.</li>
+</ul>
+<h3 id="52-use-case">5.2 Use case</h3>
+<ul>
+<li>Create survey points.</li>
+<li>Update attribute tables.</li>
+<li>Build output layers from analysis.</li>
+</ul>
+<h3 id="53-example">5.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">f</span><span class="o">.</span><span class="n">attributes</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="6-editing-layers">6. Editing layers</h2>
+<p>Editing is required for many data management tasks.</p>
+<h3 id="61-common-methods">6.1 Common methods</h3>
+<ul>
+<li><strong><code>startEditing()</code></strong> - Begin edit session.</li>
+<li><strong><code>commitChanges()</code></strong> - Save edits.</li>
+<li><strong><code>rollBack()</code></strong> - Cancel edits.</li>
+<li><strong><code>addAttribute()</code></strong> - Add a new field.</li>
+<li><strong><code>deleteAttribute()</code></strong> - Remove a field.</li>
+<li><strong><code>changeAttributeValue()</code></strong> - Update one value.</li>
+<li><strong><code>changeGeometry()</code></strong> - Update geometry.</li>
+<li><strong><code>updateFields()</code></strong> - Refresh field definitions.</li>
+<li><strong><code>updateExtents()</code></strong> - Refresh layer extent.</li>
+</ul>
+<h3 id="62-use-case">6.2 Use case</h3>
+<ul>
+<li>Add new fields.</li>
+<li>Fix attributes.</li>
+<li>Modify geometries safely.</li>
+</ul>
+<h3 id="63-example">6.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">layer</span><span class="o">.</span><span class="n">startEditing</span><span class="p">()</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">changeAttributeValue</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;new_value&quot;</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="7-geometries-and-spatial-operations">7. Geometries and spatial operations</h2>
+<p>PyQGIS has many geometry tools for construction, measurement, and transformation.</p>
+<h3 id="71-common-classes-and-methods">7.1 Common classes and methods</h3>
+<ul>
+<li><strong><code>QgsGeometry</code></strong> - Geometry container.</li>
+<li><strong><code>fromPointXY()</code></strong> - Create point geometry.</li>
+<li><strong><code>fromPolygonXY()</code></strong> - Create polygon geometry.</li>
+<li><strong><code>fromPolylineXY()</code></strong> - Create line geometry.</li>
+<li><strong><code>asPoint()</code></strong> - Read as point.</li>
+<li><strong><code>asPolygon()</code></strong> - Read as polygon.</li>
+<li><strong><code>buffer()</code></strong> - Create buffer.</li>
+<li><strong><code>intersection()</code></strong> - Compute intersection.</li>
+<li><strong><code>difference()</code></strong> - Compute difference.</li>
+<li><strong><code>unaryUnion()</code></strong> - Merge geometries.</li>
+<li><strong><code>area()</code></strong> - Compute area.</li>
+<li><strong><code>length()</code></strong> - Compute length.</li>
+<li><strong><code>centroid()</code></strong> - Compute centroid.</li>
+<li><strong><code>isEmpty()</code></strong> - Check emptiness.</li>
+</ul>
+<h3 id="72-use-case">7.2 Use case</h3>
+<ul>
+<li>Build AOIs.</li>
+<li>Compute distances and areas.</li>
+<li>Perform spatial overlays.</li>
+</ul>
+<h3 id="73-example">7.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">geom</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromPointXY</span><span class="p">(</span><span class="n">QgsPointXY</span><span class="p">(</span><span class="mf">14.38811</span><span class="p">,</span> <span class="mf">50.10412</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">asPoint</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="8-coordinate-reference-systems">8. Coordinate reference systems</h2>
+<p>CRS handling is essential for accurate GIS analysis.</p>
+<h3 id="81-common-classes">8.1 Common classes</h3>
+<ul>
+<li><strong><code>QgsCoordinateReferenceSystem()</code></strong> - Define a CRS.</li>
+<li><strong><code>QgsCoordinateTransform()</code></strong> - Transform geometries between CRSs.</li>
+<li><strong><code>QgsProject.instance()</code></strong> - Provides project context for transforms.</li>
+</ul>
+<h3 id="82-use-case">8.2 Use case</h3>
+<ul>
+<li>Reproject geometries.</li>
+<li>Match layer coordinate systems.</li>
+<li>Safely combine datasets from different sources.</li>
+</ul>
+<h3 id="83-example">8.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">src</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="n">dst</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span>
+<span class="n">transform</span> <span class="o">=</span> <span class="n">QgsCoordinateTransform</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="9-selecting-and-querying-data">9. Selecting and querying data</h2>
+<p>Selection tools help isolate features based on location or attributes.</p>
+<h3 id="91-common-methods">9.1 Common methods</h3>
+<ul>
+<li><strong><code>selectByRect()</code></strong> - Select features in a bounding box.</li>
+<li><strong><code>selectByExpression()</code></strong> - Select by attribute expression.</li>
+<li><strong><code>invertSelection()</code></strong> - Invert selection.</li>
+<li><strong><code>removeSelection()</code></strong> - Clear selection.</li>
+<li><strong><code>selectedFeatures()</code></strong> - Return selected features.</li>
+<li><strong><code>selectedFeatureCount()</code></strong> - Count selected features.</li>
+</ul>
+<h3 id="92-use-case">9.2 Use case</h3>
+<ul>
+<li>Filter features by condition.</li>
+<li>Select features in a study area.</li>
+<li>Build interactive editing workflows.</li>
+</ul>
+<h3 id="93-example">9.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">layer</span><span class="o">.</span><span class="n">selectByExpression</span><span class="p">(</span><span class="s1">&#39;&quot;population&quot; &gt; 100000&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">selectedFeatureCount</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="10-processing-tools">10. Processing tools</h2>
+<p>The QGIS Processing framework provides many geoprocessing algorithms.</p>
+<h3 id="101-common-functions">10.1 Common functions</h3>
+<ul>
+<li><strong><code>processing.run()</code></strong> - Run an algorithm.</li>
+<li><strong><code>processing.algorithmHelp()</code></strong> - Show algorithm details.</li>
+<li><strong><code>processing.execAlgorithmDialog()</code></strong> - Run from dialog in GUI contexts.</li>
+<li><strong><code>processing.createAlgorithmDialog()</code></strong> - Create algorithm dialog.</li>
+</ul>
+<h3 id="102-common-algorithm-groups">10.2 Common algorithm groups</h3>
+<ul>
+<li>Buffering.</li>
+<li>Dissolve and merge.</li>
+<li>Clip and intersect.</li>
+<li>Raster clipping and resampling.</li>
+<li>Raster statistics.</li>
+<li>Table joins.</li>
+</ul>
+<h3 id="103-use-case">10.3 Use case</h3>
+<ul>
+<li>Automate GIS workflows.</li>
+<li>Chain multiple operations.</li>
+<li>Replace repetitive manual processing.</li>
+</ul>
+<h3 id="104-example">10.4 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">processing</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">&quot;INPUT&quot;</span><span class="p">:</span> <span class="n">layer</span><span class="p">,</span>
+    <span class="s2">&quot;DISTANCE&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="s2">&quot;SEGMENTS&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s2">&quot;END_CAP_STYLE&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;JOIN_STYLE&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;MITER_LIMIT&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;DISSOLVE&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;OUTPUT&quot;</span><span class="p">:</span> <span class="s2">&quot;memory:&quot;</span>
+<span class="p">})</span>
+</code></pre></div>
+<hr />
+<h2 id="11-common-geoprocessing-use-cases">11. Common geoprocessing use cases</h2>
+<h3 id="111-buffer">11.1 Buffer</h3>
+<ul>
+<li>Expand features by distance.</li>
+<li>Create service areas or protection zones.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">buffered</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;INPUT&quot;</span><span class="p">:</span> <span class="n">layer</span><span class="p">,</span> <span class="s2">&quot;DISTANCE&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;OUTPUT&quot;</span><span class="p">:</span> <span class="s2">&quot;memory:&quot;</span><span class="p">})</span>
+</code></pre></div>
+<h3 id="112-clip">11.2 Clip</h3>
+<ul>
+<li>Cut one layer using another layer.</li>
+<li>Restrict analysis to AOI.</li>
+</ul>
+<h3 id="113-intersect">11.3 Intersect</h3>
+<ul>
+<li>Keep only overlapping areas.</li>
+<li>Combine attributes from overlapping layers.</li>
+</ul>
+<h3 id="114-dissolve">11.4 Dissolve</h3>
+<ul>
+<li>Merge features by shared attribute.</li>
+<li>Summarize administrative regions.</li>
+</ul>
+<h3 id="115-raster-calculations">11.5 Raster calculations</h3>
+<ul>
+<li>Reclassify values.</li>
+<li>Derive indexes and masks.</li>
+</ul>
+<hr />
+<h2 id="12-layer-styling">12. Layer styling</h2>
+<p>Styling controls how data appears in the map canvas and layouts.</p>
+<h3 id="121-common-classes-and-methods">12.1 Common classes and methods</h3>
+<ul>
+<li><strong><code>QgsSymbol</code></strong> - Base style symbol.</li>
+<li><strong><code>QgsRenderer</code></strong> - Controls symbol rendering.</li>
+<li><strong><code>QgsSingleSymbolRenderer</code></strong> - One symbol for all features.</li>
+<li><strong><code>QgsCategorizedSymbolRenderer</code></strong> - Categories by field values.</li>
+<li><strong><code>QgsGraduatedSymbolRenderer</code></strong> - Ranged styles.</li>
+<li><strong><code>setRenderer()</code></strong> - Apply renderer.</li>
+<li><strong><code>triggerRepaint()</code></strong> - Refresh display.</li>
+</ul>
+<h3 id="122-use-case">12.2 Use case</h3>
+<ul>
+<li>Build choropleth maps.</li>
+<li>Style points by category.</li>
+<li>Improve map readability.</li>
+</ul>
+<h3 id="123-example">12.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">layer</span><span class="o">.</span><span class="n">triggerRepaint</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="13-labels-and-map-canvas">13. Labels and map canvas</h2>
+<p>PyQGIS can control labels, map canvas, and user interaction inside QGIS.</p>
+<h3 id="131-common-components">13.1 Common components</h3>
+<ul>
+<li><strong><code>QgsPalLayerSettings</code></strong> - Label settings.</li>
+<li><strong><code>QgsVectorLayerSimpleLabeling</code></strong> - Label renderer.</li>
+<li><strong><code>iface.mapCanvas()</code></strong> - Access map canvas in QGIS GUI.</li>
+<li><strong><code>canvas.refresh()</code></strong> - Refresh display.</li>
+<li><strong><code>canvas.zoomToSelected()</code></strong> - Zoom to selected features.</li>
+</ul>
+<h3 id="132-use-case">13.2 Use case</h3>
+<ul>
+<li>Show feature names.</li>
+<li>Update GUI after changes.</li>
+<li>Focus on selected data.</li>
+</ul>
+<hr />
+<h2 id="14-layouts-and-map-export">14. Layouts and map export</h2>
+<p>Print layouts let you prepare final maps for export.</p>
+<h3 id="141-common-classes-and-methods">14.1 Common classes and methods</h3>
+<ul>
+<li><strong><code>QgsPrintLayout</code></strong> - Layout container.</li>
+<li><strong><code>QgsLayoutItemMap</code></strong> - Map frame in layout.</li>
+<li><strong><code>QgsLayoutItemLabel</code></strong> - Text label.</li>
+<li><strong><code>QgsLayoutExporter</code></strong> - Export layout.</li>
+<li><strong><code>exportToPdf()</code></strong> - Export PDF.</li>
+<li><strong><code>exportToImage()</code></strong> - Export image.</li>
+</ul>
+<h3 id="142-use-case">14.2 Use case</h3>
+<ul>
+<li>Create atlas maps.</li>
+<li>Export printable reports.</li>
+<li>Generate map figures for publications.</li>
+</ul>
+<h3 id="143-example">14.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># layout export depends on QGIS application context</span>
+</code></pre></div>
+<hr />
+<h2 id="15-machine-learning-in-pyqgis">15. Machine learning in PyQGIS</h2>
+<p>PyQGIS is often used with ML workflows for classification, prediction, and spatial feature engineering. In many cases, scikit-learn is combined with PyQGIS to train models from extracted GIS features.</p>
+<h3 id="151-use-cases">15.1 Use cases</h3>
+<ul>
+<li>Land cover classification.</li>
+<li>Urban growth prediction.</li>
+<li>Suitability mapping.</li>
+<li>Feature extraction from vector and raster data.</li>
+<li>Spatial clustering and anomaly detection.</li>
+</ul>
+<h3 id="152-common-workflow-steps">15.2 Common workflow steps</h3>
+<ol>
+<li>Load raster and vector training data.</li>
+<li>Extract sample features from geometry or pixel values.</li>
+<li>Convert GIS data to tabular form.</li>
+<li>Train a machine learning model.</li>
+<li>Classify, predict, or cluster spatial features.</li>
+<li>Write outputs back to GIS layers.</li>
+</ol>
+<h3 id="153-example-with-scikit-learn">15.3 Example with scikit-learn</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([,,,,,</span> <span class="p">])[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">][</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">()[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="154-example-spatial-classification-pattern">15.4 Example spatial classification pattern</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Read training features from a vector layer.</span>
+<span class="c1"># 2. Extract coordinates or raster values.</span>
+<span class="c1"># 3. Build X and y arrays.</span>
+<span class="c1"># 4. Train a model with scikit-learn.</span>
+<span class="c1"># 5. Predict labels for new features.</span>
+<span class="c1"># 6. Save predictions to a new layer or raster.</span>
+</code></pre></div>
+<h3 id="155-typical-ml-methods-used-with-pyqgis">15.5 Typical ML methods used with PyQGIS</h3>
+<ul>
+<li><strong><code>RandomForestClassifier()</code></strong> - Strong baseline for spatial classification.</li>
+<li><strong><code>SVC()</code></strong> - Margin-based classification.</li>
+<li><strong><code>KNeighborsClassifier()</code></strong> - Local similarity classification.</li>
+<li><strong><code>LogisticRegression()</code></strong> - Simple classification baseline.</li>
+<li><strong><code>RandomForestRegressor()</code></strong> - Predict continuous values.</li>
+<li><strong><code>PCA()</code></strong> - Reduce feature dimensions.</li>
+<li><strong><code>KMeans()</code></strong> - Cluster spatial features.</li>
+</ul>
+<hr />
+<h2 id="16-common-automation-workflows">16. Common automation workflows</h2>
+<h3 id="161-load-and-inspect-a-layer">16.1 Load and inspect a layer</h3>
+<div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;/path/to/file.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;roads&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">isValid</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">names</span><span class="p">())</span>
+</code></pre></div>
+<h3 id="162-select-features-and-buffer-them">16.2 Select features and buffer them</h3>
+<div class="highlight"><pre><span></span><code><span class="n">layer</span><span class="o">.</span><span class="n">selectByExpression</span><span class="p">(</span><span class="s1">&#39;&quot;type&quot; = </span><span class="se">\&#39;</span><span class="s1">primary</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;INPUT&quot;</span><span class="p">:</span> <span class="n">layer</span><span class="p">,</span> <span class="s2">&quot;DISTANCE&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;OUTPUT&quot;</span><span class="p">:</span> <span class="s2">&quot;memory:&quot;</span><span class="p">})</span>
+</code></pre></div>
+<h3 id="163-transform-coordinates">16.3 Transform coordinates</h3>
+<div class="highlight"><pre><span></span><code><span class="n">src</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="n">dst</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+<span class="n">transform</span> <span class="o">=</span> <span class="n">QgsCoordinateTransform</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">())</span>
+</code></pre></div>
+<h3 id="164-create-a-point-geometry">16.4 Create a point geometry</h3>
+<div class="highlight"><pre><span></span><code><span class="n">geom</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromPointXY</span><span class="p">(</span><span class="n">QgsPointXY</span><span class="p">(</span><span class="mf">14.38811</span><span class="p">,</span> <span class="mf">50.10412</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="17-good-practices">17. Good practices</h2>
+<ul>
+<li>Use <strong><code>QgsProject.instance()</code></strong> for project-wide operations.</li>
+<li>Check <strong><code>isValid()</code></strong> before using a layer.</li>
+<li>Reproject data before distance or area calculations.</li>
+<li>Wrap edits with <strong><code>startEditing()</code></strong> and <strong><code>commitChanges()</code></strong>.</li>
+<li>Use the Processing framework instead of manual loops when possible.</li>
+<li>Prefer memory layers for temporary results.</li>
+<li>Keep machine learning data in tabular form before training.</li>
+</ul>
+<hr />
+<h2 id="18-quick-reference-table">18. Quick reference table</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Key methods</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project</td>
+<td><code>QgsProject.instance()</code>, <code>addMapLayer()</code>, <code>mapLayersByName()</code></td>
+<td>Manage layers and project state.</td>
+</tr>
+<tr>
+<td>Loading</td>
+<td><code>QgsVectorLayer()</code>, <code>QgsRasterLayer()</code></td>
+<td>Load GIS data.</td>
+</tr>
+<tr>
+<td>Features</td>
+<td><code>getFeatures()</code>, <code>addFeature()</code>, <code>updateFeature()</code></td>
+<td>Read and edit records.</td>
+</tr>
+<tr>
+<td>Geometry</td>
+<td><code>QgsGeometry</code>, <code>buffer()</code>, <code>intersection()</code></td>
+<td>Spatial operations.</td>
+</tr>
+<tr>
+<td>CRS</td>
+<td><code>QgsCoordinateReferenceSystem()</code>, <code>QgsCoordinateTransform()</code></td>
+<td>Reproject data safely.</td>
+</tr>
+<tr>
+<td>Selection</td>
+<td><code>selectByExpression()</code>, <code>selectByRect()</code></td>
+<td>Filter features.</td>
+</tr>
+<tr>
+<td>Processing</td>
+<td><code>processing.run()</code></td>
+<td>Run geoprocessing algorithms.</td>
+</tr>
+<tr>
+<td>Styling</td>
+<td><code>setRenderer()</code>, <code>triggerRepaint()</code></td>
+<td>Control map appearance.</td>
+</tr>
+<tr>
+<td>Export</td>
+<td><code>QgsLayoutExporter</code></td>
+<td>Produce final maps.</td>
+</tr>
+<tr>
+<td>ML</td>
+<td><code>RandomForestClassifier()</code>, <code>KMeans()</code></td>
+<td>Train predictive spatial models.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="19-example-full-workflow">19. Example full workflow</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">processing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsVectorLayer</span><span class="p">,</span> <span class="n">QgsProject</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;/path/to/data.gpkg|layername=parcels&quot;</span><span class="p">,</span> <span class="s2">&quot;parcels&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+    <span class="n">layer</span><span class="o">.</span><span class="n">selectByExpression</span><span class="p">(</span><span class="s1">&#39;&quot;landuse&quot; = </span><span class="se">\&#39;</span><span class="s1">residential</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">&quot;INPUT&quot;</span><span class="p">:</span> <span class="n">layer</span><span class="p">,</span>
+        <span class="s2">&quot;DISTANCE&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s2">&quot;SEGMENTS&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s2">&quot;END_CAP_STYLE&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;JOIN_STYLE&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;MITER_LIMIT&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;DISSOLVE&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;OUTPUT&quot;</span><span class="p">:</span> <span class="s2">&quot;memory:&quot;</span>
+    <span class="p">})</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; [YOUR NAME]
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shiwakotisurendra" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/geosuren" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:shiwakotisurendra@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

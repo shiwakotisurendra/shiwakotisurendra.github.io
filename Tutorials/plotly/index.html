@@ -1,0 +1,3816 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfolio of Surendra Shiwakoti — GIS, Remote Sensing, and Spatial Data Science">
+      
+      
+        <meta name="author" content="Surendra Shiwakoti">
+      
+      
+        <link rel="canonical" href="https://shiwakotisurendra.github.io/Tutorials/plotly/">
+      
+      
+        <link rel="prev" href="../matplotlib_methods/">
+      
+      
+        <link rel="next" href="../pandas/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>plotly - Surendra Shiwakoti - Geospatial Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#complete-plotly-and-plotly-express-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-header__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Surendra Shiwakoti - Geospatial Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              plotly
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Publications
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../experience/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Experience
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../infoTool_reference/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contact
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-nav__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    Surendra Shiwakoti - Geospatial Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Notebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infoTool_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InfoTool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raster Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_qgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate QGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_arcgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate ArcGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gdal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plotly
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plotly
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main ideas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-basic-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Basic example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-plotly-express-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Plotly Express workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Plotly Express workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-plotly-express-chart-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Plotly Express chart types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Plotly Express chart types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-core-chart-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Core chart functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-density-and-distribution-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Density and distribution charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-hierarchical-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Hierarchical charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-3d-and-polar-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 3D and polar charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-map-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Map charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-example-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Example use
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-common-plotly-express-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Common Plotly Express parameters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Common Plotly Express parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-important-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Important parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-figures-and-graph-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Figures and graph objects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Figures and graph objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-figure-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common figure methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-scatter-and-line-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Scatter and line charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Scatter and line charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-plotly-express-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Plotly Express example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-graph-objects-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Graph Objects example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-bar-and-histogram-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Bar and histogram charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Bar and histogram charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-example-bar-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Example: bar chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example-histogram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example: histogram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-box-violin-and-strip-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Box, violin, and strip plots
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Box, violin, and strip plots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-example-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Example use
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-pie-and-funnel-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Pie and funnel charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Pie and funnel charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-example-pie-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Example: pie chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-example-funnel-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Example: funnel chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-heatmaps-and-contour-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Heatmaps and contour plots
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Heatmaps and contour plots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-example-density-heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Example: density heatmap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-example-density-contour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Example: density contour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-3d-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 3D charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 3D charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-example-3d-scatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Example: 3D scatter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-example-surface-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Example: surface plot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-geographic-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Geographic charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Geographic charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-example-geographic-scatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Example: geographic scatter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-example-choropleth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Example: choropleth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-hierarchical-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Hierarchical charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Hierarchical charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-animation-and-faceting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Animation and faceting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Animation and faceting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-example-facet-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Example: facet plot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-example-animation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Example: animation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-layout-and-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Layout and styling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Layout and styling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-common-layout-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Common layout methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-common-styling-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Common styling options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-hover-labels-and-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Hover, labels, and text
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Hover, labels, and text">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-common-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Common options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-exporting-figures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Exporting figures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Exporting figures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#171-common-export-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 Common export methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#172-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-use-case-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Use case guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Use case guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#181-when-to-use-plotly-express" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1 When to use Plotly Express
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#182-when-to-use-graph-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2 When to use Graph Objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-useful-workflow-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Useful workflow examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="19. Useful workflow examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#191-scatter-with-trend-and-facets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.1 Scatter with trend and facets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#192-grouped-bar-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.2 Grouped bar chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#193-line-chart-with-markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.3 Line chart with markers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xarray_and_rioxarray/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xarray and Rioxarray
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../folium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    folium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geemap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    geemap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    opencv
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn_examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earthpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    earthpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main ideas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-basic-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Basic example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-plotly-express-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Plotly Express workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Plotly Express workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-plotly-express-chart-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Plotly Express chart types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Plotly Express chart types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-core-chart-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Core chart functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-density-and-distribution-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Density and distribution charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-hierarchical-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Hierarchical charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-3d-and-polar-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 3D and polar charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-map-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Map charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-example-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Example use
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-common-plotly-express-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Common Plotly Express parameters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Common Plotly Express parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-important-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Important parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-figures-and-graph-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Figures and graph objects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Figures and graph objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-figure-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common figure methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-scatter-and-line-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Scatter and line charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Scatter and line charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-plotly-express-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Plotly Express example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-graph-objects-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Graph Objects example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-bar-and-histogram-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Bar and histogram charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Bar and histogram charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-example-bar-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Example: bar chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example-histogram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example: histogram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-box-violin-and-strip-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Box, violin, and strip plots
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Box, violin, and strip plots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-example-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Example use
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-pie-and-funnel-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Pie and funnel charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Pie and funnel charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-example-pie-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Example: pie chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-example-funnel-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Example: funnel chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-heatmaps-and-contour-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Heatmaps and contour plots
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Heatmaps and contour plots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-example-density-heatmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Example: density heatmap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-example-density-contour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Example: density contour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-3d-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 3D charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 3D charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-example-3d-scatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Example: 3D scatter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-example-surface-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Example: surface plot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-geographic-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Geographic charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Geographic charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-example-geographic-scatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Example: geographic scatter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-example-choropleth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Example: choropleth
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-hierarchical-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Hierarchical charts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Hierarchical charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-animation-and-faceting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Animation and faceting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Animation and faceting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-example-facet-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Example: facet plot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-example-animation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Example: animation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-layout-and-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Layout and styling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Layout and styling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-common-layout-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Common layout methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-common-styling-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Common styling options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-hover-labels-and-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Hover, labels, and text
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Hover, labels, and text">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-common-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Common options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-exporting-figures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Exporting figures
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Exporting figures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#171-common-export-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 Common export methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#172-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-use-case-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Use case guide
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="18. Use case guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#181-when-to-use-plotly-express" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.1 When to use Plotly Express
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#182-when-to-use-graph-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18.2 When to use Graph Objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-useful-workflow-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Useful workflow examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="19. Useful workflow examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#191-scatter-with-trend-and-facets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.1 Scatter with trend and facets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#192-grouped-bar-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.2 Grouped bar chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#193-line-chart-with-markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.3 Line chart with markers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        21. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="complete-plotly-and-plotly-express-reference">Complete Plotly and Plotly Express Reference</h1>
+<h2 id="1-core-concepts">1. Core concepts</h2>
+<p>Plotly is an interactive visualization library for Python. Plotly Express provides a high-level interface for quickly creating charts, while Graph Objects gives you deeper control over traces, layout, and customization.</p>
+<h3 id="11-main-ideas">1.1 Main ideas</h3>
+<ul>
+<li><strong>Plotly Express</strong>: fast, concise plotting with DataFrames.</li>
+<li><strong>Graph Objects</strong>: lower-level figure construction and customization.</li>
+<li><strong>Figure</strong>: the main container for traces and layout.</li>
+<li><strong>Trace</strong>: a plot element such as scatter, bar, or heatmap.</li>
+<li><strong>Layout</strong>: titles, axes, legend, template, and styling.</li>
+</ul>
+<h3 id="12-common-imports">1.2 Common imports</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</code></pre></div>
+<h3 id="13-basic-example">1.3 Basic example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Simple scatter&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="2-plotly-express-workflow">2. Plotly Express workflow</h2>
+<p>Plotly Express is designed for DataFrame-first plotting. You pass data directly into a plotting function and customize the figure afterward.</p>
+<h3 id="21-common-pattern">2.1 Common pattern</h3>
+<ul>
+<li>Create figure with <code>px.hart_type&gt;()</code>.</li>
+<li>Customize with <code>update_traces()</code>, <code>update_layout()</code>, <code>update_xaxes()</code>, <code>update_yaxes()</code>.</li>
+<li>Display with <code>show()</code>.</li>
+<li>Export with <code>write_html()</code> or <code>write_image()</code>.</li>
+</ul>
+<h3 id="22-example">2.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;city&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Population by City&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">&quot;plotly_white&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="3-plotly-express-chart-types">3. Plotly Express chart types</h2>
+<p>Plotly Express includes a large set of ready-to-use charts.</p>
+<h3 id="31-core-chart-functions">3.1 Core chart functions</h3>
+<ul>
+<li><strong><code>px.scatter()</code></strong> - Scatter plots.</li>
+<li><strong><code>px.line()</code></strong> - Line charts.</li>
+<li><strong><code>px.area()</code></strong> - Area charts.</li>
+<li><strong><code>px.bar()</code></strong> - Bar charts.</li>
+<li><strong><code>px.histogram()</code></strong> - Histograms.</li>
+<li><strong><code>px.box()</code></strong> - Box plots.</li>
+<li><strong><code>px.violin()</code></strong> - Violin plots.</li>
+<li><strong><code>px.strip()</code></strong> - Strip plots.</li>
+<li><strong><code>px.ecdf()</code></strong> - Empirical cumulative distribution plots.</li>
+<li><strong><code>px.pie()</code></strong> - Pie charts.</li>
+</ul>
+<h3 id="32-density-and-distribution-charts">3.2 Density and distribution charts</h3>
+<ul>
+<li><strong><code>px.density_heatmap()</code></strong> - 2D density heatmap.</li>
+<li><strong><code>px.density_contour()</code></strong> - Density contour plot.</li>
+</ul>
+<h3 id="33-hierarchical-charts">3.3 Hierarchical charts</h3>
+<ul>
+<li><strong><code>px.treemap()</code></strong> - Treemap.</li>
+<li><strong><code>px.sunburst()</code></strong> - Sunburst.</li>
+<li><strong><code>px.icicle()</code></strong> - Icicle chart.</li>
+<li><strong><code>px.funnel()</code></strong> - Funnel chart.</li>
+<li><strong><code>px.funnel_area()</code></strong> - Funnel area chart.</li>
+</ul>
+<h3 id="34-3d-and-polar-charts">3.4 3D and polar charts</h3>
+<ul>
+<li><strong><code>px.scatter_3d()</code></strong> - 3D scatter.</li>
+<li><strong><code>px.line_3d()</code></strong> - 3D line.</li>
+<li><strong><code>px.scatter_polar()</code></strong> - Polar scatter.</li>
+<li><strong><code>px.line_polar()</code></strong> - Polar line.</li>
+<li><strong><code>px.scatter_ternary()</code></strong> - Ternary scatter.</li>
+<li><strong><code>px.line_ternary()</code></strong> - Ternary line.</li>
+</ul>
+<h3 id="35-map-charts">3.5 Map charts</h3>
+<ul>
+<li><strong><code>px.scatter_mapbox()</code></strong> - Mapbox scatter map.</li>
+<li><strong><code>px.line_mapbox()</code></strong> - Mapbox line map.</li>
+<li><strong><code>px.choropleth()</code></strong> - Choropleth map.</li>
+<li><strong><code>px.choropleth_mapbox()</code></strong> - Choropleth map with Mapbox.</li>
+<li><strong><code>px.scatter_geo()</code></strong> - Geographic scatter plot.</li>
+<li><strong><code>px.line_geo()</code></strong> - Geographic line plot.</li>
+<li><strong><code>px.line_map()</code></strong> - Geographic line plot on map projections.</li>
+</ul>
+<h3 id="36-example-use">3.6 Example use</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iris</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;sepal_width&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Iris scatter&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="4-common-plotly-express-parameters">4. Common Plotly Express parameters</h2>
+<p>Most Plotly Express functions support a shared set of useful parameters.</p>
+<h3 id="41-important-parameters">4.1 Important parameters</h3>
+<ul>
+<li><strong><code>data_frame</code></strong> - Input DataFrame.</li>
+<li><strong><code>x</code></strong> - X-axis variable.</li>
+<li><strong><code>y</code></strong> - Y-axis variable.</li>
+<li><strong><code>color</code></strong> - Group by category or continuous value.</li>
+<li><strong><code>size</code></strong> - Marker size.</li>
+<li><strong><code>symbol</code></strong> - Marker symbol.</li>
+<li><strong><code>facet_row</code></strong> - Create panels by rows.</li>
+<li><strong><code>facet_col</code></strong> - Create panels by columns.</li>
+<li><strong><code>hover_data</code></strong> - Extra hover fields.</li>
+<li><strong><code>text</code></strong> - Text labels.</li>
+<li><strong><code>animation_frame</code></strong> - Create animation frames.</li>
+<li><strong><code>animation_group</code></strong> - Group animated objects.</li>
+<li><strong><code>category_orders</code></strong> - Set category order.</li>
+<li><strong><code>labels</code></strong> - Rename axis or legend labels.</li>
+<li><strong><code>title</code></strong> - Figure title.</li>
+<li><strong><code>template</code></strong> - Use a theme.</li>
+<li><strong><code>log_x</code> / <code>log_y</code></strong> - Log-scale axes.</li>
+<li><strong><code>range_x</code> / <code>range_y</code></strong> - Set axis ranges.</li>
+</ul>
+<h3 id="42-example">4.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;gdpPercap&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;lifeExp&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;continent&quot;</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="s2">&quot;pop&quot;</span><span class="p">,</span>
+    <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">],</span>
+    <span class="n">template</span><span class="o">=</span><span class="s2">&quot;plotly_white&quot;</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="5-figures-and-graph-objects">5. Figures and graph objects</h2>
+<p>Graph Objects gives full control over traces and layout. It is ideal when Plotly Express is not flexible enough.</p>
+<h3 id="51-common-figure-methods">5.1 Common figure methods</h3>
+<ul>
+<li><strong><code>go.Figure()</code></strong> - Create a figure.</li>
+<li><strong><code>add_trace()</code></strong> - Add a trace.</li>
+<li><strong><code>add_traces()</code></strong> - Add multiple traces.</li>
+<li><strong><code>add_shape()</code></strong> - Add a shape.</li>
+<li><strong><code>add_annotation()</code></strong> - Add annotation.</li>
+<li><strong><code>add_vline()</code></strong> - Add vertical line.</li>
+<li><strong><code>add_hline()</code></strong> - Add horizontal line.</li>
+<li><strong><code>update_layout()</code></strong> - Update layout settings.</li>
+<li><strong><code>update_traces()</code></strong> - Update trace settings.</li>
+<li><strong><code>update_xaxes()</code></strong> - Update x-axis settings.</li>
+<li><strong><code>update_yaxes()</code></strong> - Update y-axis settings.</li>
+<li><strong><code>show()</code></strong> - Display figure.</li>
+<li><strong><code>write_html()</code></strong> - Save as HTML.</li>
+<li><strong><code>write_image()</code></strong> - Save as static image.</li>
+</ul>
+<h3 id="52-example">5.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines+markers&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Series A&quot;</span><span class="p">))[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">5</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Line chart&quot;</span><span class="p">,</span> <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="6-scatter-and-line-charts">6. Scatter and line charts</h2>
+<p>Scatter and line plots are among the most commonly used Plotly charts.</p>
+<h3 id="61-use-cases">6.1 Use cases</h3>
+<ul>
+<li>Explore relationships between two variables.</li>
+<li>Show trends over time.</li>
+<li>Compare groups with color and symbol.</li>
+<li>Add hover details for analysis.</li>
+</ul>
+<h3 id="62-plotly-express-example">6.2 Plotly Express example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gapminder</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;year == 2007&quot;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;gdpPercap&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;lifeExp&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;continent&quot;</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="s2">&quot;pop&quot;</span><span class="p">,</span>
+    <span class="n">log_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Gapminder 2007&quot;</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="63-graph-objects-example">6.3 Graph Objects example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines+markers&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Squared&quot;</span><span class="p">))[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">6</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Linear&quot;</span><span class="p">))[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="7-bar-and-histogram-charts">7. Bar and histogram charts</h2>
+<p>Bar charts are useful for categorical comparison, while histograms show distributions.</p>
+<h3 id="71-use-cases">7.1 Use cases</h3>
+<ul>
+<li>Compare categories.</li>
+<li>Show counts or totals.</li>
+<li>Visualize distributions and frequencies.</li>
+</ul>
+<h3 id="72-example-bar-chart">7.2 Example: bar chart</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Berlin&quot;</span><span class="p">,</span> <span class="s2">&quot;Köln&quot;</span><span class="p">,</span> <span class="s2">&quot;Munich&quot;</span><span class="p">],</span> <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.7</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]})</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;city&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Population&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="73-example-histogram">7.3 Example: histogram</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tips</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bill distribution&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="8-box-violin-and-strip-plots">8. Box, violin, and strip plots</h2>
+<p>These plots are useful for comparing distributions across groups.</p>
+<h3 id="81-use-cases">8.1 Use cases</h3>
+<ul>
+<li>Detect spread and outliers.</li>
+<li>Compare group distributions.</li>
+<li>Visualize medians and quartiles.</li>
+</ul>
+<h3 id="82-example">8.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tips</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bills by day&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="83-example-use">8.3 Example use</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="9-pie-and-funnel-charts">9. Pie and funnel charts</h2>
+<p>These charts are used for proportions and sequential stages.</p>
+<h3 id="91-use-cases">9.1 Use cases</h3>
+<ul>
+<li>Show part-to-whole relationships.</li>
+<li>Represent pipeline or process drop-off.</li>
+</ul>
+<h3 id="92-example-pie-chart">9.2 Example: pie chart</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">})[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Share&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="93-example-funnel-chart">9.3 Example: funnel chart</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;stage&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Visit&quot;</span><span class="p">,</span> <span class="s2">&quot;Signup&quot;</span><span class="p">,</span> <span class="s2">&quot;Trial&quot;</span><span class="p">,</span> <span class="s2">&quot;Paid&quot;</span><span class="p">],</span> <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">})[</span><span class="mi">8</span><span class="p">][</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">funnel</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;stage&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Conversion Funnel&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="10-heatmaps-and-contour-plots">10. Heatmaps and contour plots</h2>
+<p>These plots help visualize density, correlation, and spatial-like patterns.</p>
+<h3 id="101-use-cases">10.1 Use cases</h3>
+<ul>
+<li>Show 2D density.</li>
+<li>Explore bivariate concentration.</li>
+<li>Visualize matrices or regular grids.</li>
+</ul>
+<h3 id="102-example-density-heatmap">10.2 Example: density heatmap</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iris</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">density_heatmap</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;sepal_width&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Density heatmap&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="103-example-density-contour">10.3 Example: density contour</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">density_contour</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;sepal_width&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Density contour&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="11-3d-charts">11. 3D charts</h2>
+<p>Plotly supports 3D scatter, line, mesh, and surface plots.</p>
+<h3 id="111-use-cases">11.1 Use cases</h3>
+<ul>
+<li>Visualize three-dimensional relationships.</li>
+<li>Show surfaces or volumetric structure.</li>
+<li>Explore geospatial or scientific data.</li>
+</ul>
+<h3 id="112-example-3d-scatter">11.2 Example: 3D scatter</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iris</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sepal_width&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s2">&quot;petal_length&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="113-example-surface-plot">11.3 Example: surface plot</h3>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">Z</span><span class="p">)])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="12-geographic-charts">12. Geographic charts</h2>
+<p>Plotly includes several options for geographic data visualization.</p>
+<h3 id="121-use-cases">12.1 Use cases</h3>
+<ul>
+<li>Map point locations.</li>
+<li>Display thematic choropleth values.</li>
+<li>Show routes or spatial distributions.</li>
+</ul>
+<h3 id="122-example-geographic-scatter">12.2 Example: geographic scatter</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Berlin&quot;</span><span class="p">,</span> <span class="s2">&quot;Köln&quot;</span><span class="p">,</span> <span class="s2">&quot;Munich&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">52.52</span><span class="p">,</span> <span class="mf">50.94</span><span class="p">,</span> <span class="mf">48.14</span><span class="p">],</span>
+    <span class="s2">&quot;lon&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">13.40</span><span class="p">,</span> <span class="mf">6.96</span><span class="p">,</span> <span class="mf">11.58</span><span class="p">],</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:[</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_geo</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;city&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Cities&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="123-example-choropleth">12.3 Example: choropleth</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;DEU&quot;</span><span class="p">,</span> <span class="s2">&quot;FRA&quot;</span><span class="p">,</span> <span class="s2">&quot;NLD&quot;</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">})[</span><span class="mi">11</span><span class="p">][</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">choropleth</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">locations</span><span class="o">=</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">locationmode</span><span class="o">=</span><span class="s2">&quot;ISO-3&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Country values&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="13-hierarchical-charts">13. Hierarchical charts</h2>
+<p>Hierarchy charts show nested relationships between categories.</p>
+<h3 id="131-use-cases">13.1 Use cases</h3>
+<ul>
+<li>Explore composition across levels.</li>
+<li>Show parent-child category structure.</li>
+<li>Summarize hierarchical data.</li>
+</ul>
+<h3 id="132-common-methods">13.2 Common methods</h3>
+<ul>
+<li><strong><code>px.treemap()</code></strong> - Nested rectangles.</li>
+<li><strong><code>px.sunburst()</code></strong> - Nested rings.</li>
+<li><strong><code>px.icicle()</code></strong> - Nested vertical rectangles.</li>
+</ul>
+<h3 id="133-example">13.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tips</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">treemap</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Treemap&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="14-animation-and-faceting">14. Animation and faceting</h2>
+<p>Facets split plots into multiple panels, while animations step through time or categories.</p>
+<h3 id="141-use-cases">14.1 Use cases</h3>
+<ul>
+<li>Compare multiple subgroups.</li>
+<li>Show trends across time.</li>
+<li>Create small-multiple visual analysis.</li>
+</ul>
+<h3 id="142-example-facet-plot">14.2 Example: facet plot</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tips</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">facet_col</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="143-example-animation">14.3 Example: animation</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gapminder</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;gdpPercap&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;lifeExp&quot;</span><span class="p">,</span> <span class="n">animation_frame</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;continent&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;pop&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="15-layout-and-styling">15. Layout and styling</h2>
+<p>Plotly figures are highly customizable through layout and theme settings.</p>
+<h3 id="151-common-layout-methods">15.1 Common layout methods</h3>
+<ul>
+<li><strong><code>update_layout()</code></strong> - Change title, margins, legend, template, and more.</li>
+<li><strong><code>update_traces()</code></strong> - Change markers, lines, hover, and text.</li>
+<li><strong><code>update_xaxes()</code></strong> - Customize x-axis.</li>
+<li><strong><code>update_yaxes()</code></strong> - Customize y-axis.</li>
+</ul>
+<h3 id="152-common-styling-options">15.2 Common styling options</h3>
+<ul>
+<li><code>template</code></li>
+<li><code>title</code></li>
+<li><code>width</code></li>
+<li><code>height</code></li>
+<li><code>margin</code></li>
+<li><code>font</code></li>
+<li><code>colorway</code></li>
+<li><code>showlegend</code></li>
+</ul>
+<h3 id="153-example">15.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Trend&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="s2">&quot;plotly_dark&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="16-hover-labels-and-text">16. Hover, labels, and text</h2>
+<p>Hover interactions are one of Plotly’s major strengths.</p>
+<h3 id="161-common-options">16.1 Common options</h3>
+<ul>
+<li><strong><code>hover_data</code></strong> - Add extra hover fields.</li>
+<li><strong><code>hover_name</code></strong> - Bold label in hover tooltip.</li>
+<li><strong><code>text</code></strong> - Display text on marks.</li>
+<li><strong><code>labels</code></strong> - Rename displayed field names.</li>
+<li><strong><code>hovertemplate</code></strong> - Fine control over hover content.</li>
+</ul>
+<h3 id="162-example">16.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;gdpPercap&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;lifeExp&quot;</span><span class="p">,</span>
+    <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;pop&quot;</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gdpPercap&quot;</span><span class="p">:</span> <span class="s2">&quot;GDP per Capita&quot;</span><span class="p">,</span> <span class="s2">&quot;lifeExp&quot;</span><span class="p">:</span> <span class="s2">&quot;Life Expectancy&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="17-exporting-figures">17. Exporting figures</h2>
+<p>Plotly figures can be saved as interactive HTML or static files.</p>
+<h3 id="171-common-export-methods">17.1 Common export methods</h3>
+<ul>
+<li><strong><code>write_html()</code></strong> - Save interactive HTML.</li>
+<li><strong><code>write_image()</code></strong> - Save static image.</li>
+<li><strong><code>to_html()</code></strong> - Return HTML string.</li>
+<li><strong><code>show()</code></strong> - Display figure.</li>
+</ul>
+<h3 id="172-example">17.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;plot.html&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s2">&quot;plot.png&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="18-use-case-guide">18. Use case guide</h2>
+<h3 id="181-when-to-use-plotly-express">18.1 When to use Plotly Express</h3>
+<ul>
+<li>Fast exploratory visualization.</li>
+<li>DataFrame-based analysis.</li>
+<li>Interactive dashboards.</li>
+<li>Small to medium complexity charts.</li>
+</ul>
+<h3 id="182-when-to-use-graph-objects">18.2 When to use Graph Objects</h3>
+<ul>
+<li>Fine control over traces and layout.</li>
+<li>Multiple custom traces in one figure.</li>
+<li>Financial, scientific, or highly customized charts.</li>
+<li>Advanced annotation or subplot control.</li>
+</ul>
+<hr />
+<h2 id="19-useful-workflow-examples">19. Useful workflow examples</h2>
+<h3 id="191-scatter-with-trend-and-facets">19.1 Scatter with trend and facets</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tips</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="n">facet_col</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">trendline</span><span class="o">=</span><span class="s2">&quot;ols&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="192-grouped-bar-chart">19.2 Grouped bar chart</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:[</span><span class="mi">12</span><span class="p">][</span><span class="mi">13</span><span class="p">][</span><span class="mi">14</span><span class="p">][</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">barmode</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="193-line-chart-with-markers">19.3 Line chart with markers</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="20-quick-reference-table">20. Quick reference table</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Key methods</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plotly Express</td>
+<td><code>px.scatter()</code>, <code>px.line()</code>, <code>px.bar()</code></td>
+<td>Fast chart creation.</td>
+</tr>
+<tr>
+<td>Distributions</td>
+<td><code>px.histogram()</code>, <code>px.box()</code>, <code>px.violin()</code></td>
+<td>Explore data spread.</td>
+</tr>
+<tr>
+<td>Hierarchy</td>
+<td><code>px.treemap()</code>, <code>px.sunburst()</code></td>
+<td>Show nested structure.</td>
+</tr>
+<tr>
+<td>Maps</td>
+<td><code>px.scatter_geo()</code>, <code>px.choropleth()</code></td>
+<td>Visualize spatial data.</td>
+</tr>
+<tr>
+<td>3D</td>
+<td><code>px.scatter_3d()</code>, <code>go.Surface()</code></td>
+<td>Show three-dimensional data.</td>
+</tr>
+<tr>
+<td>Layout</td>
+<td><code>update_layout()</code></td>
+<td>Control figure appearance.</td>
+</tr>
+<tr>
+<td>Trace edits</td>
+<td><code>update_traces()</code></td>
+<td>Refine markers, lines, and hover.</td>
+</tr>
+<tr>
+<td>Export</td>
+<td><code>write_html()</code>, <code>write_image()</code></td>
+<td>Save interactive or static outputs.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="21-example-full-workflow">21. Example full workflow</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">gapminder</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;year == 2007&quot;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;gdpPercap&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;lifeExp&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;continent&quot;</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="s2">&quot;pop&quot;</span><span class="p">,</span>
+    <span class="n">hover_name</span><span class="o">=</span><span class="s2">&quot;country&quot;</span><span class="p">,</span>
+    <span class="n">log_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">template</span><span class="o">=</span><span class="s2">&quot;plotly_white&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Gapminder 2007&quot;</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; [YOUR NAME]
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shiwakotisurendra" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/geosuren" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:shiwakotisurendra@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

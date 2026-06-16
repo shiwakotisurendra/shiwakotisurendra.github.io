@@ -1,0 +1,2971 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfolio of Surendra Shiwakoti — GIS, Remote Sensing, and Spatial Data Science">
+      
+      
+        <meta name="author" content="Surendra Shiwakoti">
+      
+      
+        <link rel="canonical" href="https://shiwakotisurendra.github.io/Tutorials/matplotlib_methods/">
+      
+      
+        <link rel="prev" href="../gdal/">
+      
+      
+        <link rel="next" href="../plotly/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Matplotlib methods - Surendra Shiwakoti - Geospatial Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#complete-matplotlib-methods-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-header__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Surendra Shiwakoti - Geospatial Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Matplotlib methods
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Publications
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../experience/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Experience
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../infoTool_reference/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contact
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-nav__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    Surendra Shiwakoti - Geospatial Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Notebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infoTool_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InfoTool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raster Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_qgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate QGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_arcgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate ArcGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gdal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib methods
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-import-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common import patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-recommended-object-oriented-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Recommended object-oriented pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-figure-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Figure creation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Figure creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-core-figure-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Core figure methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-common-signatures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Common signatures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-axes-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Axes basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Axes basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-core-axes-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Core axes methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-titles-and-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Titles and labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-limits-and-scales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Limits and scales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-ticks-and-grids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Ticks and grids
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-pyplot-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Pyplot interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Pyplot interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-frequently-used-pyplot-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Frequently used pyplot methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-when-pyplot-works-well" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 When pyplot works well
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-artists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Artists
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Artists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-artist-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common artist categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-artist-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Artist methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-example-with-patch-artist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Example with patch artist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-layout-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Layout management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Layout management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-layout-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Layout methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-example-grid-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Example grid layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-styling-and-appearance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Styling and appearance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Styling and appearance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-global-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Global styling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-common-plot-styling-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Common plot styling arguments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example-style-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example style usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-text-and-annotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Text and annotation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Text and annotation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-text-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Text methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-annotation-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Annotation example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-legends-and-colorbars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Legends and colorbars
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Legends and colorbars">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-legend-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Legend methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-colorbar-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Colorbar methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-transforms-and-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Transforms and coordinates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Transforms and coordinates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-important-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Important transforms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-example-with-axes-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Example with axes coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-common-plot-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Common plot types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Common plot types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-basic-statistical-and-scientific-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Basic statistical and scientific plots
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-matrix-and-raster-like-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Matrix and raster-like plots
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-saving-and-exporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Saving and exporting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Saving and exporting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-export-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Export methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-common-export-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Common export options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-useful-workflow-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Useful workflow examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Useful workflow examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-simple-line-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Simple line chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-scatter-plot-with-color-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Scatter plot with color mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-multi-panel-figure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Multi-panel figure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    plotly
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xarray_and_rioxarray/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xarray and Rioxarray
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../folium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    folium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geemap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    geemap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    opencv
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn_examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scikit-learn examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earthpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    earthpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-import-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common import patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-recommended-object-oriented-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Recommended object-oriented pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-figure-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Figure creation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Figure creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-core-figure-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Core figure methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-common-signatures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Common signatures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-axes-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Axes basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Axes basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-core-axes-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Core axes methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-titles-and-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Titles and labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-limits-and-scales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Limits and scales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-ticks-and-grids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Ticks and grids
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-pyplot-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Pyplot interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Pyplot interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-frequently-used-pyplot-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Frequently used pyplot methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-when-pyplot-works-well" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 When pyplot works well
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-artists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Artists
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Artists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-artist-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common artist categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-artist-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Artist methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-example-with-patch-artist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Example with patch artist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-layout-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Layout management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Layout management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-layout-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Layout methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-example-grid-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Example grid layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-styling-and-appearance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Styling and appearance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Styling and appearance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-global-styling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Global styling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-common-plot-styling-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Common plot styling arguments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example-style-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example style usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-text-and-annotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Text and annotation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Text and annotation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-text-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Text methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-annotation-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Annotation example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-legends-and-colorbars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Legends and colorbars
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Legends and colorbars">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-legend-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Legend methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-colorbar-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Colorbar methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-transforms-and-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Transforms and coordinates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Transforms and coordinates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-important-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Important transforms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-example-with-axes-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Example with axes coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-common-plot-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Common plot types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Common plot types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-basic-statistical-and-scientific-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Basic statistical and scientific plots
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-matrix-and-raster-like-plots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Matrix and raster-like plots
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-saving-and-exporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Saving and exporting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Saving and exporting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-export-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Export methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-common-export-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Common export options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-useful-workflow-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Useful workflow examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Useful workflow examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-simple-line-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Simple line chart
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-scatter-plot-with-color-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Scatter plot with color mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-multi-panel-figure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Multi-panel figure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="complete-matplotlib-methods-reference">Complete Matplotlib Methods Reference</h1>
+<h2 id="1-core-concepts">1. Core concepts</h2>
+<p>Matplotlib provides both a state-based <code>pyplot</code> interface and an object-oriented interface built around <code>Figure</code> and <code>Axes</code> objects. The object-oriented approach is the recommended pattern when more control and customization are needed.</p>
+<h3 id="11-main-objects">1.1 Main objects</h3>
+<ul>
+<li><strong>Figure</strong>: the top-level container for everything drawn in a plot.</li>
+<li><strong>Axes</strong>: the plotting area where most data, labels, scales, and annotations are added.</li>
+<li><strong>Artist</strong>: everything visible on a figure, including lines, text, axes, legends, and patches.</li>
+<li><strong>Canvas</strong>: the rendering target where artists are drawn.</li>
+</ul>
+<h3 id="12-common-import-patterns">1.2 Common import patterns</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+</code></pre></div>
+<h3 id="13-recommended-object-oriented-pattern">1.3 Recommended object-oriented pattern</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Sine wave&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="2-figure-creation">2. Figure creation</h2>
+<p>Figures can be created directly with <code>plt.figure()</code> or more commonly with <code>plt.subplots()</code>, which returns both the <code>Figure</code> and one or more <code>Axes</code> objects.</p>
+<h3 id="21-core-figure-methods">2.1 Core figure methods</h3>
+<ul>
+<li><strong><code>plt.figure()</code></strong> - Create a new empty figure.</li>
+<li><strong><code>plt.subplots()</code></strong> - Create a figure and a grid of subplots in one call.</li>
+<li><strong><code>fig.add_axes()</code></strong> - Add axes at an explicit position in figure coordinates.</li>
+<li><strong><code>fig.add_subplot()</code></strong> - Add a subplot by grid position.</li>
+<li><strong><code>fig.subplots()</code></strong> - Create subplots from an existing figure.</li>
+<li><strong><code>fig.suptitle()</code></strong> - Add a figure-level title.</li>
+<li><strong><code>fig.text()</code></strong> - Add text in figure coordinates.</li>
+<li><strong><code>fig.legend()</code></strong> - Add a figure-level legend.</li>
+<li><strong><code>fig.colorbar()</code></strong> - Add a colorbar linked to a mappable artist.</li>
+<li><strong><code>fig.savefig()</code></strong> - Save the figure to a file.</li>
+<li><strong><code>fig.set_facecolor()</code></strong> - Set figure background color.</li>
+<li><strong><code>plt.close()</code></strong> - Close a figure and release memory.</li>
+</ul>
+<h3 id="22-common-signatures">2.2 Common signatures</h3>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;constrained&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
+</code></pre></div>
+<hr />
+<h2 id="3-axes-basics">3. Axes basics</h2>
+<p>The <code>Axes</code> object is the main gateway to plotting methods, axis labels, titles, limits, scales, and styling. Most plotting work happens through methods called on <code>ax</code>.</p>
+<h3 id="31-core-axes-methods">3.1 Core axes methods</h3>
+<ul>
+<li><strong><code>ax.plot()</code></strong> - Plot lines or markers.</li>
+<li><strong><code>ax.scatter()</code></strong> - Plot point markers.</li>
+<li><strong><code>ax.bar()</code></strong> - Plot vertical bars.</li>
+<li><strong><code>ax.barh()</code></strong> - Plot horizontal bars.</li>
+<li><strong><code>ax.hist()</code></strong> - Plot histograms.</li>
+<li><strong><code>ax.imshow()</code></strong> - Display image or raster-like arrays.</li>
+<li><strong><code>ax.contour()</code></strong> - Draw contour lines.</li>
+<li><strong><code>ax.contourf()</code></strong> - Draw filled contours.</li>
+<li><strong><code>ax.boxplot()</code></strong> - Draw boxplots.</li>
+<li><strong><code>ax.violinplot()</code></strong> - Draw violin plots.</li>
+<li><strong><code>ax.errorbar()</code></strong> - Plot data with error bars.</li>
+<li><strong><code>ax.fill_between()</code></strong> - Fill area between curves.</li>
+<li><strong><code>ax.stem()</code></strong> - Plot stem charts.</li>
+<li><strong><code>ax.step()</code></strong> - Plot step lines.</li>
+<li><strong><code>ax.stackplot()</code></strong> - Plot stacked area charts.</li>
+<li><strong><code>ax.pie()</code></strong> - Plot a pie chart.</li>
+</ul>
+<h3 id="32-titles-and-labels">3.2 Titles and labels</h3>
+<ul>
+<li><strong><code>ax.set_title()</code></strong> - Set axes title.</li>
+<li><strong><code>ax.set_xlabel()</code></strong> - Set x-axis label.</li>
+<li><strong><code>ax.set_ylabel()</code></strong> - Set y-axis label.</li>
+<li><strong><code>ax.set()</code></strong> - Set multiple properties in one call.</li>
+</ul>
+<h3 id="33-limits-and-scales">3.3 Limits and scales</h3>
+<ul>
+<li><strong><code>ax.set_xlim()</code></strong> - Set x limits.</li>
+<li><strong><code>ax.set_ylim()</code></strong> - Set y limits.</li>
+<li><strong><code>ax.set_xscale()</code></strong> - Set x scale, such as <code>linear</code> or <code>log</code>.</li>
+<li><strong><code>ax.set_yscale()</code></strong> - Set y scale.</li>
+<li><strong><code>ax.invert_xaxis()</code></strong> - Reverse x direction.</li>
+<li><strong><code>ax.invert_yaxis()</code></strong> - Reverse y direction.</li>
+</ul>
+<h3 id="34-ticks-and-grids">3.4 Ticks and grids</h3>
+<ul>
+<li><strong><code>ax.set_xticks()</code></strong> - Set x tick positions.</li>
+<li><strong><code>ax.set_yticks()</code></strong> - Set y tick positions.</li>
+<li><strong><code>ax.set_xticklabels()</code></strong> - Set x tick labels.</li>
+<li><strong><code>ax.set_yticklabels()</code></strong> - Set y tick labels.</li>
+<li><strong><code>ax.tick_params()</code></strong> - Style ticks and tick labels.</li>
+<li><strong><code>ax.grid()</code></strong> - Toggle or style grid lines.</li>
+<li><strong><code>ax.minorticks_on()</code></strong> - Enable minor ticks.</li>
+<li><strong><code>ax.minorticks_off()</code></strong> - Disable minor ticks.</li>
+</ul>
+<hr />
+<h2 id="4-pyplot-interface">4. Pyplot interface</h2>
+<p><code>matplotlib.pyplot</code> is a state-based interface that changes the current figure and axes implicitly, which makes it convenient for interactive work and simple scripts.</p>
+<h3 id="41-frequently-used-pyplot-methods">4.1 Frequently used pyplot methods</h3>
+<ul>
+<li><strong><code>plt.plot()</code></strong> - Plot on the current axes.</li>
+<li><strong><code>plt.scatter()</code></strong> - Scatter plot on the current axes.</li>
+<li><strong><code>plt.bar()</code></strong> - Bar chart on the current axes.</li>
+<li><strong><code>plt.hist()</code></strong> - Histogram on the current axes.</li>
+<li><strong><code>plt.imshow()</code></strong> - Show an image.</li>
+<li><strong><code>plt.title()</code></strong> - Set title on current axes.</li>
+<li><strong><code>plt.xlabel()</code></strong> - Set x label.</li>
+<li><strong><code>plt.ylabel()</code></strong> - Set y label.</li>
+<li><strong><code>plt.legend()</code></strong> - Add legend.</li>
+<li><strong><code>plt.grid()</code></strong> - Add or style grid.</li>
+<li><strong><code>plt.xlim()</code></strong> - Set x limits.</li>
+<li><strong><code>plt.ylim()</code></strong> - Set y limits.</li>
+<li><strong><code>plt.tight_layout()</code></strong> - Improve subplot spacing.</li>
+<li><strong><code>plt.show()</code></strong> - Display the figure.</li>
+<li><strong><code>plt.savefig()</code></strong> - Save the current figure.</li>
+</ul>
+<h3 id="42-when-pyplot-works-well">4.2 When pyplot works well</h3>
+<ul>
+<li>Quick exploratory plots.</li>
+<li>Interactive sessions and notebooks.</li>
+<li>Small scripts with a single figure or simple layouts.</li>
+</ul>
+<hr />
+<h2 id="5-artists">5. Artists</h2>
+<p>Everything visible in Matplotlib is an <code>Artist</code>, and artists are usually attached to an <code>Axes</code> or a <code>Figure</code>. Helper methods such as <code>ax.plot()</code> or <code>ax.text()</code> create artist objects for you automatically.</p>
+<h3 id="51-common-artist-categories">5.1 Common artist categories</h3>
+<ul>
+<li><strong>Line2D</strong> - created by <code>ax.plot()</code>.</li>
+<li><strong>Text</strong> - created by titles, labels, and <code>ax.text()</code>.</li>
+<li><strong>Patch</strong> - rectangles, circles, polygons, and similar shapes.</li>
+<li><strong>Collection</strong> - groups of objects such as scatter points.</li>
+<li><strong>Image</strong> - created by <code>ax.imshow()</code>.</li>
+<li><strong>Legend</strong> - created by <code>ax.legend()</code>.</li>
+</ul>
+<h3 id="52-artist-methods">5.2 Artist methods</h3>
+<ul>
+<li><strong><code>artist.set_visible()</code></strong> - Show or hide an artist.</li>
+<li><strong><code>artist.remove()</code></strong> - Remove the artist from the axes or figure.</li>
+<li><strong><code>ax.add_artist()</code></strong> - Add an artist manually to an axes.</li>
+<li><strong><code>fig.add_artist()</code></strong> - Add an artist directly to a figure.</li>
+</ul>
+<h3 id="53-example-with-patch-artist">5.3 Example with patch artist</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpatches</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">mpatches</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="6-layout-management">6. Layout management</h2>
+<p>Matplotlib supports multiple ways to arrange axes, from simple subplot grids to more manual placement.</p>
+<h3 id="61-layout-methods">6.1 Layout methods</h3>
+<ul>
+<li><strong><code>plt.subplots()</code></strong> - Create a regular grid of axes.</li>
+<li><strong><code>fig.add_subplot()</code></strong> - Add axes by subplot index.</li>
+<li><strong><code>fig.add_axes()</code></strong> - Add axes at exact figure coordinates.</li>
+<li><strong><code>plt.tight_layout()</code></strong> - Automatically adjust spacing.</li>
+<li><strong><code>layout="constrained"</code></strong> - Use constrained layout for better spacing.</li>
+<li><strong><code>fig.subplots_adjust()</code></strong> - Manually adjust subplot margins and spacing.</li>
+<li><strong><code>ax.inset_axes()</code></strong> - Create inset axes.</li>
+</ul>
+<h3 id="62-example-grid-layout">6.2 Example grid layout</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;constrained&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">plot</span><span class="p">(,</span> <span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">scatter</span><span class="p">(,</span> <span class="p">)[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span> <span class="p">)[</span><span class="mi">4</span><span class="p">][</span><span class="mi">6</span><span class="p">][</span><span class="mi">7</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">axs</span><span class="o">.</span><span class="n">hist</span><span class="p">()[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+<hr />
+<h2 id="7-styling-and-appearance">7. Styling and appearance</h2>
+<p>Matplotlib includes style sheets and property-based customization for lines, markers, text, patches, and figure appearance.</p>
+<h3 id="71-global-styling">7.1 Global styling</h3>
+<ul>
+<li><strong><code>plt.style.use()</code></strong> - Apply a style sheet.</li>
+<li><strong><code>mpl.rcParams[...]</code></strong> - Set global defaults.</li>
+<li><strong><code>mpl.rc()</code></strong> - Configure groups of rc parameters.</li>
+</ul>
+<h3 id="72-common-plot-styling-arguments">7.2 Common plot styling arguments</h3>
+<ul>
+<li><code>color</code></li>
+<li><code>linewidth</code></li>
+<li><code>linestyle</code></li>
+<li><code>marker</code></li>
+<li><code>markersize</code></li>
+<li><code>alpha</code></li>
+<li><code>label</code></li>
+<li><code>facecolor</code></li>
+<li><code>edgecolor</code></li>
+</ul>
+<h3 id="73-example-style-usage">7.3 Example style usage</h3>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;ggplot&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(,,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkred&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span>
+</code></pre></div>
+<hr />
+<h2 id="8-text-and-annotation">8. Text and annotation</h2>
+<p>Text elements are artists, and annotations can be placed in data, axes, or figure coordinate systems depending on the transform used.</p>
+<h3 id="81-text-methods">8.1 Text methods</h3>
+<ul>
+<li><strong><code>ax.text()</code></strong> - Add text at data coordinates by default.</li>
+<li><strong><code>fig.text()</code></strong> - Add text in figure coordinates by default.</li>
+<li><strong><code>ax.annotate()</code></strong> - Add annotation with optional arrow.</li>
+<li><strong><code>ax.set_title()</code></strong> - Add title.</li>
+<li><strong><code>ax.set_xlabel()</code></strong> - Add x-axis label.</li>
+<li><strong><code>ax.set_ylabel()</code></strong> - Add y-axis label.</li>
+</ul>
+<h3 id="82-annotation-example">8.2 Annotation example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(,</span> <span class="p">)[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Peak&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">),</span>
+            <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">})</span>
+</code></pre></div>
+<hr />
+<h2 id="9-legends-and-colorbars">9. Legends and colorbars</h2>
+<p>Legends explain plotted artists, while colorbars communicate the mapping between data values and colors for images, scatter plots, and other mappables.</p>
+<h3 id="91-legend-methods">9.1 Legend methods</h3>
+<ul>
+<li><strong><code>ax.legend()</code></strong> - Add an axes-level legend.</li>
+<li><strong><code>fig.legend()</code></strong> - Add a figure-level legend.</li>
+<li><strong><code>ax.get_legend_handles_labels()</code></strong> - Retrieve handles and labels.</li>
+</ul>
+<h3 id="92-colorbar-methods">9.2 Colorbar methods</h3>
+<ul>
+<li><strong><code>fig.colorbar()</code></strong> - Add a colorbar to a figure.</li>
+<li><strong><code>plt.colorbar()</code></strong> - Add a colorbar using pyplot state.</li>
+</ul>
+<hr />
+<h2 id="10-transforms-and-coordinates">10. Transforms and coordinates</h2>
+<p>Matplotlib uses built-in transforms such as data coordinates, axes coordinates, and figure coordinates to position artists precisely. <code>ax.transData</code> uses data space, <code>ax.transAxes</code> maps the axes from 0 to 1, and <code>fig.transFigure</code> maps the figure from 0 to 1.</p>
+<h3 id="101-important-transforms">10.1 Important transforms</h3>
+<ul>
+<li><strong><code>ax.transData</code></strong> - Data coordinate system.</li>
+<li><strong><code>ax.transAxes</code></strong> - Axes coordinate system from <code>(0, 0)</code> to <code>(1, 1)</code>.</li>
+<li><strong><code>fig.transFigure</code></strong> - Figure coordinate system from <code>(0, 0)</code> to <code>(1, 1)</code>.</li>
+<li><strong><code>matplotlib.transforms</code></strong> - Utilities for custom transforms.</li>
+</ul>
+<h3 id="102-example-with-axes-coordinates">10.2 Example with axes coordinates</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(,</span> <span class="p">)[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s2">&quot;Top right&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+        <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="11-common-plot-types">11. Common plot types</h2>
+<p>The gallery and examples section shows a wide range of plot types, including line, scatter, bar, histogram, image, contour, and statistical graphics.</p>
+<h3 id="111-basic-statistical-and-scientific-plots">11.1 Basic statistical and scientific plots</h3>
+<ul>
+<li><strong><code>ax.plot()</code></strong> - Line plots.</li>
+<li><strong><code>ax.scatter()</code></strong> - Scatter plots.</li>
+<li><strong><code>ax.bar()</code> / <code>ax.barh()</code></strong> - Bar charts.</li>
+<li><strong><code>ax.hist()</code></strong> - Histograms.</li>
+<li><strong><code>ax.boxplot()</code></strong> - Boxplots.</li>
+<li><strong><code>ax.violinplot()</code></strong> - Violin plots.</li>
+<li><strong><code>ax.errorbar()</code></strong> - Error-bar plots.</li>
+<li><strong><code>ax.fill_between()</code></strong> - Confidence or area fills.</li>
+</ul>
+<h3 id="112-matrix-and-raster-like-plots">11.2 Matrix and raster-like plots</h3>
+<ul>
+<li><strong><code>ax.imshow()</code></strong> - Render a 2D array as an image.</li>
+<li><strong><code>ax.matshow()</code></strong> - Matrix display.</li>
+<li><strong><code>ax.pcolormesh()</code></strong> - Pseudocolor mesh.</li>
+<li><strong><code>ax.contour()</code></strong> - Contour lines.</li>
+<li><strong><code>ax.contourf()</code></strong> - Filled contours.</li>
+</ul>
+<hr />
+<h2 id="12-saving-and-exporting">12. Saving and exporting</h2>
+<p>Matplotlib figures can be saved to files with figure-level or pyplot-level save functions.</p>
+<h3 id="121-export-methods">12.1 Export methods</h3>
+<ul>
+<li><strong><code>fig.savefig()</code></strong> - Save the current figure to a file.</li>
+<li><strong><code>plt.savefig()</code></strong> - Save via pyplot.</li>
+</ul>
+<h3 id="122-common-export-options">12.2 Common export options</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plot.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plot.pdf&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plot.svg&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="13-useful-workflow-examples">13. Useful workflow examples</h2>
+<h3 id="131-simple-line-chart">13.1 Simple line chart</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Sine function&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="132-scatter-plot-with-color-mapping">13.2 Scatter plot with color mapping</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Colored scatter plot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="133-multi-panel-figure">13.3 Multi-panel figure</h3>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;constrained&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(,</span> <span class="p">)[</span><span class="mi">4</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="14-quick-reference-table">14. Quick reference table</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Key objects or methods</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Figure creation</td>
+<td><code>plt.figure()</code>, <code>plt.subplots()</code>, <code>fig.add_axes()</code></td>
+<td>Create figure containers and axes.</td>
+</tr>
+<tr>
+<td>Plotting</td>
+<td><code>ax.plot()</code>, <code>ax.scatter()</code>, <code>ax.bar()</code>, <code>ax.imshow()</code></td>
+<td>Draw data in different visual forms.</td>
+</tr>
+<tr>
+<td>Labels</td>
+<td><code>ax.set_title()</code>, <code>ax.set_xlabel()</code>, <code>ax.set_ylabel()</code></td>
+<td>Add titles and axis labels.</td>
+</tr>
+<tr>
+<td>Layout</td>
+<td><code>layout="constrained"</code>, <code>plt.tight_layout()</code>, <code>fig.subplots_adjust()</code></td>
+<td>Control spacing and arrangement.</td>
+</tr>
+<tr>
+<td>Styling</td>
+<td><code>plt.style.use()</code>, <code>mpl.rcParams</code></td>
+<td>Apply visual themes and defaults.</td>
+</tr>
+<tr>
+<td>Artists</td>
+<td><code>ax.add_artist()</code>, <code>artist.remove()</code></td>
+<td>Work directly with drawable objects.</td>
+</tr>
+<tr>
+<td>Transforms</td>
+<td><code>ax.transData</code>, <code>ax.transAxes</code>, <code>fig.transFigure</code></td>
+<td>Position items in different coordinate systems.</td>
+</tr>
+<tr>
+<td>Export</td>
+<td><code>fig.savefig()</code>, <code>plt.savefig()</code></td>
+<td>Save outputs to image or vector files.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; [YOUR NAME]
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shiwakotisurendra" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/geosuren" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:shiwakotisurendra@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
