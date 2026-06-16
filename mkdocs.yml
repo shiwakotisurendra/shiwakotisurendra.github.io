@@ -96,21 +96,23 @@ nav:
   - Resources: resources.md
   - Tutorials:
     - "InfoTool": Tutorials/infoTool_reference.md
-    - "python": Tutorials/python.md 
+    - "Learn python": Tutorials/python.md 
     - "Raster Analysis": Tutorials/Tutorials.md
     - "Vector Analysis": Tutorials/vector_analysis.md
     - "Automate QGIS": Tutorials/automate_qgis.md
     - "Automate ArcGIS": Tutorials/automate_arcgis.md
-    - "gdal": Tutorials/gdal.md
+    - "Gdal": Tutorials/gdal.md
     - "Matplotlib methods": Tutorials/matplotlib_methods.md
-    - "plotly": Tutorials/plotly.md
+    - "Plotly": Tutorials/plotly.md
     - "Pandas": Tutorials/pandas.md
     - "Numpy": Tutorials/numpy.md
     - "Xarray and Rioxarray": Tutorials/xarray_and_rioxarray.md
-    - "folium": Tutorials/folium.md
-    - "geemap": Tutorials/geemap.md
-    - "opencv": Tutorials/opencv.md
-    - "scikit-learn": Tutorials/scikit-learn.md
-    - "scikit-learn examples": Tutorials/scikit-learn_examples.md
-    - "earthpy": Tutorials/earthpy.md
+    - "Folium": Tutorials/folium.md
+    - "Geemap": Tutorials/geemap.md
+    - "Pytorch": Tutorials/pytorch.md
+    - "Torchgeo": Tutorials/torchgeo.md
+    - "OpenCV": Tutorials/opencv.md
+    - "Scikit-learn": Tutorials/scikit-learn.md
+    - "Scikit-learn examples": Tutorials/scikit-learn_examples.md
+    - "Earthpy": Tutorials/earthpy.md
   - Contact: contact.md
