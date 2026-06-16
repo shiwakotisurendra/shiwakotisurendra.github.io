@@ -1,0 +1,3821 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Portfolio of Surendra Shiwakoti — GIS, Remote Sensing, and Spatial Data Science">
+      
+      
+        <meta name="author" content="Surendra Shiwakoti">
+      
+      
+        <link rel="canonical" href="https://shiwakotisurendra.github.io/Tutorials/pytorch/">
+      
+      
+        <link rel="prev" href="../geemap/">
+      
+      
+        <link rel="next" href="../torchgeo/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Pytorch - Surendra Shiwakoti - Geospatial Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#complete-pytorch-methods-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-header__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Surendra Shiwakoti - Geospatial Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pytorch
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/" class="md-tabs__link">
+          
+  
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../publications/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Publications
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../experience/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Experience
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../resources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Resources
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../infoTool_reference/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Contact
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Surendra Shiwakoti - Geospatial Portfolio" class="md-nav__button md-logo" aria-label="Surendra Shiwakoti - Geospatial Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+
+    </a>
+    Surendra Shiwakoti - Geospatial Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/sample-notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sample Notebook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../infoTool_reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InfoTool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learn python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raster Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vector Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_qgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate QGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automate_arcgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automate ArcGIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gdal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matplotlib methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plotly/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plotly
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pandas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pandas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Numpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xarray_and_rioxarray/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xarray and Rioxarray
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../folium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Folium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../geemap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geemap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pytorch
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pytorch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main ideas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-basic-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Basic example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tensor-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tensor creation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Tensor creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-creation-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common creation methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tensor-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tensor properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Tensor properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-common-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Common attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-indexing-and-slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Indexing and slicing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Indexing and slicing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-basic-tensor-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Basic tensor operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Basic tensor operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-methods-and-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common methods and operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-shape-manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Shape manipulation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Shape manipulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-device-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Device handling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Device handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-autograd-and-gradients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Autograd and gradients
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Autograd and gradients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-methods-and-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common methods and attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-neural-network-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Neural network modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Neural network modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-loss-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Loss functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Loss functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-losses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common losses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-optimizers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Optimizers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Optimizers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-common-optimizers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Common optimizers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-training-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Training loop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Training loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-main-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Main steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-datasets-and-data-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Datasets and data loading
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Datasets and data loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-saving-and-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Saving and loading
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Saving and loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-common-tensor-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Common tensor utilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Common tensor utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-common-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Common functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-common-workflow-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Common workflow examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Common workflow examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-basic-tensor-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Basic tensor math
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-linear-regression-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Linear regression model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-simple-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 Simple classifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-machine-learning-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Machine learning use cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Machine learning use cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#171-common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 Common use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#172-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example idea:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-good-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Good practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../torchgeo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Torchgeo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenCV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scikit-learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scikit-learn_examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scikit-learn examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../earthpy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Earthpy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Core concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-main-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Main ideas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-common-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Common imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-basic-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Basic example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tensor-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tensor creation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Tensor creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-common-creation-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Common creation methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tensor-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Tensor properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Tensor properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-common-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Common attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-indexing-and-slicing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Indexing and slicing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Indexing and slicing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-common-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Common patterns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-basic-tensor-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Basic tensor operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Basic tensor operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-common-methods-and-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Common methods and operators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-shape-manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Shape manipulation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Shape manipulation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-device-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Device handling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Device handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-autograd-and-gradients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Autograd and gradients
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Autograd and gradients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-common-methods-and-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Common methods and attributes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-neural-network-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Neural network modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Neural network modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-loss-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Loss functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Loss functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-common-losses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Common losses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-optimizers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Optimizers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Optimizers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-common-optimizers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Common optimizers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-training-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Training loop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Training loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-main-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Main steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-datasets-and-data-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Datasets and data loading
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Datasets and data loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-common-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 Common classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-saving-and-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Saving and loading
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Saving and loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 Common methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-common-tensor-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Common tensor utilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Common tensor utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-common-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Common functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-common-workflow-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Common workflow examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Common workflow examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-basic-tensor-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1 Basic tensor math
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-linear-regression-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2 Linear regression model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#163-simple-classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3 Simple classifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-machine-learning-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Machine learning use cases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Machine learning use cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#171-common-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 Common use cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#172-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example idea:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-good-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Good practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-quick-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        20. Example full workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="complete-pytorch-methods-reference">Complete PyTorch Methods Reference</h1>
+<h2 id="1-core-concepts">1. Core concepts</h2>
+<p>PyTorch is a deep learning framework used for tensor computation, automatic differentiation, neural network training, and GPU acceleration. It is widely used for research, prototyping, and production machine learning workflows.</p>
+<h3 id="11-main-ideas">1.1 Main ideas</h3>
+<ul>
+<li><strong>Tensor</strong>: the central data structure in PyTorch.</li>
+<li><strong>Autograd</strong>: automatic differentiation for gradients.</li>
+<li><strong>Module</strong>: a neural network layer or model component.</li>
+<li><strong>Optimizer</strong>: updates model parameters.</li>
+<li><strong>Dataset and DataLoader</strong>: tools for batching and loading data.</li>
+</ul>
+<h3 id="12-common-imports">1.2 Common imports</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+</code></pre></div>
+<h3 id="13-basic-example">1.3 Basic example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="2-tensor-creation">2. Tensor creation</h2>
+<p>PyTorch tensors are similar to NumPy arrays but support GPU computation and gradients.</p>
+<h3 id="21-common-creation-methods">2.1 Common creation methods</h3>
+<ul>
+<li><strong><code>torch.tensor()</code></strong> - Create tensor from Python data.</li>
+<li><strong><code>torch.zeros()</code></strong> - Create tensor filled with zeros.</li>
+<li><strong><code>torch.ones()</code></strong> - Create tensor filled with ones.</li>
+<li><strong><code>torch.empty()</code></strong> - Create uninitialized tensor.</li>
+<li><strong><code>torch.rand()</code></strong> - Uniform random values.</li>
+<li><strong><code>torch.randn()</code></strong> - Standard normal random values.</li>
+<li><strong><code>torch.full()</code></strong> - Fill with a constant value.</li>
+<li><strong><code>torch.arange()</code></strong> - Create evenly spaced values.</li>
+<li><strong><code>torch.linspace()</code></strong> - Create linearly spaced values.</li>
+<li><strong><code>torch.eye()</code></strong> - Create identity matrix.</li>
+<li><strong><code>torch.zeros_like()</code></strong> - Same shape as input, filled with zeros.</li>
+<li><strong><code>torch.ones_like()</code></strong> - Same shape as input, filled with ones.</li>
+<li><strong><code>torch.rand_like()</code></strong> - Same shape as input, random uniform.</li>
+<li><strong><code>torch.randn_like()</code></strong> - Same shape as input, random normal.</li>
+</ul>
+<h3 id="22-use-case">2.2 Use case</h3>
+<ul>
+<li>Build inputs, labels, and weights.</li>
+<li>Create random test data.</li>
+<li>Initialize model parameters.</li>
+</ul>
+<h3 id="23-example">2.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="3-tensor-properties">3. Tensor properties</h2>
+<p>Tensor attributes describe shape, type, device, and gradient state.</p>
+<h3 id="31-common-attributes">3.1 Common attributes</h3>
+<ul>
+<li><strong><code>shape</code></strong> - Tensor dimensions.</li>
+<li><strong><code>ndim</code></strong> - Number of dimensions.</li>
+<li><strong><code>dtype</code></strong> - Data type.</li>
+<li><strong><code>device</code></strong> - CPU or GPU device.</li>
+<li><strong><code>requires_grad</code></strong> - Whether autograd tracks operations.</li>
+<li><strong><code>numel()</code></strong> - Number of elements.</li>
+<li><strong><code>size()</code></strong> - Tensor size.</li>
+<li><strong><code>item()</code></strong> - Convert single-element tensor to Python scalar.</li>
+<li><strong><code>tolist()</code></strong> - Convert tensor to nested Python list.</li>
+</ul>
+<h3 id="32-example">3.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([,</span> <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">numel</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="4-indexing-and-slicing">4. Indexing and slicing</h2>
+<p>Tensor slicing works much like NumPy.</p>
+<h3 id="41-common-patterns">4.1 Common patterns</h3>
+<ul>
+<li><strong><code>x[0]</code></strong> - First row or first element.</li>
+<li><strong><code>x[:, 0]</code></strong> - First column.</li>
+<li><strong><code>x[1:3]</code></strong> - Slice rows or elements.</li>
+<li><strong><code>x[x &gt; 0]</code></strong> - Boolean mask.</li>
+<li><strong><code>torch.where()</code></strong> - Conditional selection.</li>
+<li><strong><code>index_select()</code></strong> - Select by index tensor.</li>
+</ul>
+<h3 id="42-use-case">4.2 Use case</h3>
+<ul>
+<li>Access feature subsets.</li>
+<li>Select specific rows or columns.</li>
+<li>Filter values based on conditions.</li>
+</ul>
+<h3 id="43-example">4.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([,</span> <span class="p">])[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">][</span><span class="mi">5</span><span class="p">][</span><span class="mi">6</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<hr />
+<h2 id="5-basic-tensor-operations">5. Basic tensor operations</h2>
+<p>PyTorch supports element-wise arithmetic and many numeric operations.</p>
+<h3 id="51-common-methods-and-operators">5.1 Common methods and operators</h3>
+<ul>
+<li><strong><code>+</code></strong> - Addition.</li>
+<li><strong><code>-</code></strong> - Subtraction.</li>
+<li><strong><code>*</code></strong> - Element-wise multiplication.</li>
+<li><strong><code>/</code></strong> - Division.</li>
+<li><strong><code>**</code></strong> - Power.</li>
+<li><strong><code>torch.add()</code></strong> - Add tensors.</li>
+<li><strong><code>torch.sub()</code></strong> - Subtract tensors.</li>
+<li><strong><code>torch.mul()</code></strong> - Multiply tensors.</li>
+<li><strong><code>torch.div()</code></strong> - Divide tensors.</li>
+<li><strong><code>torch.matmul()</code></strong> - Matrix multiplication.</li>
+<li><strong><code>@</code></strong> - Matrix multiplication operator.</li>
+<li><strong><code>torch.sum()</code></strong> - Sum values.</li>
+<li><strong><code>torch.mean()</code></strong> - Mean values.</li>
+<li><strong><code>torch.max()</code></strong> - Max values.</li>
+<li><strong><code>torch.min()</code></strong> - Min values.</li>
+</ul>
+<h3 id="52-use-case">5.2 Use case</h3>
+<ul>
+<li>Perform mathematical transforms.</li>
+<li>Compute similarities and matrix products.</li>
+<li>Prepare tensors for neural networks.</li>
+</ul>
+<h3 id="53-example">5.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="6-shape-manipulation">6. Shape manipulation</h2>
+<p>Shape operations are critical for neural network inputs and outputs.</p>
+<h3 id="61-common-methods">6.1 Common methods</h3>
+<ul>
+<li><strong><code>view()</code></strong> - Reshape tensor as a view.</li>
+<li><strong><code>reshape()</code></strong> - Reshape tensor.</li>
+<li><strong><code>flatten()</code></strong> - Flatten dimensions.</li>
+<li><strong><code>unsqueeze()</code></strong> - Add a dimension.</li>
+<li><strong><code>squeeze()</code></strong> - Remove size-1 dimensions.</li>
+<li><strong><code>transpose()</code></strong> - Swap two dimensions.</li>
+<li><strong><code>permute()</code></strong> - Reorder dimensions.</li>
+<li><strong><code>repeat()</code></strong> - Repeat tensor.</li>
+<li><strong><code>expand()</code></strong> - Broadcast without copying when possible.</li>
+<li><strong><code>cat()</code></strong> - Concatenate tensors.</li>
+<li><strong><code>stack()</code></strong> - Stack tensors along new dimension.</li>
+</ul>
+<h3 id="62-use-case">6.2 Use case</h3>
+<ul>
+<li>Convert image tensors to model input shape.</li>
+<li>Flatten outputs for classification.</li>
+<li>Combine batches or feature vectors.</li>
+</ul>
+<h3 id="63-example">6.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="7-device-handling">7. Device handling</h2>
+<p>PyTorch can run on CPU or GPU.</p>
+<h3 id="71-common-methods">7.1 Common methods</h3>
+<ul>
+<li><strong><code>torch.device()</code></strong> - Define target device.</li>
+<li><strong><code>tensor.to(device)</code></strong> - Move tensor.</li>
+<li><strong><code>model.to(device)</code></strong> - Move model.</li>
+<li><strong><code>cuda()</code></strong> - Move to CUDA device.</li>
+<li><strong><code>cpu()</code></strong> - Move to CPU.</li>
+</ul>
+<h3 id="72-use-case">7.2 Use case</h3>
+<ul>
+<li>Accelerate training on GPU.</li>
+<li>Keep model and data on the same device.</li>
+<li>Switch between CPU and GPU safely.</li>
+</ul>
+<h3 id="73-example">7.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="8-autograd-and-gradients">8. Autograd and gradients</h2>
+<p>Autograd computes gradients automatically for tensors and models.</p>
+<h3 id="81-common-methods-and-attributes">8.1 Common methods and attributes</h3>
+<ul>
+<li><strong><code>requires_grad=True</code></strong> - Track gradients.</li>
+<li><strong><code>backward()</code></strong> - Compute gradients.</li>
+<li><strong><code>grad</code></strong> - Store gradients.</li>
+<li><strong><code>detach()</code></strong> - Remove from computation graph.</li>
+<li><strong><code>no_grad()</code></strong> - Disable gradient tracking.</li>
+<li><strong><code>zero_grad()</code></strong> - Clear accumulated gradients.</li>
+</ul>
+<h3 id="82-use-case">8.2 Use case</h3>
+<ul>
+<li>Train neural networks.</li>
+<li>Optimize parameters.</li>
+<li>Prevent gradient accumulation during inference.</li>
+</ul>
+<h3 id="83-example">8.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">y</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="9-neural-network-modules">9. Neural network modules</h2>
+<p>The <code>torch.nn</code> module provides layers, losses, and model building blocks.</p>
+<h3 id="91-common-classes">9.1 Common classes</h3>
+<ul>
+<li><strong><code>nn.Module</code></strong> - Base class for models.</li>
+<li><strong><code>nn.Linear()</code></strong> - Fully connected layer.</li>
+<li><strong><code>nn.ReLU()</code></strong> - ReLU activation.</li>
+<li><strong><code>nn.Sigmoid()</code></strong> - Sigmoid activation.</li>
+<li><strong><code>nn.Tanh()</code></strong> - Tanh activation.</li>
+<li><strong><code>nn.Softmax()</code></strong> - Softmax activation.</li>
+<li><strong><code>nn.Sequential()</code></strong> - Stack layers in order.</li>
+<li><strong><code>nn.Dropout()</code></strong> - Regularization layer.</li>
+<li><strong><code>nn.Conv2d()</code></strong> - 2D convolution layer.</li>
+<li><strong><code>nn.MaxPool2d()</code></strong> - 2D max pooling.</li>
+<li><strong><code>nn.BatchNorm1d()</code></strong> - Batch normalization.</li>
+<li><strong><code>nn.BatchNorm2d()</code></strong> - Batch normalization for images.</li>
+</ul>
+<h3 id="92-use-case">9.2 Use case</h3>
+<ul>
+<li>Build dense models.</li>
+<li>Build CNNs for images.</li>
+<li>Create reusable custom architectures.</li>
+</ul>
+<h3 id="93-example">9.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="10-loss-functions">10. Loss functions</h2>
+<p>Loss functions measure the difference between predictions and targets.</p>
+<h3 id="101-common-losses">10.1 Common losses</h3>
+<ul>
+<li><strong><code>nn.MSELoss()</code></strong> - Mean squared error.</li>
+<li><strong><code>nn.L1Loss()</code></strong> - Mean absolute error.</li>
+<li><strong><code>nn.CrossEntropyLoss()</code></strong> - Multi-class classification loss.</li>
+<li><strong><code>nn.BCELoss()</code></strong> - Binary classification loss.</li>
+<li><strong><code>nn.BCEWithLogitsLoss()</code></strong> - Binary classification with logits.</li>
+<li><strong><code>nn.NLLLoss()</code></strong> - Negative log-likelihood loss.</li>
+</ul>
+<h3 id="102-use-case">10.2 Use case</h3>
+<ul>
+<li>Train regression models.</li>
+<li>Train classifiers.</li>
+<li>Compare predicted output to ground truth.</li>
+</ul>
+<h3 id="103-example">10.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">2.0</span><span class="p">]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">3.0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</code></pre></div>
+<hr />
+<h2 id="11-optimizers">11. Optimizers</h2>
+<p>Optimizers update model parameters using gradients.</p>
+<h3 id="111-common-optimizers">11.1 Common optimizers</h3>
+<ul>
+<li><strong><code>optim.SGD()</code></strong> - Stochastic gradient descent.</li>
+<li><strong><code>optim.Adam()</code></strong> - Adaptive moment estimation.</li>
+<li><strong><code>optim.RMSprop()</code></strong> - RMSProp optimizer.</li>
+<li><strong><code>optim.Adagrad()</code></strong> - Adaptive gradient method.</li>
+<li><strong><code>optim.AdamW()</code></strong> - Adam with decoupled weight decay.</li>
+</ul>
+<h3 id="112-common-methods">11.2 Common methods</h3>
+<ul>
+<li><strong><code>zero_grad()</code></strong> - Reset gradients.</li>
+<li><strong><code>step()</code></strong> - Update parameters.</li>
+<li><strong><code>state_dict()</code></strong> - Get optimizer state.</li>
+</ul>
+<h3 id="113-use-case">11.3 Use case</h3>
+<ul>
+<li>Train neural network weights.</li>
+<li>Fine-tune a pretrained model.</li>
+<li>Improve convergence speed.</li>
+</ul>
+<h3 id="114-example">11.4 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="12-training-loop">12. Training loop</h2>
+<p>A typical training loop repeats forward pass, loss calculation, backward pass, and optimization.</p>
+<h3 id="121-main-steps">12.1 Main steps</h3>
+<ol>
+<li>Compute predictions.</li>
+<li>Compute loss.</li>
+<li>Call <code>zero_grad()</code>.</li>
+<li>Call <code>backward()</code>.</li>
+<li>Call <code>step()</code>.</li>
+</ol>
+<h3 id="122-use-case">12.2 Use case</h3>
+<ul>
+<li>Fit regression and classification models.</li>
+<li>Optimize model parameters over epochs.</li>
+</ul>
+<h3 id="123-example">12.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">6.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">8.0</span><span class="p">]])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h2 id="13-datasets-and-data-loading">13. Datasets and data loading</h2>
+<p><code>torch.utils.data</code> helps build efficient datasets and loaders.</p>
+<h3 id="131-common-classes">13.1 Common classes</h3>
+<ul>
+<li><strong><code>Dataset</code></strong> - Base dataset class.</li>
+<li><strong><code>DataLoader</code></strong> - Batch and shuffle data.</li>
+<li><strong><code>TensorDataset</code></strong> - Dataset from tensors.</li>
+<li><strong><code>random_split()</code></strong> - Split dataset into subsets.</li>
+</ul>
+<h3 id="132-use-case">13.2 Use case</h3>
+<ul>
+<li>Batch data for training.</li>
+<li>Shuffle samples every epoch.</li>
+<li>Load images, text, or tabular data efficiently.</li>
+</ul>
+<h3 id="133-example">13.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">TensorDataset</span><span class="p">,</span> <span class="n">DataLoader</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,)))</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="14-saving-and-loading">14. Saving and loading</h2>
+<p>PyTorch can save models, tensors, and training state.</p>
+<h3 id="141-common-methods">14.1 Common methods</h3>
+<ul>
+<li><strong><code>torch.save()</code></strong> - Save objects.</li>
+<li><strong><code>torch.load()</code></strong> - Load objects.</li>
+<li><strong><code>state_dict()</code></strong> - Save model or optimizer parameters.</li>
+<li><strong><code>load_state_dict()</code></strong> - Restore model or optimizer parameters.</li>
+</ul>
+<h3 id="142-use-case">14.2 Use case</h3>
+<ul>
+<li>Save trained models.</li>
+<li>Resume training.</li>
+<li>Share checkpoints.</li>
+</ul>
+<h3 id="143-example">14.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s2">&quot;model.pt&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;model.pt&quot;</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="15-common-tensor-utilities">15. Common tensor utilities</h2>
+<p>PyTorch includes many utilities for building and transforming tensors.</p>
+<h3 id="151-common-functions">15.1 Common functions</h3>
+<ul>
+<li><strong><code>torch.abs()</code></strong> - Absolute value.</li>
+<li><strong><code>torch.sqrt()</code></strong> - Square root.</li>
+<li><strong><code>torch.exp()</code></strong> - Exponential.</li>
+<li><strong><code>torch.log()</code></strong> - Natural logarithm.</li>
+<li><strong><code>torch.clamp()</code></strong> - Clamp values.</li>
+<li><strong><code>torch.round()</code></strong> - Round values.</li>
+<li><strong><code>torch.argmax()</code></strong> - Index of max value.</li>
+<li><strong><code>torch.argmin()</code></strong> - Index of min value.</li>
+<li><strong><code>torch.nonzero()</code></strong> - Indices of nonzero values.</li>
+<li><strong><code>torch.unique()</code></strong> - Unique values.</li>
+<li><strong><code>torch.isnan()</code></strong> - Detect NaN.</li>
+<li><strong><code>torch.isfinite()</code></strong> - Detect finite values.</li>
+</ul>
+<h3 id="152-use-case">15.2 Use case</h3>
+<ul>
+<li>Clean numerical outputs.</li>
+<li>Find class predictions.</li>
+<li>Inspect special values in tensors.</li>
+</ul>
+<h3 id="153-example">15.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h2 id="16-common-workflow-examples">16. Common workflow examples</h2>
+<h3 id="161-basic-tensor-math">16.1 Basic tensor math</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">])</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="162-linear-regression-model">16.2 Linear regression model</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">6.0</span><span class="p">]])</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="163-simple-classifier">16.3 Simple classifier</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="17-machine-learning-use-cases">17. Machine learning use cases</h2>
+<p>PyTorch is widely used for supervised learning, deep learning, and representation learning.</p>
+<h3 id="171-common-use-cases">17.1 Common use cases</h3>
+<ul>
+<li>Image classification.</li>
+<li>Object detection.</li>
+<li>Semantic segmentation.</li>
+<li>Natural language processing.</li>
+<li>Time series forecasting.</li>
+<li>Recommendation systems.</li>
+<li>Regression and tabular modeling.</li>
+</ul>
+<h3 id="172-example">17.2 Example</h3>
+<h3 id="example-idea">Example idea:</h3>
+<p>inputs -&gt; model -&gt; loss -&gt; backward -&gt; optimizer.step()
+text</p>
+<hr />
+<h2 id="18-good-practices">18. Good practices</h2>
+<ul>
+<li>Move model and tensors to the same device.</li>
+<li>Use <code>model.train()</code> during training and <code>model.eval()</code> during inference.</li>
+<li>Wrap inference in <code>torch.no_grad()</code>.</li>
+<li>Clear gradients each iteration with <code>zero_grad()</code>.</li>
+<li>Save checkpoints with <code>state_dict()</code>.</li>
+<li>Use <code>DataLoader</code> for batch training.</li>
+</ul>
+<hr />
+<h2 id="19-quick-reference-table">19. Quick reference table</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Key methods</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tensor creation</td>
+<td><code>tensor()</code>, <code>zeros()</code>, <code>randn()</code></td>
+<td>Build tensors.</td>
+</tr>
+<tr>
+<td>Tensor ops</td>
+<td><code>add()</code>, <code>mul()</code>, <code>matmul()</code></td>
+<td>Compute values.</td>
+</tr>
+<tr>
+<td>Shape</td>
+<td><code>view()</code>, <code>reshape()</code>, <code>unsqueeze()</code></td>
+<td>Adjust dimensions.</td>
+</tr>
+<tr>
+<td>Gradients</td>
+<td><code>backward()</code>, <code>detach()</code></td>
+<td>Autograd support.</td>
+</tr>
+<tr>
+<td>Layers</td>
+<td><code>nn.Linear()</code>, <code>nn.ReLU()</code></td>
+<td>Build networks.</td>
+</tr>
+<tr>
+<td>Loss</td>
+<td><code>MSELoss()</code>, <code>CrossEntropyLoss()</code></td>
+<td>Measure error.</td>
+</tr>
+<tr>
+<td>Optimizers</td>
+<td><code>SGD()</code>, <code>Adam()</code></td>
+<td>Update weights.</td>
+</tr>
+<tr>
+<td>Data</td>
+<td><code>Dataset</code>, <code>DataLoader</code></td>
+<td>Batch and load data.</td>
+</tr>
+<tr>
+<td>Save/load</td>
+<td><code>torch.save()</code>, <code>torch.load()</code></td>
+<td>Persist models.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="20-example-full-workflow">20. Example full workflow</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">6.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">8.0</span><span class="p">]])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">5.0</span><span class="p">]])))</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; [YOUR NAME]
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shiwakotisurendra" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/geosuren" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:shiwakotisurendra@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

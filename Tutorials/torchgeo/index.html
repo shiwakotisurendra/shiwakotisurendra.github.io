@@ -12,13 +12,13 @@
         <meta name="author" content="Surendra Shiwakoti">
       
       
-        <link rel="canonical" href="https://shiwakotisurendra.github.io/Tutorials/geemap/">
+        <link rel="canonical" href="https://shiwakotisurendra.github.io/Tutorials/torchgeo/">
       
       
-        <link rel="prev" href="../folium/">
+        <link rel="prev" href="../pytorch/">
       
       
-        <link rel="next" href="../pytorch/">
+        <link rel="next" href="../opencv/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Geemap - Surendra Shiwakoti - Geospatial Portfolio</title>
+        <title>Torchgeo - Surendra Shiwakoti - Geospatial Portfolio</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#complete-geemap-methods-reference" class="md-skip">
+        <a href="#complete-torchgeo-methods-reference" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Geemap
+              Torchgeo
             
           </span>
         </div>
@@ -359,7 +359,7 @@
               
                 
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1059,6 +1059,62 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../geemap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Geemap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytorch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pytorch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1078,7 +1134,7 @@
   <span class="md-ellipsis">
     
   
-    Geemap
+    Torchgeo
   
 
     
@@ -1096,7 +1152,7 @@
   <span class="md-ellipsis">
     
   
-    Geemap
+    Torchgeo
   
 
     
@@ -1156,10 +1212,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-basic-map-example" class="md-nav__link">
+  <a href="#13-basic-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.3 Basic map example
+        1.3 Basic example
       
     </span>
   </a>
@@ -1172,22 +1228,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-mapping-backends" class="md-nav__link">
+  <a href="#2-dataset-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Mapping backends
+        2. Dataset types
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Mapping backends">
+    <nav class="md-nav" aria-label="2. Dataset types">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-common-backend-imports" class="md-nav__link">
+  <a href="#21-common-dataset-classes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Common backend imports
+        2.1 Common dataset classes
       
     </span>
   </a>
@@ -1222,22 +1278,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-map-creation" class="md-nav__link">
+  <a href="#3-dataset-composition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Map creation
+        3. Dataset composition
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Map creation">
+    <nav class="md-nav" aria-label="3. Dataset composition">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-common-methods" class="md-nav__link">
+  <a href="#31-common-operators-and-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 Common methods
+        3.1 Common operators and methods
       
     </span>
   </a>
@@ -1245,10 +1301,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-example" class="md-nav__link">
+  <a href="#32-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 Example
+        3.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Example
       
     </span>
   </a>
@@ -1261,22 +1328,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-earth-engine-data-layers" class="md-nav__link">
+  <a href="#4-geospatial-samplers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Earth Engine data layers
+        4. Geospatial samplers
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Earth Engine data layers">
+    <nav class="md-nav" aria-label="4. Geospatial samplers">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-common-methods" class="md-nav__link">
+  <a href="#41-common-samplers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 Common methods
+        4.1 Common samplers
       
     </span>
   </a>
@@ -1311,15 +1378,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-local-geospatial-data" class="md-nav__link">
+  <a href="#5-data-loaders-and-batching" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Local geospatial data
+        5. Data loaders and batching
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Local geospatial data">
+    <nav class="md-nav" aria-label="5. Data loaders and batching">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1361,22 +1428,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-layer-styling" class="md-nav__link">
+  <a href="#6-raster-and-patch-workflows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Layer styling
+        6. Raster and patch workflows
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Layer styling">
+    <nav class="md-nav" aria-label="6. Raster and patch workflows">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61-common-methods" class="md-nav__link">
+  <a href="#61-common-ideas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 Common methods
+        6.1 Common ideas
       
     </span>
   </a>
@@ -1411,22 +1478,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-drawing-tools-and-interaction" class="md-nav__link">
+  <a href="#7-transforms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Drawing tools and interaction
+        7. Transforms
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7. Drawing tools and interaction">
+    <nav class="md-nav" aria-label="7. Transforms">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#71-common-methods" class="md-nav__link">
+  <a href="#71-common-transform-ideas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1 Common methods
+        7.1 Common transform ideas
       
     </span>
   </a>
@@ -1461,22 +1528,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-analysis-tools" class="md-nav__link">
+  <a href="#8-pretrained-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Analysis tools
+        8. Pretrained models
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8. Analysis tools">
+    <nav class="md-nav" aria-label="8. Pretrained models">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#81-common-methods" class="md-nav__link">
+  <a href="#81-common-model-families" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.1 Common methods
+        8.1 Common model families
       
     </span>
   </a>
@@ -1511,22 +1578,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-export-tools" class="md-nav__link">
+  <a href="#9-training-workflows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Export tools
+        9. Training workflows
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="9. Export tools">
+    <nav class="md-nav" aria-label="9. Training workflows">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#91-common-methods" class="md-nav__link">
+  <a href="#91-common-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.1 Common methods
+        9.1 Common steps
       
     </span>
   </a>
@@ -1561,22 +1628,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-basemaps-and-tiles" class="md-nav__link">
+  <a href="#10-semantic-segmentation-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Basemaps and tiles
+        10. Semantic segmentation use case
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="10. Basemaps and tiles">
+    <nav class="md-nav" aria-label="10. Semantic segmentation use case">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#101-common-methods" class="md-nav__link">
+  <a href="#101-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.1 Common methods
+        10.1 Use case
       
     </span>
   </a>
@@ -1584,10 +1651,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#102-use-case" class="md-nav__link">
+  <a href="#102-typical-components" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.2 Use case
+        10.2 Typical components
       
     </span>
   </a>
@@ -1611,22 +1678,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-legends-and-colorbars" class="md-nav__link">
+  <a href="#11-classification-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. Legends and colorbars
+        11. Classification use case
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="11. Legends and colorbars">
+    <nav class="md-nav" aria-label="11. Classification use case">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#111-common-methods" class="md-nav__link">
+  <a href="#111-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11.1 Common methods
+        11.1 Use case
       
     </span>
   </a>
@@ -1634,21 +1701,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#112-use-case" class="md-nav__link">
+  <a href="#112-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11.2 Use case
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#113-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11.3 Example
+        11.2 Example
       
     </span>
   </a>
@@ -1661,22 +1717,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-charts-and-profiling" class="md-nav__link">
+  <a href="#12-inference-workflows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        12. Charts and profiling
+        12. Inference workflows
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="12. Charts and profiling">
+    <nav class="md-nav" aria-label="12. Inference workflows">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#121-common-methods" class="md-nav__link">
+  <a href="#121-common-ideas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        12.1 Common methods
+        12.1 Common ideas
       
     </span>
   </a>
@@ -1711,22 +1767,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#13-convenience-utilities" class="md-nav__link">
+  <a href="#13-common-torchgeo-methods-and-patterns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13. Convenience utilities
+        13. Common TorchGeo methods and patterns
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="13. Convenience utilities">
+    <nav class="md-nav" aria-label="13. Common TorchGeo methods and patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#131-common-functions" class="md-nav__link">
+  <a href="#131-datasets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13.1 Common functions
+        13.1 Datasets
       
     </span>
   </a>
@@ -1734,10 +1790,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#132-use-case" class="md-nav__link">
+  <a href="#132-sampling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13.2 Use case
+        13.2 Sampling
       
     </span>
   </a>
@@ -1745,10 +1801,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#133-example" class="md-nav__link">
+  <a href="#133-batching" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13.3 Example
+        13.3 Batching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Composition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 Example
       
     </span>
   </a>
@@ -1761,22 +1839,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#14-common-workflows" class="md-nav__link">
+  <a href="#14-integrating-with-pytorch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        14. Common workflows
+        14. Integrating with PyTorch
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="14. Common workflows">
+    <nav class="md-nav" aria-label="14. Integrating with PyTorch">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#141-create-an-interactive-map" class="md-nav__link">
+  <a href="#141-common-pytorch-methods-used-with-torchgeo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        14.1 Create an interactive map
+        14.1 Common PyTorch methods used with TorchGeo
       
     </span>
   </a>
@@ -1784,10 +1862,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#142-add-earth-engine-data" class="md-nav__link">
+  <a href="#142-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        14.2 Add Earth Engine data
+        14.2 Use case
       
     </span>
   </a>
@@ -1795,21 +1873,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#143-load-local-data" class="md-nav__link">
+  <a href="#143-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        14.3 Load local data
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#144-export-map-to-html" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        14.4 Export map to HTML
+        14.3 Example
       
     </span>
   </a>
@@ -1822,10 +1889,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#15-quick-reference-table" class="md-nav__link">
+  <a href="#15-common-geospatial-machine-learning-tasks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        15. Quick reference table
+        15. Common geospatial machine learning tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Common geospatial machine learning tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-good-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Good practices
       
     </span>
   </a>
@@ -1833,10 +1950,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#16-example-full-workflow" class="md-nav__link">
+  <a href="#17-quick-reference-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        16. Example full workflow
+        17. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Example full workflow
       
     </span>
   </a>
@@ -1847,62 +1975,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pytorch/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Pytorch
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../torchgeo/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Torchgeo
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2117,10 +2189,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-basic-map-example" class="md-nav__link">
+  <a href="#13-basic-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.3 Basic map example
+        1.3 Basic example
       
     </span>
   </a>
@@ -2133,22 +2205,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-mapping-backends" class="md-nav__link">
+  <a href="#2-dataset-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Mapping backends
+        2. Dataset types
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Mapping backends">
+    <nav class="md-nav" aria-label="2. Dataset types">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-common-backend-imports" class="md-nav__link">
+  <a href="#21-common-dataset-classes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Common backend imports
+        2.1 Common dataset classes
       
     </span>
   </a>
@@ -2183,22 +2255,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-map-creation" class="md-nav__link">
+  <a href="#3-dataset-composition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Map creation
+        3. Dataset composition
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Map creation">
+    <nav class="md-nav" aria-label="3. Dataset composition">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-common-methods" class="md-nav__link">
+  <a href="#31-common-operators-and-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 Common methods
+        3.1 Common operators and methods
       
     </span>
   </a>
@@ -2206,10 +2278,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-example" class="md-nav__link">
+  <a href="#32-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 Example
+        3.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Example
       
     </span>
   </a>
@@ -2222,22 +2305,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-earth-engine-data-layers" class="md-nav__link">
+  <a href="#4-geospatial-samplers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Earth Engine data layers
+        4. Geospatial samplers
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Earth Engine data layers">
+    <nav class="md-nav" aria-label="4. Geospatial samplers">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-common-methods" class="md-nav__link">
+  <a href="#41-common-samplers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 Common methods
+        4.1 Common samplers
       
     </span>
   </a>
@@ -2272,15 +2355,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-local-geospatial-data" class="md-nav__link">
+  <a href="#5-data-loaders-and-batching" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Local geospatial data
+        5. Data loaders and batching
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Local geospatial data">
+    <nav class="md-nav" aria-label="5. Data loaders and batching">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2322,22 +2405,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-layer-styling" class="md-nav__link">
+  <a href="#6-raster-and-patch-workflows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Layer styling
+        6. Raster and patch workflows
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Layer styling">
+    <nav class="md-nav" aria-label="6. Raster and patch workflows">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61-common-methods" class="md-nav__link">
+  <a href="#61-common-ideas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 Common methods
+        6.1 Common ideas
       
     </span>
   </a>
@@ -2372,22 +2455,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-drawing-tools-and-interaction" class="md-nav__link">
+  <a href="#7-transforms" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Drawing tools and interaction
+        7. Transforms
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7. Drawing tools and interaction">
+    <nav class="md-nav" aria-label="7. Transforms">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#71-common-methods" class="md-nav__link">
+  <a href="#71-common-transform-ideas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7.1 Common methods
+        7.1 Common transform ideas
       
     </span>
   </a>
@@ -2422,22 +2505,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-analysis-tools" class="md-nav__link">
+  <a href="#8-pretrained-models" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Analysis tools
+        8. Pretrained models
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8. Analysis tools">
+    <nav class="md-nav" aria-label="8. Pretrained models">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#81-common-methods" class="md-nav__link">
+  <a href="#81-common-model-families" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.1 Common methods
+        8.1 Common model families
       
     </span>
   </a>
@@ -2472,22 +2555,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-export-tools" class="md-nav__link">
+  <a href="#9-training-workflows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Export tools
+        9. Training workflows
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="9. Export tools">
+    <nav class="md-nav" aria-label="9. Training workflows">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#91-common-methods" class="md-nav__link">
+  <a href="#91-common-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9.1 Common methods
+        9.1 Common steps
       
     </span>
   </a>
@@ -2522,22 +2605,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-basemaps-and-tiles" class="md-nav__link">
+  <a href="#10-semantic-segmentation-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Basemaps and tiles
+        10. Semantic segmentation use case
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="10. Basemaps and tiles">
+    <nav class="md-nav" aria-label="10. Semantic segmentation use case">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#101-common-methods" class="md-nav__link">
+  <a href="#101-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.1 Common methods
+        10.1 Use case
       
     </span>
   </a>
@@ -2545,10 +2628,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#102-use-case" class="md-nav__link">
+  <a href="#102-typical-components" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.2 Use case
+        10.2 Typical components
       
     </span>
   </a>
@@ -2572,22 +2655,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-legends-and-colorbars" class="md-nav__link">
+  <a href="#11-classification-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. Legends and colorbars
+        11. Classification use case
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="11. Legends and colorbars">
+    <nav class="md-nav" aria-label="11. Classification use case">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#111-common-methods" class="md-nav__link">
+  <a href="#111-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11.1 Common methods
+        11.1 Use case
       
     </span>
   </a>
@@ -2595,21 +2678,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#112-use-case" class="md-nav__link">
+  <a href="#112-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11.2 Use case
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#113-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11.3 Example
+        11.2 Example
       
     </span>
   </a>
@@ -2622,22 +2694,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-charts-and-profiling" class="md-nav__link">
+  <a href="#12-inference-workflows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        12. Charts and profiling
+        12. Inference workflows
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="12. Charts and profiling">
+    <nav class="md-nav" aria-label="12. Inference workflows">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#121-common-methods" class="md-nav__link">
+  <a href="#121-common-ideas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        12.1 Common methods
+        12.1 Common ideas
       
     </span>
   </a>
@@ -2672,22 +2744,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#13-convenience-utilities" class="md-nav__link">
+  <a href="#13-common-torchgeo-methods-and-patterns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13. Convenience utilities
+        13. Common TorchGeo methods and patterns
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="13. Convenience utilities">
+    <nav class="md-nav" aria-label="13. Common TorchGeo methods and patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#131-common-functions" class="md-nav__link">
+  <a href="#131-datasets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13.1 Common functions
+        13.1 Datasets
       
     </span>
   </a>
@@ -2695,10 +2767,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#132-use-case" class="md-nav__link">
+  <a href="#132-sampling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13.2 Use case
+        13.2 Sampling
       
     </span>
   </a>
@@ -2706,10 +2778,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#133-example" class="md-nav__link">
+  <a href="#133-batching" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13.3 Example
+        13.3 Batching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Composition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 Example
       
     </span>
   </a>
@@ -2722,22 +2816,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#14-common-workflows" class="md-nav__link">
+  <a href="#14-integrating-with-pytorch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        14. Common workflows
+        14. Integrating with PyTorch
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="14. Common workflows">
+    <nav class="md-nav" aria-label="14. Integrating with PyTorch">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#141-create-an-interactive-map" class="md-nav__link">
+  <a href="#141-common-pytorch-methods-used-with-torchgeo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        14.1 Create an interactive map
+        14.1 Common PyTorch methods used with TorchGeo
       
     </span>
   </a>
@@ -2745,10 +2839,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#142-add-earth-engine-data" class="md-nav__link">
+  <a href="#142-use-case" class="md-nav__link">
     <span class="md-ellipsis">
       
-        14.2 Add Earth Engine data
+        14.2 Use case
       
     </span>
   </a>
@@ -2756,21 +2850,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#143-load-local-data" class="md-nav__link">
+  <a href="#143-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        14.3 Load local data
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#144-export-map-to-html" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        14.4 Export map to HTML
+        14.3 Example
       
     </span>
   </a>
@@ -2783,10 +2866,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#15-quick-reference-table" class="md-nav__link">
+  <a href="#15-common-geospatial-machine-learning-tasks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        15. Quick reference table
+        15. Common geospatial machine learning tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Common geospatial machine learning tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-good-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Good practices
       
     </span>
   </a>
@@ -2794,10 +2927,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#16-example-full-workflow" class="md-nav__link">
+  <a href="#17-quick-reference-table" class="md-nav__link">
     <span class="md-ellipsis">
       
-        16. Example full workflow
+        17. Quick reference table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-example-full-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        18. Example full workflow
       
     </span>
   </a>
@@ -2823,364 +2967,362 @@
 
 
 
-<h1 id="complete-geemap-methods-reference">Complete geemap Methods Reference</h1>
+<h1 id="complete-torchgeo-methods-reference">Complete TorchGeo Methods Reference</h1>
 <h2 id="1-core-concepts">1. Core concepts</h2>
-<p>geemap is a Python package for interactive geospatial analysis and visualization, built mainly around Google Earth Engine and interactive mapping backends such as ipyleaflet and folium. It is especially useful for creating web maps, exploring Earth Engine datasets, and working with local or cloud geospatial data in notebooks.</p>
+<p>TorchGeo is a PyTorch domain library for geospatial deep learning. It provides datasets, samplers, transforms, and pretrained models for working with remote sensing imagery and other spatial data in machine learning workflows.</p>
 <h3 id="11-main-ideas">1.1 Main ideas</h3>
 <ul>
-<li><strong>Map</strong>: the interactive map object used to display data.</li>
-<li><strong>Earth Engine integration</strong>: access and visualize EE images, image collections, and feature collections.</li>
-<li><strong>Backends</strong>: geemap supports multiple interactive mapping backends.</li>
-<li><strong>Local data support</strong>: use GeoJSON, shapefiles, GeoTIFF, and other geospatial files.</li>
-<li><strong>Export tools</strong>: save maps, images, vector data, and animations.</li>
+<li><strong>GeoDataset</strong>: dataset abstraction for geospatial inputs.</li>
+<li><strong>Samplers</strong>: choose spatial patches or bounding boxes.</li>
+<li><strong>Transforms</strong>: augment and preprocess geospatial samples.</li>
+<li><strong>Models</strong>: pretrained or task-specific architectures.</li>
+<li><strong>Data loading</strong>: integrates with PyTorch <code>DataLoader</code>.</li>
 </ul>
 <h3 id="12-common-imports">1.2 Common imports</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">ee</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torchgeo</span>
 </code></pre></div>
-<h3 id="13-basic-map-example">1.3 Basic map example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
+<h3 id="13-basic-example">1.3 Basic example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">torchgeo.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">RasterDataset</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">m</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">RasterDataset</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="s2">&quot;path/to/data&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="2-mapping-backends">2. Mapping backends</h2>
-<p>geemap provides several mapping backends, and the default import uses the ipyleaflet backend. Other backends are available when you need folium, plotly, pydeck, kepler.gl, or heremap.</p>
-<h3 id="21-common-backend-imports">2.1 Common backend imports</h3>
+<h2 id="2-dataset-types">2. Dataset types</h2>
+<p>TorchGeo includes many ready-made datasets for satellite, aerial, and geographic data.</p>
+<h3 id="21-common-dataset-classes">2.1 Common dataset classes</h3>
 <ul>
-<li><strong><code>import geemap</code></strong> - Default ipyleaflet backend.</li>
-<li><strong><code>import geemap.foliumap as geemap</code></strong> - Folium backend.</li>
-<li><strong><code>import geemap.geemap as geemap</code></strong> - ipyleaflet backend explicitly.</li>
-<li><strong><code>import geemap.plotlymap as geemap</code></strong> - Plotly backend.</li>
-<li><strong><code>import geemap.deck as geemap</code></strong> - Pydeck backend.</li>
-<li><strong><code>import geemap.kepler as geemap</code></strong> - Kepler.gl backend.</li>
-<li><strong><code>import geemap.heremap as geemap</code></strong> - Here maps backend.</li>
+<li><strong><code>RasterDataset</code></strong> - Base raster geospatial dataset.</li>
+<li><strong><code>VectorDataset</code></strong> - Vector geospatial dataset.</li>
+<li><strong><code>GeoDataset</code></strong> - Base geospatial dataset.</li>
+<li><strong><code>IntersectionDataset</code></strong> - Intersect multiple datasets.</li>
+<li><strong><code>UnionDataset</code></strong> - Combine multiple datasets.</li>
+<li><strong><code>Landsat7</code></strong> - Landsat 7 imagery.</li>
+<li><strong><code>Landsat8</code></strong> - Landsat 8 imagery.</li>
+<li><strong><code>Sentinel2</code></strong> - Sentinel-2 imagery.</li>
+<li><strong><code>NAIP</code></strong> - NAIP aerial imagery.</li>
+<li><strong><code>CDL</code></strong> - Cropland Data Layer.</li>
+<li><strong><code>stack_samples()</code></strong> - Collate dictionary samples into batches.</li>
 </ul>
 <h3 id="22-use-case">2.2 Use case</h3>
 <ul>
-<li>Use <strong>ipyleaflet</strong> for the richest notebook interactivity.</li>
-<li>Use <strong>folium</strong> for simple HTML web maps.</li>
-<li>Use <strong>plotly</strong> for interactive chart-map workflows.</li>
+<li>Read remote sensing imagery.</li>
+<li>Combine imagery with labels.</li>
+<li>Work with benchmark geospatial datasets.</li>
 </ul>
 <h3 id="23-example">2.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span>
-</code></pre></div>
-<hr />
-<h2 id="3-map-creation">3. Map creation</h2>
-<p>geemap map objects are used to display data, control the view, and add interactive tools.</p>
-<h3 id="31-common-methods">3.1 Common methods</h3>
-<ul>
-<li><strong><code>geemap.Map()</code></strong> - Create an interactive map.</li>
-<li><strong><code>Map.add_basemap()</code></strong> - Add a basemap layer.</li>
-<li><strong><code>Map.set_center()</code></strong> - Set map center and zoom.</li>
-<li><strong><code>Map.centerObject()</code></strong> - Center the map on an object.</li>
-<li><strong><code>Map.zoom_to_bounds()</code></strong> - Zoom to bounds.</li>
-<li><strong><code>Map.add_minimap()</code></strong> - Add an overview minimap.</li>
-<li><strong><code>Map.add_layer_control()</code></strong> - Add layer control.</li>
-<li><strong><code>Map.add_legend()</code></strong> - Add a legend.</li>
-<li><strong><code>Map.add_colorbar()</code></strong> - Add a colorbar.</li>
-<li><strong><code>Map.add_html()</code></strong> - Add arbitrary HTML to the map.</li>
-</ul>
-<h3 id="32-example">3.2 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">torchgeo.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">RasterDataset</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">52.52</span><span class="p">,</span> <span class="mf">13.405</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_layer_control</span><span class="p">()</span>
-<span class="n">m</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">RasterDataset</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:32647&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">RasterDataset</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:32647&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">mask</span><span class="o">.</span><span class="n">is_image</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&amp;</span> <span class="n">mask</span>
 </code></pre></div>
 <hr />
-<h2 id="4-earth-engine-data-layers">4. Earth Engine data layers</h2>
-<p>geemap makes it easy to display Earth Engine images, image collections, and feature collections on interactive maps.</p>
-<h3 id="41-common-methods">4.1 Common methods</h3>
+<h2 id="3-dataset-composition">3. Dataset composition</h2>
+<p>TorchGeo makes it easy to combine geospatial datasets with operators.</p>
+<h3 id="31-common-operators-and-methods">3.1 Common operators and methods</h3>
 <ul>
-<li><strong><code>Map.addLayer()</code></strong> - Add an Earth Engine layer to the map.</li>
-<li><strong><code>Map.add_ee_layer()</code></strong> - Add Earth Engine data in some workflows.</li>
-<li><strong><code>Map.centerObject()</code></strong> - Center on an EE object.</li>
-<li><strong><code>Map.setCenter()</code></strong> - Set map center manually.</li>
-<li><strong><code>Map.setOptions()</code></strong> - Set basemap or map options.</li>
+<li><strong><code>&amp;</code></strong> - Intersect datasets.</li>
+<li><strong><code>|</code></strong> - Union datasets.</li>
+<li><strong><code>stack_samples()</code></strong> - Stack dictionary samples.</li>
+<li><strong><code>random_bbox_assignment()</code></strong> - Split bounding boxes for datasets.</li>
+<li><strong><code>subset</code></strong> workflows - Create train/validation partitions.</li>
+</ul>
+<h3 id="32-use-case">3.2 Use case</h3>
+<ul>
+<li>Combine imagery with labels.</li>
+<li>Use multiple sensors as one dataset.</li>
+<li>Merge complementary datasets spatially.</li>
+</ul>
+<h3 id="33-example">3.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="n">landsat</span> <span class="o">=</span> <span class="n">landsat7</span> <span class="o">|</span> <span class="n">landsat8</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">landsat</span> <span class="o">&amp;</span> <span class="n">cdl</span>
+</code></pre></div>
+<hr />
+<h2 id="4-geospatial-samplers">4. Geospatial samplers</h2>
+<p>Samplers are one of TorchGeo’s most important abstractions because geospatial data is sampled by location rather than integer index.</p>
+<h3 id="41-common-samplers">4.1 Common samplers</h3>
+<ul>
+<li><strong><code>RandomGeoSampler</code></strong> - Randomly sample geospatial patches.</li>
+<li><strong><code>GridGeoSampler</code></strong> - Sample patches on a grid.</li>
+<li><strong><code>GeoSampler</code></strong> - Base class for geospatial samplers.</li>
+<li><strong><code>BBox</code></strong>-based sampling - Spatial bounding boxes for chips.</li>
 </ul>
 <h3 id="42-use-case">4.2 Use case</h3>
 <ul>
-<li>Visualize DEM, land cover, satellite imagery, boundaries, and derived products from Earth Engine.</li>
-<li>Compare multiple datasets with different visualization parameters.</li>
+<li>Training models on random patches.</li>
+<li>Predicting over a study area using grid chips.</li>
+<li>Sampling large rasters without loading them all at once.</li>
 </ul>
 <h3 id="43-example">4.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">ee</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">torchgeo.samplers</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomGeoSampler</span>
 
-<span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">dem</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span>
-<span class="n">vis</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;006633&quot;</span><span class="p">,</span> <span class="s2">&quot;E5FFCC&quot;</span><span class="p">,</span> <span class="s2">&quot;662A00&quot;</span><span class="p">,</span> <span class="s2">&quot;D8D8D8&quot;</span><span class="p">,</span> <span class="s2">&quot;F5F5F5&quot;</span><span class="p">]}</span>
-<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">vis</span><span class="p">,</span> <span class="s2">&quot;SRTM DEM&quot;</span><span class="p">)</span>
-<span class="n">m</span>
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">RandomGeoSampler</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="5-local-geospatial-data">5. Local geospatial data</h2>
-<p>geemap can read and display local geospatial data such as shapefiles, GeoJSON, KML, and GeoTIFF.</p>
+<h2 id="5-data-loaders-and-batching">5. Data loaders and batching</h2>
+<p>TorchGeo integrates with PyTorch <code>DataLoader</code> for efficient training and evaluation.</p>
 <h3 id="51-common-methods">5.1 Common methods</h3>
 <ul>
-<li><strong><code>geojson_to_ee()</code></strong> - Convert GeoJSON to Earth Engine.</li>
-<li><strong><code>shp_to_ee()</code></strong> - Convert shapefile to Earth Engine.</li>
-<li><strong><code>kml_to_ee()</code></strong> - Convert KML to Earth Engine.</li>
-<li><strong><code>csv_to_ee()</code></strong> - Convert CSV to Earth Engine.</li>
-<li><strong><code>xyz_to_ee()</code></strong> - Convert XYZ text data to Earth Engine.</li>
-<li><strong><code>gdf_to_ee()</code></strong> - Convert GeoDataFrame to Earth Engine.</li>
-<li><strong><code>vector_to_geojson()</code></strong> - Convert vector data to GeoJSON.</li>
-<li><strong><code>raster_to_ee()</code></strong> - Convert local raster to Earth Engine when supported.</li>
+<li><strong><code>DataLoader()</code></strong> - Batch samples.</li>
+<li><strong><code>stack_samples()</code></strong> - Collate geospatial sample dictionaries.</li>
+<li><strong><code>collate_fn</code></strong> - Custom batch assembly.</li>
+<li><strong><code>shuffle</code></strong> - Randomize order for training.</li>
 </ul>
 <h3 id="52-use-case">5.2 Use case</h3>
 <ul>
-<li>Load local vector data into Earth Engine workflows.</li>
-<li>Visualize project boundaries, sampling points, and field data.</li>
-<li>Combine local data with Earth Engine imagery.</li>
+<li>Batch image chips and masks.</li>
+<li>Strip unnecessary metadata from batches.</li>
+<li>Improve training throughput.</li>
 </ul>
 <h3 id="53-example">5.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchgeo.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">stack_samples</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="c1"># ee_object = geemap.shp_to_ee(&quot;boundary.shp&quot;)</span>
-<span class="c1"># m.addLayer(ee_object, {}, &quot;Boundary&quot;)</span>
-<span class="n">m</span>
+<span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">sampler</span><span class="o">=</span><span class="n">sampler</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">stack_samples</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="6-layer-styling">6. Layer styling</h2>
-<p>geemap provides easy styling for layers, especially when adding vector data or Earth Engine feature collections.</p>
-<h3 id="61-common-methods">6.1 Common methods</h3>
+<h2 id="6-raster-and-patch-workflows">6. Raster and patch workflows</h2>
+<p>TorchGeo is designed to handle very large geospatial rasters by sampling smaller patches.</p>
+<h3 id="61-common-ideas">6.1 Common ideas</h3>
 <ul>
-<li><strong><code>Map.add_styled_vector()</code></strong> - Add styled vector data.</li>
-<li><strong><code>Map.add_labels()</code></strong> - Add labels to vector features.</li>
-<li><strong><code>Map.add_outline()</code></strong> - Add outlines to geometries.</li>
-<li><strong><code>Map.add_circle_markers()</code></strong> - Add circle markers from point data.</li>
-<li><strong><code>Map.add_points_from_xy()</code></strong> - Add points from x/y coordinates.</li>
-<li><strong><code>Map.add_marker_cluster()</code></strong> - Cluster markers.</li>
+<li>Large rasters are too big to load into a model directly.</li>
+<li>Patches or chips are sampled from geographic bounds.</li>
+<li>Each sample can include <code>image</code>, <code>mask</code>, <code>bbox</code>, and <code>crs</code>.</li>
 </ul>
 <h3 id="62-use-case">6.2 Use case</h3>
 <ul>
-<li>Show sample points.</li>
-<li>Visualize polygons with labels.</li>
-<li>Cluster dense point datasets.</li>
+<li>Semantic segmentation on satellite chips.</li>
+<li>Patch-based classification.</li>
+<li>Regional inference from tiling.</li>
 </ul>
 <h3 id="63-example">6.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="c1"># m.add_points_from_xy(df, x=&quot;lon&quot;, y=&quot;lat&quot;, color=&quot;blue&quot;)</span>
-<span class="n">m</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># A sampler returns geospatial chips instead of integer row indices.</span>
+<span class="c1"># Each chip is a spatial patch ready for model training.</span>
 </code></pre></div>
 <hr />
-<h2 id="7-drawing-tools-and-interaction">7. Drawing tools and interaction</h2>
-<p>The interactive drawing tools are useful for collecting user-drawn polygons, rectangles, points, and lines inside notebooks.</p>
-<h3 id="71-common-methods">7.1 Common methods</h3>
+<h2 id="7-transforms">7. Transforms</h2>
+<p>TorchGeo includes image transforms tailored for multispectral and geospatial data.</p>
+<h3 id="71-common-transform-ideas">7.1 Common transform ideas</h3>
 <ul>
-<li><strong><code>Map.add_draw_control()</code></strong> - Add drawing tools.</li>
-<li><strong><code>Map.draw_control</code></strong> - Access the draw control.</li>
-<li><strong><code>Map.get_drawn_features()</code></strong> - Retrieve drawn geometries.</li>
-<li><strong><code>Map.clear_draw_control()</code></strong> - Clear drawings.</li>
-<li><strong><code>Map.add_click_callbacks()</code></strong> - React to clicks in some backends.</li>
+<li>Spatial augmentation.</li>
+<li>Band selection.</li>
+<li>Normalization.</li>
+<li>Random cropping and flipping.</li>
+<li>Type conversion.</li>
+<li>Standard PyTorch transforms when compatible.</li>
 </ul>
 <h3 id="72-use-case">7.2 Use case</h3>
 <ul>
-<li>Digitize AOIs.</li>
-<li>Collect user-defined polygons for clipping and analysis.</li>
-<li>Create interactive sampling workflows.</li>
+<li>Improve model robustness.</li>
+<li>Standardize multispectral inputs.</li>
+<li>Prepare patches for training.</li>
 </ul>
 <h3 id="73-example">7.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_draw_control</span><span class="p">()</span>
-<span class="n">m</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Example pattern:</span>
+<span class="c1"># transform = SomeGeoTransform(...)</span>
+<span class="c1"># dataset = RasterDataset(..., transforms=transform)</span>
 </code></pre></div>
 <hr />
-<h2 id="8-analysis-tools">8. Analysis tools</h2>
-<p>geemap includes functions for Earth Engine-based spatial analysis and exploratory workflows.</p>
-<h3 id="81-common-methods">8.1 Common methods</h3>
+<h2 id="8-pretrained-models">8. Pretrained models</h2>
+<p>TorchGeo includes model architectures and pretrained backbones for geospatial tasks.</p>
+<h3 id="81-common-model-families">8.1 Common model families</h3>
 <ul>
-<li><strong><code>Map.ee_search()</code></strong> - Search Earth Engine documentation or assets.</li>
-<li><strong><code>Map.ts_inspector()</code></strong> - Inspect time series interactively.</li>
-<li><strong><code>Map.extract_values_to_points()</code></strong> - Sample raster values at points.</li>
-<li><strong><code>Map.zonal_statistics()</code></strong> - Compute zonal statistics.</li>
-<li><strong><code>Map.zonal_statistics_by_group()</code></strong> - Group-based zonal statistics.</li>
-<li><strong><code>Map.sample()</code></strong> - Sample pixels or features in workflows.</li>
-<li><strong><code>Map.add_time_slider()</code></strong> - Add a time slider for layers.</li>
+<li><strong>Classification models</strong>.</li>
+<li><strong>Segmentation models</strong>.</li>
+<li><strong>Backbones</strong> for multispectral imagery.</li>
+<li><strong>Pretrained geospatial encoders</strong>.</li>
 </ul>
 <h3 id="82-use-case">8.2 Use case</h3>
 <ul>
-<li>Analyze temporal change.</li>
-<li>Sample raster values for training data.</li>
-<li>Summarize imagery by polygon boundaries.</li>
+<li>Transfer learning on satellite imagery.</li>
+<li>Fine-tune a model on limited labeled data.</li>
+<li>Start from geospatial pretrained weights.</li>
 </ul>
 <h3 id="83-example">8.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="c1"># m.ts_inspector()</span>
-<span class="n">m</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Example pattern:</span>
+<span class="c1"># model = torchgeo.models.resnet50(...)</span>
+<span class="c1"># output = model(image)</span>
 </code></pre></div>
 <hr />
-<h2 id="9-export-tools">9. Export tools</h2>
-<p>geemap supports exporting maps, images, vectors, and animations.</p>
-<h3 id="91-common-methods">9.1 Common methods</h3>
-<ul>
-<li><strong><code>Map.to_html()</code></strong> - Export map as HTML.</li>
-<li><strong><code>Map.save()</code></strong> - Save map output.</li>
-<li><strong><code>Map.to_image()</code></strong> - Export map image when supported.</li>
-<li><strong><code>Map.screenshot()</code></strong> - Capture screenshot.</li>
-<li><strong><code>Map.add_gif()</code></strong> - Add GIF overlays.</li>
-<li><strong><code>Map.add_image()</code></strong> - Add image overlays.</li>
-<li><strong><code>Map.add_video()</code></strong> - Add video overlays.</li>
-<li><strong><code>Map.export_vector()</code></strong> - Export vector layers.</li>
-<li><strong><code>Map.export_image()</code></strong> - Export EE images or raster outputs.</li>
-<li><strong><code>Map.export_video()</code></strong> - Export video/timelapse products.</li>
-</ul>
+<h2 id="9-training-workflows">9. Training workflows</h2>
+<p>TorchGeo usually fits into a standard PyTorch or PyTorch Lightning training loop.</p>
+<h3 id="91-common-steps">9.1 Common steps</h3>
+<ol>
+<li>Build dataset.</li>
+<li>Choose sampler.</li>
+<li>Create dataloader.</li>
+<li>Build model.</li>
+<li>Compute loss.</li>
+<li>Backpropagate.</li>
+<li>Evaluate predictions.</li>
+</ol>
 <h3 id="92-use-case">9.2 Use case</h3>
 <ul>
-<li>Share notebooks as HTML maps.</li>
-<li>Export plots for reports.</li>
-<li>Generate timelapse animations for presentations.</li>
+<li>Train a segmentation model on satellite chips.</li>
+<li>Train a classifier for land cover.</li>
+<li>Evaluate predictions over a region.</li>
 </ul>
 <h3 id="93-example">9.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="s2">&quot;map.html&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">]</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 </code></pre></div>
 <hr />
-<h2 id="10-basemaps-and-tiles">10. Basemaps and tiles</h2>
-<p>geemap makes it easy to add basemaps and custom tile services.</p>
-<h3 id="101-common-methods">10.1 Common methods</h3>
+<h2 id="10-semantic-segmentation-use-case">10. Semantic segmentation use case</h2>
+<p>Semantic segmentation is one of the most common TorchGeo workflows.</p>
+<h3 id="101-use-case">10.1 Use case</h3>
 <ul>
-<li><strong><code>Map.add_basemap()</code></strong> - Add a named basemap.</li>
-<li><strong><code>Map.add_tile_layer()</code></strong> - Add a custom tile layer.</li>
-<li><strong><code>Map.add_wms_layer()</code></strong> - Add a WMS layer.</li>
-<li><strong><code>Map.add_cog_layer()</code></strong> - Add a Cloud Optimized GeoTIFF layer.</li>
-<li><strong><code>Map.add_raster()</code></strong> - Add a raster layer.</li>
+<li>Land cover mapping.</li>
+<li>Flood extent detection.</li>
+<li>Water body segmentation.</li>
+<li>Urban footprint extraction.</li>
 </ul>
-<h3 id="102-use-case">10.2 Use case</h3>
+<h3 id="102-typical-components">10.2 Typical components</h3>
 <ul>
-<li>Add satellite imagery or terrain background.</li>
-<li>Overlay WMS products from external services.</li>
-<li>View local rasters without converting them manually.</li>
+<li>Multispectral imagery as input.</li>
+<li>Pixel-wise label masks.</li>
+<li>U-Net, DeepLabV3, or similar segmentation models.</li>
+<li>Patch sampling with <code>RandomGeoSampler</code>.</li>
 </ul>
 <h3 id="103-example">10.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">torchgeo.samplers</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomGeoSampler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
-<span class="n">m</span>
+<span class="n">train_sampler</span> <span class="o">=</span> <span class="n">RandomGeoSampler</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">sampler</span><span class="o">=</span><span class="n">train_sampler</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">stack_samples</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="11-legends-and-colorbars">11. Legends and colorbars</h2>
-<p>Legends and colorbars help explain thematic layers and continuous values.</p>
-<h3 id="111-common-methods">11.1 Common methods</h3>
+<h2 id="11-classification-use-case">11. Classification use case</h2>
+<p>TorchGeo can also support scene-level or patch-level classification.</p>
+<h3 id="111-use-case">11.1 Use case</h3>
 <ul>
-<li><strong><code>Map.add_legend()</code></strong> - Add categorical legend.</li>
-<li><strong><code>Map.add_colorbar()</code></strong> - Add continuous colorbar.</li>
-<li><strong><code>Map.add_html()</code></strong> - Add custom legend HTML.</li>
+<li>Crop type classification.</li>
+<li>Road or building presence classification.</li>
+<li>Biome or land cover class prediction.</li>
 </ul>
-<h3 id="112-use-case">11.2 Use case</h3>
-<ul>
-<li>Display land cover classes.</li>
-<li>Explain elevation, temperature, or NDVI values.</li>
-<li>Add publication-style map annotations.</li>
-</ul>
-<h3 id="113-example">11.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Land Cover&quot;</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;Water&quot;</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">])</span>
-<span class="n">m</span>
+<h3 id="112-example">11.2 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># image -&gt; model -&gt; class logits -&gt; loss -&gt; optimizer</span>
 </code></pre></div>
 <hr />
-<h2 id="12-charts-and-profiling">12. Charts and profiling</h2>
-<p>geemap can create charts from Earth Engine data and support interactive analysis in notebooks.</p>
-<h3 id="121-common-methods">12.1 Common methods</h3>
+<h2 id="12-inference-workflows">12. Inference workflows</h2>
+<p>After training, TorchGeo models can be used to predict over new spatial imagery.</p>
+<h3 id="121-common-ideas">12.1 Common ideas</h3>
 <ul>
-<li><strong><code>Map.chart()</code></strong> - Create charts in some workflows.</li>
-<li><strong><code>Map.add_chart()</code></strong> - Add chart widgets if supported.</li>
-<li><strong><code>Map.plot()</code></strong> - Plot data in linked workflows.</li>
-<li><strong><code>Map.histogram()</code></strong> - Show histogram of data values.</li>
+<li>Use a grid sampler for full-area prediction.</li>
+<li>Merge chip predictions into a raster.</li>
+<li>Save outputs for GIS analysis.</li>
 </ul>
 <h3 id="122-use-case">12.2 Use case</h3>
 <ul>
-<li>Create time series charts from EE imagery.</li>
-<li>Explore data distributions.</li>
-<li>Link map clicks to plots.</li>
+<li>Predict land cover on new satellite scenes.</li>
+<li>Map flood or burn severity.</li>
+<li>Generate geospatial layers for downstream use.</li>
 </ul>
 <h3 id="123-example">12.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="c1"># m.chart()</span>
-<span class="n">m</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use a grid sampler to iterate across a region,</span>
+<span class="c1"># run predictions on each chip, and stitch outputs together.</span>
 </code></pre></div>
 <hr />
-<h2 id="13-convenience-utilities">13. Convenience utilities</h2>
-<p>geemap also includes helper utilities for working with files, URLs, and Earth Engine assets.</p>
-<h3 id="131-common-functions">13.1 Common functions</h3>
+<h2 id="13-common-torchgeo-methods-and-patterns">13. Common TorchGeo methods and patterns</h2>
+<h3 id="131-datasets">13.1 Datasets</h3>
 <ul>
-<li><strong><code>geemap.ee_initialize()</code></strong> - Initialize Earth Engine.</li>
-<li><strong><code>geemap.ee_to_geojson()</code></strong> - Convert Earth Engine data to GeoJSON.</li>
-<li><strong><code>geemap.ee_to_gdf()</code></strong> - Convert Earth Engine data to GeoDataFrame.</li>
-<li><strong><code>geemap.ee_export_image()</code></strong> - Export Earth Engine image.</li>
-<li><strong><code>geemap.ee_export_image_collection()</code></strong> - Export image collection.</li>
-<li><strong><code>geemap.ee_export_vector()</code></strong> - Export vector data.</li>
-<li><strong><code>geemap.download_gee_asset()</code></strong> - Download asset when available.</li>
-<li><strong><code>geemap.download_file()</code></strong> - Download a file.</li>
-<li><strong><code>geemap.search_ee_data()</code></strong> - Search Earth Engine data catalog.</li>
+<li><strong><code>RasterDataset()</code></strong> - Read raster sources.</li>
+<li><strong><code>VectorDataset()</code></strong> - Read vector sources.</li>
+<li><strong><code>GeoDataset</code></strong> - Base class for geospatial sampling.</li>
 </ul>
-<h3 id="132-use-case">13.2 Use case</h3>
+<h3 id="132-sampling">13.2 Sampling</h3>
 <ul>
-<li>Move data between Earth Engine and local Python workflows.</li>
-<li>Export analysis results to common GIS formats.</li>
-<li>Automate map and dataset generation.</li>
+<li><strong><code>RandomGeoSampler()</code></strong> - Random patches.</li>
+<li><strong><code>GridGeoSampler()</code></strong> - Regular tiling.</li>
+<li><strong><code>GeoSampler</code></strong> - Base sampler.</li>
 </ul>
-<h3 id="133-example">13.3 Example</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
+<h3 id="133-batching">13.3 Batching</h3>
+<ul>
+<li><strong><code>DataLoader()</code></strong> - Load batches.</li>
+<li><strong><code>stack_samples()</code></strong> - Stack dict samples.</li>
+</ul>
+<h3 id="134-composition">13.4 Composition</h3>
+<ul>
+<li><strong><code>&amp;</code></strong> - Intersect datasets.</li>
+<li><strong><code>|</code></strong> - Union datasets.</li>
+</ul>
+<h3 id="135-example">13.5 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">torchgeo.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">CDL</span><span class="p">,</span> <span class="n">Landsat7</span><span class="p">,</span> <span class="n">Landsat8</span><span class="p">,</span> <span class="n">stack_samples</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchgeo.samplers</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomGeoSampler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
 
-<span class="n">ee_data</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">search_ee_data</span><span class="p">(</span><span class="s2">&quot;SRTM&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ee_data</span><span class="p">)</span>
+<span class="n">landsat</span> <span class="o">=</span> <span class="n">Landsat7</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="s2">&quot;path/to/landsat7&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Landsat8</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="s2">&quot;path/to/landsat8&quot;</span><span class="p">)</span>
+<span class="n">cdl</span> <span class="o">=</span> <span class="n">CDL</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="s2">&quot;path/to/cdl&quot;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">landsat</span> <span class="o">&amp;</span> <span class="n">cdl</span>
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">RandomGeoSampler</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">sampler</span><span class="o">=</span><span class="n">sampler</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">stack_samples</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="14-common-workflows">14. Common workflows</h2>
-<h3 id="141-create-an-interactive-map">14.1 Create an interactive map</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
+<h2 id="14-integrating-with-pytorch">14. Integrating with PyTorch</h2>
+<p>TorchGeo is built on top of PyTorch, so all standard PyTorch tools still apply.</p>
+<h3 id="141-common-pytorch-methods-used-with-torchgeo">14.1 Common PyTorch methods used with TorchGeo</h3>
+<ul>
+<li><strong><code>nn.Module</code></strong> - Build neural networks.</li>
+<li><strong><code>optim.Adam()</code></strong> - Optimize model parameters.</li>
+<li><strong><code>CrossEntropyLoss()</code></strong> - Common segmentation/classification loss.</li>
+<li><strong><code>to(device)</code></strong> - Move data and model to GPU.</li>
+<li><strong><code>backward()</code></strong> - Compute gradients.</li>
+</ul>
+<h3 id="142-use-case">14.2 Use case</h3>
+<ul>
+<li>Full geospatial deep learning pipeline.</li>
+<li>GPU-accelerated training.</li>
+<li>Reproducible experiments.</li>
+</ul>
+<h3 id="143-example">14.3 Example</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_layer_control</span><span class="p">()</span>
-<span class="n">m</span>
-</code></pre></div>
-<h3 id="142-add-earth-engine-data">14.2 Add Earth Engine data</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">ee</span>
-
-<span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">},</span> <span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
-<span class="n">m</span>
-</code></pre></div>
-<h3 id="143-load-local-data">14.3 Load local data</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="c1"># m.add_geojson(&quot;boundary.geojson&quot;)</span>
-<span class="c1"># m.add_shp(&quot;boundary.shp&quot;)</span>
-<span class="n">m</span>
-</code></pre></div>
-<h3 id="144-export-map-to-html">14.4 Export map to HTML</h3>
-<div class="highlight"><pre><span></span><code><span class="n">m</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="s2">&quot;geemap_output.html&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
 </code></pre></div>
 <hr />
-<h2 id="15-quick-reference-table">15. Quick reference table</h2>
+<h2 id="15-common-geospatial-machine-learning-tasks">15. Common geospatial machine learning tasks</h2>
+<h3 id="151-tasks">15.1 Tasks</h3>
+<ul>
+<li>Land cover classification.</li>
+<li>Crop type prediction.</li>
+<li>Water segmentation.</li>
+<li>Change detection.</li>
+<li>Urban mapping.</li>
+<li>Disaster response mapping.</li>
+</ul>
+<h3 id="152-use-case">15.2 Use case</h3>
+<ul>
+<li>Convert remote sensing data into actionable map products.</li>
+<li>Train models on spatial chips.</li>
+<li>Reuse pretrained geospatial representations.</li>
+</ul>
+<h3 id="153-example">15.3 Example</h3>
+<div class="highlight"><pre><span></span><code>Satellite imagery + labels + geospatial samplers + deep learning model = geospatial prediction pipeline
+</code></pre></div>
+<hr />
+<h2 id="16-good-practices">16. Good practices</h2>
+<ul>
+<li>Use <code>RandomGeoSampler</code> for training and <code>GridGeoSampler</code> for inference.</li>
+<li>Match CRS and resolution before combining datasets.</li>
+<li>Use patch-based loading instead of full-raster loading.</li>
+<li>Keep image and mask datasets aligned spatially.</li>
+<li>Use GPU when training large multispectral models.</li>
+<li>Prefer <code>stack_samples()</code> or a custom collate function for batch dictionaries.</li>
+</ul>
+<hr />
+<h2 id="17-quick-reference-table">17. Quick reference table</h2>
 <table>
 <thead>
 <tr>
@@ -3191,63 +3333,76 @@
 </thead>
 <tbody>
 <tr>
-<td>Map creation</td>
-<td><code>Map()</code>, <code>set_center()</code>, <code>centerObject()</code></td>
-<td>Create and control interactive maps.</td>
+<td>Datasets</td>
+<td><code>RasterDataset()</code>, <code>VectorDataset()</code></td>
+<td>Read geospatial data.</td>
 </tr>
 <tr>
-<td>Basemaps</td>
-<td><code>add_basemap()</code>, <code>add_tile_layer()</code></td>
-<td>Add background layers.</td>
+<td>Composition</td>
+<td><code>&amp;</code>, <code>|</code></td>
+<td>Intersect or combine datasets.</td>
 </tr>
 <tr>
-<td>Earth Engine</td>
-<td><code>addLayer()</code>, <code>ee_search()</code></td>
-<td>Visualize EE datasets and metadata.</td>
+<td>Samplers</td>
+<td><code>RandomGeoSampler()</code>, <code>GridGeoSampler()</code></td>
+<td>Sample spatial patches.</td>
 </tr>
 <tr>
-<td>Local data</td>
-<td><code>shp_to_ee()</code>, <code>geojson_to_ee()</code>, <code>gdf_to_ee()</code></td>
-<td>Convert local data for EE workflows.</td>
+<td>Batching</td>
+<td><code>DataLoader()</code>, <code>stack_samples()</code></td>
+<td>Build training batches.</td>
 </tr>
 <tr>
-<td>Drawing</td>
-<td><code>add_draw_control()</code>, <code>get_drawn_features()</code></td>
-<td>Collect user-drawn geometries.</td>
+<td>Training</td>
+<td><code>backward()</code>, <code>optimizer.step()</code></td>
+<td>Fit models.</td>
 </tr>
 <tr>
-<td>Analysis</td>
-<td><code>zonal_statistics()</code>, <code>extract_values_to_points()</code></td>
-<td>Run spatial analysis workflows.</td>
+<td>Inference</td>
+<td>grid sampling, patch stitching</td>
+<td>Predict over large areas.</td>
 </tr>
 <tr>
-<td>Export</td>
-<td><code>to_html()</code>, <code>export_image()</code>, <code>export_vector()</code></td>
-<td>Save maps and outputs.</td>
-</tr>
-<tr>
-<td>Legends</td>
-<td><code>add_legend()</code>, <code>add_colorbar()</code></td>
-<td>Explain visual encodings.</td>
+<td>ML tasks</td>
+<td>classification, segmentation</td>
+<td>Solve geospatial problems.</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="16-example-full-workflow">16. Example full workflow</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">ee</span>
+<h2 id="18-example-full-workflow">18. Example full workflow</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchgeo.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">RasterDataset</span><span class="p">,</span> <span class="n">stack_samples</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torchgeo.samplers</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomGeoSampler</span>
 
-<span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">RasterDataset</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:32647&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">RasterDataset</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:32647&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">mask</span><span class="o">.</span><span class="n">is_image</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">image</span> <span class="o">&amp;</span> <span class="n">mask</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span>
-<span class="n">vis</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">]}</span>
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">RandomGeoSampler</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">sampler</span><span class="o">=</span><span class="n">sampler</span><span class="p">,</span> <span class="n">collate_fn</span><span class="o">=</span><span class="n">stack_samples</span><span class="p">)</span>
 
-<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis</span><span class="p">,</span> <span class="s2">&quot;SRTM DEM&quot;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Elevation&quot;</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Low&quot;</span><span class="p">,</span> <span class="s2">&quot;High&quot;</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">])</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_layer_control</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="s2">&quot;dem_map.html&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;mask&quot;</span><span class="p">]</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">long</span><span class="p">())</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
 </code></pre></div>
 
 
