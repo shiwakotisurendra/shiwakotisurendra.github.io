@@ -40,6 +40,9 @@ theme:
   features:
     - navigation.tabs            # Top-level nav items shown as horizontal tabs
     - navigation.top             # Back-to-top button when scrolling up
+    - navigation.sections
+    - navigation.expand
+    - toc.follow
     - content.code.copy          # Copy button on all code blocks
   font:
     text: Roboto

@@ -1,8 +1,6 @@
-```markdown
 ---
 hide:
   - toc
-  - navigation
 ---
 
 # Enterprise Machine Learning Operations via Scikit-Learn
@@ -232,4 +230,3 @@ print(f"Confidence Weight Parameter Probability: {live_probabilities[0]:.4f}")
 | | `predict_proba()` | Evaluates feature dimensions to display structured probability arrays matching discrete target classifications. |
 | **`Pipeline`** | `fit()` | Iterates through sequentially ordered operations executing transformation bounds before initializing estimator graphs. |
 | | `score()` | Returns basic evaluation baseline benchmarks optimized by target implementation definitions. |
-```

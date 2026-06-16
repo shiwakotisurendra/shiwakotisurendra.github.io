@@ -1,7 +1,6 @@
 ---
 hide:
   - toc
-  - navigation
 ---
 
 # Complete GDAL Guide: Methods, Use Cases, and Examples

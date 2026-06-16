@@ -1,9 +1,7 @@
 ---
 hide:
   - toc
-  - navigation
 ---
-
 # Complete EarthPy Methods Reference
 
 ## 1. Core concepts
