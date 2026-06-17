@@ -62,7 +62,7 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
-copyright: "Copyright &copy; [YOUR NAME]"
+copyright: "Copyright &copy; Surendra Shiwakoti 2026"
 
 extra:
   social:
@@ -96,7 +96,8 @@ nav:
   - Resources: resources.md
   - Tutorials:
     - "InfoTool": Tutorials/infoTool_reference.md
-    - "Learn python": Tutorials/python.md 
+    - "Learn python": Tutorials/python.md
+    - "Python Package": Tutorials/python_package.md 
     - "Raster Analysis": Tutorials/Tutorials.md
     - "Vector Analysis": Tutorials/vector_analysis.md
     - "Automate QGIS": Tutorials/automate_qgis.md
@@ -112,6 +113,8 @@ nav:
     - "Pytorch": Tutorials/pytorch.md
     - "Torchgeo": Tutorials/torchgeo.md
     - "OpenCV": Tutorials/opencv.md
+    - "Streamlit": Tutorials/streamlit.md
+    - "Flask": Tutorials/flask.md
     - "Scikit-learn": Tutorials/scikit-learn.md
     - "Scikit-learn examples": Tutorials/scikit-learn_examples.md
     - "Earthpy": Tutorials/earthpy.md
