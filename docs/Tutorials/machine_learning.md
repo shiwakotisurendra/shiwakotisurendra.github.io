@@ -14,14 +14,12 @@ This page focuses on the major machine learning methods used in geospatial Pytho
 ---
 
 ## Supervised Learning
-
 Supervised learning uses labeled data. The model learns a relationship between input features and a known target value or class.
 
 ### Regression methods
-
 Regression predicts a continuous numeric value.
 
-#### Linear Regression
+#### 1. Linear Regression
 Linear Regression fits a straight-line relationship between input features and a continuous target.
 
 **Idea:**  
@@ -33,9 +31,9 @@ The model assumes the target changes proportionally with the predictors.
 - Modeling biomass.
 - Predicting soil moisture.
 
-**Best for:** simple, approximately linear relationships.
+**Best for:** simple, approximately linear relationships. <hr>
 
-#### Multiple Linear Regression
+#### 2. Multiple Linear Regression
 Multiple Linear Regression is the same idea as Linear Regression, but it uses more than one input feature.
 
 **Idea:**  
@@ -45,9 +43,9 @@ The model predicts one continuous variable from several predictors, such as elev
 - Predicting urban heat from land cover, elevation, and vegetation.
 - Estimating air pollution using traffic and environmental variables.
 
-**Best for:** continuous prediction with multiple explanatory variables.
+**Best for:** continuous prediction with multiple explanatory variables.<hr>
 
-#### Ridge Regression
+#### 3. Ridge Regression
 Ridge Regression is linear regression with L2 regularization.
 
 **Idea:**  
@@ -57,9 +55,9 @@ It adds a penalty to large coefficients, which helps reduce overfitting when pre
 - Climate prediction with correlated environmental variables.
 - Remote sensing problems with many similar bands or indices.
 
-**Best for:** multicollinear data.
+**Best for:** multicollinear data.<hr>
 
-#### Lasso Regression
+#### 4. Lasso Regression
 Lasso Regression is linear regression with L1 regularization.
 
 **Idea:**  
@@ -69,9 +67,9 @@ It shrinks some coefficients to exactly zero, which performs feature selection.
 - Selecting the most important predictors from many raster layers.
 - Simplifying models with many correlated spatial variables.
 
-**Best for:** feature selection and sparse models.
+**Best for:** feature selection and sparse models.<hr>
 
-#### Elastic Net Regression
+#### 5. Elastic Net Regression
 Elastic Net Regression combines Ridge and Lasso regularization.
 
 **Idea:**  
@@ -81,9 +79,9 @@ It balances coefficient shrinkage and feature selection.
 - Geospatial datasets with many correlated features.
 - High-dimensional remote sensing problems.
 
-**Best for:** a mix of correlated predictors and feature selection needs.
+**Best for:** a mix of correlated predictors and feature selection needs.<hr>
 
-#### Decision Tree Regressor
+#### 6. Decision Tree Regressor
 A Decision Tree Regressor splits data into branches based on feature thresholds and predicts a numeric value at the final leaf.
 
 **Idea:**  
@@ -94,9 +92,9 @@ It learns rules such as: if NDVI is high and elevation is low, predict higher bi
 - Predicting surface temperature.
 - Modeling environmental variables with nonlinear behavior.
 
-**Best for:** nonlinear relationships and interpretable rule-based modeling.
+**Best for:** nonlinear relationships and interpretable rule-based modeling.<hr>
 
-#### Random Forest Regressor
+#### 7. Random Forest Regressor
 Random Forest Regressor builds many decision trees and averages their predictions.
 
 **Idea:**  
@@ -108,9 +106,9 @@ Each tree sees a random subset of data and features, which improves robustness a
 - Urban heat modeling.
 - Climate-related spatial prediction.
 
-**Best for:** strong general-purpose geospatial regression.
+**Best for:** strong general-purpose geospatial regression.<hr>
 
-#### Gradient Boosting Regressor
+#### 8. Gradient Boosting Regressor
 Gradient Boosting Regressor builds trees sequentially, where each new tree corrects errors made by previous trees.
 
 **Idea:**  
@@ -120,9 +118,9 @@ The model improves step by step by focusing on residual errors.
 - Predicting environmental variables from complex predictors.
 - High-accuracy regression from remote sensing features.
 
-**Best for:** high predictive performance on structured data.
+**Best for:** high predictive performance on structured data.<hr>
 
-#### Support Vector Regression
+#### 9. Support Vector Regression
 Support Vector Regression tries to fit a function within a tolerance margin while keeping the model as smooth as possible.
 
 **Idea:**  
@@ -132,9 +130,9 @@ Instead of minimizing all errors equally, it finds a flexible boundary that allo
 - Predicting climate variables.
 - Modeling smooth environmental gradients.
 
-**Best for:** nonlinear prediction with kernel functions.
+**Best for:** nonlinear prediction with kernel functions.<hr>
 
-#### K-Nearest Neighbors Regressor
+#### 10. K-Nearest Neighbors Regressor
 K-Nearest Neighbors Regressor predicts the target value from the average of the nearest observations in feature space.
 
 **Idea:**  
@@ -145,9 +143,9 @@ A new point gets its value from similar nearby training samples.
 - Small geospatial datasets.
 - Simple baseline models.
 
-**Best for:** local similarity problems.
+**Best for:** local similarity problems.<hr>
 
-#### Neural Network Regressor
+#### 11. Neural Network Regressor
 A Neural Network Regressor learns complex nonlinear relationships using layers of connected neurons.
 
 **Idea:**  
@@ -158,7 +156,7 @@ The model transforms the input features through hidden layers to estimate the ta
 - Complex climate or urban prediction problems.
 - Deep feature learning when many observations exist.
 
-**Best for:** large datasets with nonlinear relationships.
+**Best for:** large datasets with nonlinear relationships.<hr>
 
 ---
 
@@ -170,7 +168,7 @@ Classification predicts a category or class.
 
 In geospatial image classification, each pixel or object is assigned to a class such as forest, water, urban, agriculture, or bare soil.
 
-### Logistic Regression
+### 1. Logistic Regression
 Logistic Regression is a classification method that predicts class probabilities.
 
 **Idea:**  
@@ -181,9 +179,9 @@ It uses a sigmoid function to estimate the probability of class membership.
 - Flood/no flood mapping.
 - Urban/non-urban mapping.
 
-**Best for:** simple and interpretable classification.
+**Best for:** simple and interpretable classification.<hr>
 
-### Decision Tree Classifier
+### 2. Decision Tree Classifier
 A Decision Tree Classifier splits data using if-then rules and assigns a class at the leaf node.
 
 **Idea:**  
@@ -194,9 +192,9 @@ It learns feature thresholds that separate classes.
 - Crop type classification.
 - Habitat class prediction.
 
-**Best for:** rule-based interpretable classification.
+**Best for:** rule-based interpretable classification.<hr>
 
-### Random Forest Classifier
+### 3. Random Forest Classifier
 Random Forest Classifier combines many decision trees and uses majority vote.
 
 **Idea:**  
@@ -207,9 +205,9 @@ It reduces overfitting by averaging multiple trees.
 - Forest cover mapping.
 - Urban growth detection.
 
-**Best for:** strong baseline for geospatial classification.
+**Best for:** strong baseline for geospatial classification.<hr>
 
-### Support Vector Machine
+### 4. Support Vector Machine
 Support Vector Machine finds a separating boundary that maximizes the margin between classes.
 
 **Idea:**  
@@ -220,9 +218,9 @@ It tries to place the boundary as far as possible from the closest training poin
 - High-dimensional remote sensing classification.
 - Small to medium training datasets.
 
-**Best for:** high-dimensional feature spaces.
+**Best for:** high-dimensional feature spaces.<hr>
 
-### K-Nearest Neighbors Classifier
+### 5. K-Nearest Neighbors Classifier
 K-Nearest Neighbors Classifier assigns a class based on the majority class among the nearest neighbors.
 
 **Idea:**  
@@ -232,9 +230,9 @@ If most nearby training samples belong to forest, the new sample becomes forest.
 - Simple land cover classification.
 - Baseline classification for small datasets.
 
-**Best for:** simple and intuitive classification.
+**Best for:** simple and intuitive classification.<hr>
 
-### Naive Bayes
+### 6. Naive Bayes
 Naive Bayes uses probability and assumes predictors are conditionally independent.
 
 **Idea:**  
@@ -245,9 +243,9 @@ It estimates the class with the highest posterior probability.
 - Text and metadata classification.
 - Simple raster classification.
 
-**Best for:** fast probabilistic modeling.
+**Best for:** fast probabilistic modeling.<hr>
 
-### Gradient Boosting Classifier
+### 7. Gradient Boosting Classifier
 Gradient Boosting Classifier builds trees sequentially to improve classification performance.
 
 **Idea:**  
@@ -257,9 +255,9 @@ Each new tree reduces the errors of the previous ensemble.
 - Land cover mapping.
 - Complex class prediction from remote sensing features.
 
-**Best for:** high-accuracy classification.
+**Best for:** high-accuracy classification.<hr>
 
-### Neural Network Classifier
+### 8. Neural Network Classifier
 A Neural Network Classifier learns nonlinear class boundaries using multiple layers.
 
 **Idea:**  
@@ -270,7 +268,7 @@ It transforms input features through hidden layers and outputs class probabiliti
 - Deep remote sensing models.
 - Complex multi-class land cover problems.
 
-**Best for:** large datasets and nonlinear classification.
+**Best for:** large datasets and nonlinear classification.<hr>
 
 ---
 
@@ -278,43 +276,43 @@ It transforms input features through hidden layers and outputs class probabiliti
 
 Unsupervised learning uses data without labels to discover patterns.
 
-### Clustering
+### 1. Clustering
 
 Clustering groups similar pixels, polygons, or observations.
 
-#### K-Means
+#### - K-Means
 Partitions data into K groups by minimizing distance to cluster centers.
 
 **Use cases:** land cover segmentation, hotspot detection.
 
-#### DBSCAN
+#### - DBSCAN
 Groups dense clusters and marks sparse points as noise.
 
 **Use cases:** urban hotspot detection, unusual spatial pattern detection.
 
-#### Hierarchical clustering
+#### - Hierarchical clustering
 Builds clusters step by step in a tree structure.
 
 **Use cases:** ecological region grouping, climate zone analysis.
 
-### Dimensionality reduction
+### 2. Dimensionality reduction
 
-#### PCA
+#### - PCA
 Principal Component Analysis compresses many correlated variables into fewer components.
 
 **Use cases:** multispectral image compression, feature reduction.
 
-#### t-SNE
+#### - t-SNE
 t-SNE visualizes high-dimensional data in 2D or 3D.
 
 **Use cases:** exploratory analysis of remote sensing features.
 
-#### UMAP
+#### - UMAP
 UMAP preserves local structure while reducing dimensions.
 
 **Use cases:** fast visualization of high-dimensional geospatial data.
 
-### Anomaly detection
+### 3. Anomaly detection
 
 #### Isolation Forest
 Detects outliers by isolating unusual observations.
@@ -326,7 +324,7 @@ Detects samples that are locally unusual compared with neighbors.
 Learns a boundary around normal data and flags points outside it.
 
 **Use cases:** sensor anomaly detection, unusual land change, rare event detection.
-
+<hr>
 ---
 
 ## Geospatial Python examples

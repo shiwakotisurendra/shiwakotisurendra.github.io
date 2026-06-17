@@ -96,26 +96,35 @@ nav:
   - Resources: resources.md
   - Tutorials:
     - "InfoTool": Tutorials/infoTool_reference.md
-    - "Learn python": Tutorials/python.md
-    - "Python Package": Tutorials/python_package.md 
-    - "Raster Analysis": Tutorials/Tutorials.md
-    - "Vector Analysis": Tutorials/vector_analysis.md
-    - "Automate QGIS": Tutorials/automate_qgis.md
-    - "Automate ArcGIS": Tutorials/automate_arcgis.md
-    - "Gdal": Tutorials/gdal.md
-    - "Matplotlib methods": Tutorials/matplotlib_methods.md
-    - "Plotly": Tutorials/plotly.md
-    - "Pandas": Tutorials/pandas.md
-    - "Numpy": Tutorials/numpy.md
-    - "Xarray and Rioxarray": Tutorials/xarray_and_rioxarray.md
-    - "Folium": Tutorials/folium.md
-    - "Geemap": Tutorials/geemap.md
-    - "Pytorch": Tutorials/pytorch.md
-    - "Torchgeo": Tutorials/torchgeo.md
-    - "OpenCV": Tutorials/opencv.md
-    - "Streamlit": Tutorials/streamlit.md
-    - "Flask": Tutorials/flask.md
-    - "Scikit-learn": Tutorials/scikit-learn.md
-    - "Scikit-learn examples": Tutorials/scikit-learn_examples.md
-    - "Earthpy": Tutorials/earthpy.md
+    - "Python":
+      - "Learn python": Tutorials/python.md
+      - "Python Package": Tutorials/python_package.md 
+    - "Geospatial Analysis":
+      - "Raster Analysis": Tutorials/Tutorials.md
+      - "Vector Analysis": Tutorials/vector_analysis.md
+      - "Automate QGIS": Tutorials/automate_qgis.md
+      - "Automate ArcGIS": Tutorials/automate_arcgis.md
+      - "Gdal": Tutorials/gdal.md
+      - "Folium": Tutorials/folium.md
+      - "Geemap": Tutorials/geemap.md
+    - "Data Analysis":
+      - "Pandas": Tutorials/pandas.md
+      - "Numpy": Tutorials/numpy.md
+      - "Xarray and Rioxarray": Tutorials/xarray_and_rioxarray.md
+      - "Matplotlib": Tutorials/matplotlib_methods.md
+      - "Seaborn": Tutorials/seaborn.md
+      - "Plotly": Tutorials/plotly.md
+      - "Pytorch": Tutorials/pytorch.md
+      - "Torchgeo": Tutorials/torchgeo.md
+      - "OpenCV": Tutorials/opencv.md
+      - "Earthpy": Tutorials/earthpy.md
+    - "Machine Learning":
+      - "Introduction to Machine Learning": Tutorials/machine_learning.md
+      - "ML Definitions": Tutorials/ml_definations.md
+      - "Scikit-learn": Tutorials/scikit-learn.md
+      - "Scikit-learn examples": Tutorials/scikit-learn_examples.md
+      - "Deep Learning": Tutorials/deep_learning.md
+    - "Web Applications":
+      - "Streamlit": Tutorials/streamlit.md
+      - "Flask": Tutorials/flask.md
   - Contact: contact.md
